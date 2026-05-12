@@ -72,6 +72,20 @@ We've included a [submission template](SUBMISSION.md) if you want a starting poi
 
 We should be able to clone your repo and have it running locally by following your README.
 
+## Run with Docker (optional)
+
+If you'd rather not manage a local Node version, the repo ships with a `Dockerfile` and `docker-compose.yml` for the dev server:
+
+```bash
+docker compose up
+```
+
+The first run builds the image (~2 min); subsequent runs reuse the cache. The dev server is published on http://localhost:5173 and the repo is bind-mounted into the container, so edits on the host trigger Vite HMR. `Ctrl+C` to stop; `docker compose down` to clean up.
+
+**Mac / Windows hosts:** file-watch events sometimes don't cross the bind mount. If HMR doesn't fire on save, uncomment the `server.watch.usePolling` block in `vite.config.ts` and rebuild.
+
+The npm path (`npm install && npm run dev`) remains the canonical run instruction — Docker is provided as an alternate convenience.
+
 ## Timeline
 
 You have **5 days** from when you receive this challenge to submit it.
