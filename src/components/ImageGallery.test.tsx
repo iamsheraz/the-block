@@ -1,0 +1,55 @@
+import { fireEvent, render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import { describe, expect, it } from 'vitest';
+import { ImageGallery } from './ImageGallery';
+
+const IMAGES = ['/a.jpg', '/b.jpg', '/c.jpg'];
+const TITLE = '2019 Honda Civic';
+
+function hero(): HTMLImageElement {
+  return screen.getByTestId('gallery-hero') as HTMLImageElement;
+}
+
+describe('ImageGallery', () => {
+  it('renders the first image as the hero by default', () => {
+    render(<ImageGallery images={IMAGES} title={TITLE} />);
+    expect(hero()).toHaveAttribute('src', '/a.jpg');
+    expect(screen.getByText('1 / 3')).toBeInTheDocument();
+  });
+
+  it('swaps the hero when a thumbnail is clicked', async () => {
+    const user = userEvent.setup();
+    render(<ImageGallery images={IMAGES} title={TITLE} />);
+    await user.click(screen.getByRole('tab', { name: /view 3 of 3/i }));
+    expect(hero()).toHaveAttribute('src', '/c.jpg');
+    expect(screen.getByText('3 / 3')).toBeInTheDocument();
+  });
+
+  it('navigates to the next image with the right arrow key on a focused thumbnail', async () => {
+    const user = userEvent.setup();
+    render(<ImageGallery images={IMAGES} title={TITLE} />);
+    screen.getByRole('tab', { name: /view 1 of 3/i }).focus();
+    await user.keyboard('{ArrowRight}');
+    expect(hero()).toHaveAttribute('src', '/b.jpg');
+  });
+
+  it('wraps to the last image when left arrow is pressed from the first', async () => {
+    const user = userEvent.setup();
+    render(<ImageGallery images={IMAGES} title={TITLE} />);
+    screen.getByRole('tab', { name: /view 1 of 3/i }).focus();
+    await user.keyboard('{ArrowLeft}');
+    expect(hero()).toHaveAttribute('src', '/c.jpg');
+  });
+
+  it('falls back to a placeholder when the hero image fails to load', () => {
+    render(<ImageGallery images={IMAGES} title={TITLE} />);
+    fireEvent.error(hero());
+    expect(screen.getByLabelText(/image unavailable for 2019 Honda Civic/i)).toBeInTheDocument();
+  });
+
+  it('renders a placeholder when no images are provided', () => {
+    render(<ImageGallery images={[]} title={TITLE} />);
+    expect(screen.getByLabelText(/image unavailable for 2019 Honda Civic/i)).toBeInTheDocument();
+    expect(screen.getByText('0 photos')).toBeInTheDocument();
+  });
+});
