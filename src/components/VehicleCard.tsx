@@ -25,7 +25,7 @@ export function VehicleCard({ vehicle, now }: VehicleCardProps) {
   return (
     <Link
       to={`/vehicle/${vehicle.id}`}
-      className="group block overflow-hidden rounded-xl border border-slate-200 bg-white transition hover:-translate-y-0.5 hover:border-slate-300 hover:shadow-md"
+      className="group block overflow-hidden rounded-xl border border-slate-200 bg-white transition hover:-translate-y-0.5 hover:border-slate-300 hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2"
       aria-label={title}
     >
       <div className="relative aspect-[4/3] bg-slate-800">

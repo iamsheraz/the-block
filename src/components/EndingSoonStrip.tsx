@@ -63,7 +63,7 @@ function EndingSoonCard({ vehicle, now }: { vehicle: Vehicle; now: number }) {
     <Link
       to={`/vehicle/${vehicle.id}`}
       aria-label={`${title}, ends in ${formatCountdown(remaining)}`}
-      className="group block min-w-[140px] flex-shrink-0 overflow-hidden rounded-lg border border-slate-200 bg-white transition hover:border-slate-300 hover:shadow-sm"
+      className="group block min-w-[140px] flex-shrink-0 overflow-hidden rounded-lg border border-slate-200 bg-white transition hover:border-slate-300 hover:shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2"
     >
       <div className="relative flex aspect-[4/3] items-end bg-gradient-to-br from-slate-700 via-slate-800 to-slate-950 p-2 text-white">
         <span className="text-[10px] font-medium text-slate-300">{title}</span>

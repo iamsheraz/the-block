@@ -86,7 +86,7 @@ function MakeDropdown({ options, selected, onChange }: MakeDropdownProps) {
         aria-expanded={open}
         onClick={() => setOpen((v) => !v)}
         className={clsx(
-          'inline-flex items-center gap-1.5 rounded-md border bg-white px-3 py-1.5 text-sm font-medium hover:border-slate-300',
+          'inline-flex items-center gap-1.5 rounded-md border bg-white px-3 py-1.5 text-sm font-medium hover:border-slate-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2',
           selected.length > 0
             ? 'border-slate-900 text-slate-900'
             : 'border-slate-200 text-slate-700',
@@ -145,7 +145,7 @@ function BodyChips({ options, selected, onChange }: BodyChipsProps) {
             aria-pressed={active}
             onClick={() => toggle(option)}
             className={clsx(
-              'inline-flex items-center rounded-full border px-3 py-1 text-xs font-medium transition',
+              'inline-flex items-center rounded-full border px-3 py-1 text-xs font-medium transition focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2',
               active
                 ? 'border-slate-900 bg-slate-900 text-white'
                 : 'border-slate-200 bg-white text-slate-700 hover:border-slate-300',

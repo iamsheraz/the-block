@@ -1,5 +1,6 @@
 import { useBidsForVehicle } from '../hooks/useBids';
 import { formatCurrency } from '../lib/format';
+import { EmptyState } from './EmptyState';
 
 type BidHistoryProps = {
   vehicleId: string;
@@ -18,10 +19,14 @@ export function BidHistory({ vehicleId, now }: BidHistoryProps) {
         Your bid history · this vehicle
       </h3>
       {sorted.length === 0 ? (
-        <div className="mt-4 rounded-lg border border-dashed border-slate-200 bg-slate-50 p-6 text-center">
-          <GavelIcon />
-          <p className="mt-2 text-sm font-medium text-slate-700">No bids placed yet</p>
-          <p className="mt-1 text-xs text-slate-500">Your bids on this lot will appear here.</p>
+        <div className="mt-4">
+          <EmptyState
+            tone="inset"
+            ariaLabel="No bids placed yet on this vehicle"
+            icon={<GavelIcon />}
+            title="No bids placed yet"
+            description="Your bids on this lot will appear here."
+          />
         </div>
       ) : (
         <ol className="mt-4 divide-y divide-slate-100">

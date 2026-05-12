@@ -4,6 +4,7 @@ import { BidPanel } from '../components/BidPanel';
 import { ConditionHero } from '../components/ConditionHero';
 import { DamageDiagram } from '../components/DamageDiagram';
 import { DamageNotesList } from '../components/DamageNotesList';
+import { EmptyState } from '../components/EmptyState';
 import { ImageGallery } from '../components/ImageGallery';
 import { MechanicalConcerns } from '../components/MechanicalConcerns';
 import { SellerBlock } from '../components/SellerBlock';
@@ -93,23 +94,23 @@ function DetailView({ vehicle, now }: { vehicle: Vehicle; now: number }) {
 
 function NotFoundState() {
   return (
-    <main className="mx-auto max-w-3xl px-6 py-24 text-center">
-      <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-500">
-        Lot not found
-      </p>
-      <h1 className="mt-3 text-2xl font-bold tracking-tight text-slate-900">
-        That vehicle isn't on this block.
-      </h1>
-      <p className="mt-2 text-sm text-slate-600">
-        The lot id in the URL doesn't match anything in the current inventory. It may have been
-        pulled, or the link may be wrong.
-      </p>
-      <Link
-        to="/"
-        className="mt-6 inline-flex items-center gap-1.5 rounded-md bg-slate-900 px-4 py-2 text-sm font-semibold text-white hover:bg-slate-800"
-      >
-        <BackArrow /> Back to inventory
-      </Link>
+    <main className="mx-auto max-w-3xl px-6 py-24">
+      <EmptyState
+        as="div"
+        tone="page"
+        ariaLabel="Vehicle not found"
+        eyebrow="Lot not found"
+        title="That vehicle isn't on this block."
+        description="The lot id in the URL doesn't match anything in the current inventory. It may have been pulled, or the link may be wrong."
+        action={
+          <Link
+            to="/"
+            className="inline-flex items-center gap-1.5 rounded-md bg-slate-900 px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-slate-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2"
+          >
+            <BackArrow /> Back to inventory
+          </Link>
+        }
+      />
     </main>
   );
 }

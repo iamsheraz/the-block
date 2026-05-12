@@ -1,4 +1,5 @@
 import { classifyNote } from '../lib/damage';
+import { EmptyState } from './EmptyState';
 
 type DamageNotesListProps = {
   notes: string[];
@@ -15,7 +16,14 @@ export function DamageNotesList({ notes }: DamageNotesListProps) {
       </h3>
 
       {notes.length === 0 ? (
-        <p className="mt-4 text-sm text-slate-600">No damage notes on file for this lot.</p>
+        <div className="mt-4">
+          <EmptyState
+            tone="inset"
+            ariaLabel="No reported damage on this vehicle"
+            title="No reported damage"
+            description="No damage notes on file for this lot."
+          />
+        </div>
       ) : (
         <>
           {body.length > 0 ? (

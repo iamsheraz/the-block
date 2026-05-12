@@ -21,7 +21,7 @@ export function CarFaxLink({ vin }: CarFaxLinkProps) {
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className="flex items-center justify-between rounded-md border border-slate-200 bg-white px-3 py-2.5 text-[13px] text-slate-700 transition hover:border-slate-300"
+      className="flex items-center justify-between rounded-md border border-slate-200 bg-white px-3 py-2.5 text-[13px] text-slate-700 transition hover:border-slate-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2"
     >
       <span>
         View market value on <span className="font-semibold">CarFax Canada</span>

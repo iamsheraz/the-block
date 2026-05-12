@@ -1,4 +1,5 @@
 import { useDeferredValue, useMemo } from 'react';
+import { EmptyState } from '../components/EmptyState';
 import { EndingSoonStrip } from '../components/EndingSoonStrip';
 import { FilterBar } from '../components/FilterBar';
 import { SearchBar } from '../components/SearchBar';
@@ -82,7 +83,20 @@ export function InventoryPage() {
       <EndingSoonStrip vehicles={vehicles} now={now} />
 
       {filtered.length === 0 ? (
-        <EmptyState onClear={clear} />
+        <EmptyState
+          title="No vehicles match these filters"
+          description="Try widening the price range or removing a make to see more lots."
+          ariaLabel="No vehicles match the active filters"
+          action={
+            <button
+              type="button"
+              onClick={clear}
+              className="inline-flex items-center rounded-md bg-slate-900 px-4 py-2 text-sm font-medium text-white shadow-sm transition hover:bg-slate-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2"
+            >
+              Clear filters
+            </button>
+          }
+        />
       ) : (
         <section
           aria-label="Vehicle listings"
@@ -94,26 +108,5 @@ export function InventoryPage() {
         </section>
       )}
     </main>
-  );
-}
-
-function EmptyState({ onClear }: { onClear(): void }) {
-  return (
-    <section
-      aria-label="No vehicles match the active filters"
-      className="rounded-xl border border-dashed border-slate-300 bg-white px-6 py-16 text-center"
-    >
-      <h2 className="text-base font-semibold text-slate-900">No vehicles match these filters</h2>
-      <p className="mt-1 text-sm text-slate-500">
-        Try widening the price range or removing a make to see more lots.
-      </p>
-      <button
-        type="button"
-        onClick={onClear}
-        className="mt-5 inline-flex items-center rounded-md bg-slate-900 px-4 py-2 text-sm font-medium text-white hover:bg-slate-800"
-      >
-        Clear filters
-      </button>
-    </section>
   );
 }

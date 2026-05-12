@@ -1,42 +1,50 @@
 import { Suspense, lazy } from 'react';
 import { Route, Routes } from 'react-router';
-import { DetailPageErrorBoundary } from './components/DetailPageErrorBoundary';
-import { InventoryPage } from './pages/InventoryPage';
+import { ErrorBoundary } from './components/ErrorBoundary';
+import { Footer } from './components/Footer';
+import { Header } from './components/Header';
+import { DetailPageSkeleton, InventoryGridSkeleton } from './components/Skeleton';
 
-// Code-split the detail page so the inventory grid doesn't pay for it on load.
-// React.lazy expects a default export; this module ships a named one, so we
-// re-shape the import to expose it under the `default` key.
+// Both pages are code-split. The detail page is the heavy route (image
+// gallery, damage diagram, condition panel, bid flow); splitting inventory
+// too lets the route-level ErrorBoundary catch chunk-load failures on either
+// path after a deploy.
+const InventoryPage = lazy(() =>
+  import('./pages/InventoryPage').then((m) => ({ default: m.InventoryPage })),
+);
 const VehicleDetailPage = lazy(() =>
   import('./pages/VehicleDetailPage').then((m) => ({ default: m.VehicleDetailPage })),
 );
 
 export function App() {
   return (
-    <Routes>
-      <Route path="/" element={<InventoryPage />} />
-      <Route
-        path="/vehicle/:id"
-        element={
-          <DetailPageErrorBoundary>
-            <Suspense fallback={<DetailPageFallback />}>
-              <VehicleDetailPage />
-            </Suspense>
-          </DetailPageErrorBoundary>
-        }
-      />
-    </Routes>
-  );
-}
-
-function DetailPageFallback() {
-  return (
-    <main className="mx-auto max-w-7xl px-6 py-12">
-      <div className="h-4 w-40 animate-pulse rounded bg-slate-200" />
-      <div className="mt-4 h-7 w-72 animate-pulse rounded bg-slate-200" />
-      <div className="mt-8 grid grid-cols-1 gap-5 lg:grid-cols-5">
-        <div className="aspect-[4/3] animate-pulse rounded-xl bg-slate-200 lg:col-span-3" />
-        <div className="h-96 animate-pulse rounded-xl bg-slate-200 lg:col-span-2" />
+    <div className="flex min-h-dvh flex-col">
+      <Header />
+      <div className="flex-1">
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <ErrorBoundary>
+                <Suspense fallback={<InventoryGridSkeleton />}>
+                  <InventoryPage />
+                </Suspense>
+              </ErrorBoundary>
+            }
+          />
+          <Route
+            path="/vehicle/:id"
+            element={
+              <ErrorBoundary>
+                <Suspense fallback={<DetailPageSkeleton />}>
+                  <VehicleDetailPage />
+                </Suspense>
+              </ErrorBoundary>
+            }
+          />
+        </Routes>
       </div>
-    </main>
+      <Footer />
+    </div>
   );
 }
