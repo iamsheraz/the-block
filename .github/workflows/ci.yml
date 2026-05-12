@@ -20,3 +20,5 @@ jobs:
           cache: 'npm'
       - run: npm ci
       - run: npm run verify
+      - name: AI summary coverage gate
+        run: node scripts/enrich.mjs --check

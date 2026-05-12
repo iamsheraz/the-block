@@ -28,6 +28,7 @@ export type Vehicle = {
   lot: string;
   current_bid: number | null;
   bid_count: number;
+  ai_summary?: string;
 };
 
 export type Bid = {

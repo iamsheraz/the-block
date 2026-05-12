@@ -174,7 +174,7 @@ export function BidPanel({ vehicle, now }: BidPanelProps) {
           </div>
 
           <div className="mt-5">
-            <ConditionSummary />
+            <ConditionSummary vehicle={vehicle} />
           </div>
         </div>
 

@@ -1,23 +1,64 @@
 import { render, screen } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
+import type { Vehicle } from '../types';
 import { ConditionSummary } from './ConditionSummary';
 
+type VehicleSlice = Pick<Vehicle, 'ai_summary' | 'condition_report' | 'damage_notes'>;
+
+function makeVehicle(overrides: Partial<VehicleSlice> = {}): VehicleSlice {
+  return {
+    condition_report: 'Clean inside and out with minor cosmetic wear.',
+    damage_notes: [],
+    ...overrides,
+  };
+}
+
 describe('ConditionSummary', () => {
-  it('renders the placeholder copy and a "Placeholder" badge when no summary is provided', () => {
-    render(<ConditionSummary />);
-    expect(screen.getByText(/AI condition summary lands in story 1\.6/i)).toBeInTheDocument();
-    expect(screen.getByText(/placeholder/i)).toBeInTheDocument();
+  it('renders ai_summary when present', () => {
+    render(
+      <ConditionSummary
+        vehicle={makeVehicle({ ai_summary: 'Drives clean, no mechanical flags. Light wear only.' })}
+      />,
+    );
+    expect(
+      screen.getByText('Drives clean, no mechanical flags. Light wear only.'),
+    ).toBeInTheDocument();
   });
 
-  it('renders the placeholder when summary is only whitespace', () => {
-    render(<ConditionSummary summary="   " />);
-    expect(screen.getByText(/AI condition summary lands in story 1\.6/i)).toBeInTheDocument();
-    expect(screen.getByText(/placeholder/i)).toBeInTheDocument();
+  it('renders templated fallback when ai_summary is missing', () => {
+    render(
+      <ConditionSummary
+        vehicle={makeVehicle({
+          condition_report: 'Light frame work, repainted hood.',
+          damage_notes: ['hood repaint', 'left fender ding'],
+        })}
+      />,
+    );
+    expect(
+      screen.getByText(/Light frame work, repainted hood\. 2 damage notes flagged/i),
+    ).toBeInTheDocument();
   });
 
-  it('renders the actual summary and hides the placeholder badge when summary is non-empty', () => {
-    render(<ConditionSummary summary="Light wear, drives clean, no mechanical flags." />);
-    expect(screen.getByText('Light wear, drives clean, no mechanical flags.')).toBeInTheDocument();
-    expect(screen.queryByText(/placeholder/i)).not.toBeInTheDocument();
+  it('uses "AI summary" label and chat-bubble icon when ai_summary is present', () => {
+    const { container } = render(
+      <ConditionSummary vehicle={makeVehicle({ ai_summary: 'Clean grade-4 unit. Light wear.' })} />,
+    );
+    expect(screen.getByText(/AI summary/i)).toBeInTheDocument();
+    expect(screen.queryByText(/Condition snapshot/i)).not.toBeInTheDocument();
+    // Chat-bubble path data is unique to the bubble icon — verifies the right SVG renders.
+    expect(container.querySelector('path[d^="M21 11.5"]')).not.toBeNull();
+  });
+
+  it('uses "Condition snapshot" label and clipboard icon when ai_summary is missing', () => {
+    const { container } = render(<ConditionSummary vehicle={makeVehicle()} />);
+    expect(screen.getByText(/Condition snapshot/i)).toBeInTheDocument();
+    expect(screen.queryByText(/AI summary/i)).not.toBeInTheDocument();
+    // Clipboard icon has a unique <rect>; chat bubble has none.
+    expect(container.querySelector('rect')).not.toBeNull();
+  });
+
+  it('falls back when ai_summary is only whitespace', () => {
+    render(<ConditionSummary vehicle={makeVehicle({ ai_summary: '   ' })} />);
+    expect(screen.getByText(/Condition snapshot/i)).toBeInTheDocument();
   });
 });

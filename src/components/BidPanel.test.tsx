@@ -95,10 +95,23 @@ describe('BidPanel — display', () => {
     expect(screen.getByLabelText(/your bid/i)).toBeInTheDocument();
   });
 
-  it('renders an AI summary panel', () => {
-    render(<BidPanel vehicle={vehicleFixture()} now={NOW} />);
+  it('renders the AI summary panel when ai_summary is present', () => {
+    render(
+      <BidPanel
+        vehicle={vehicleFixture({ ai_summary: 'Clean grade-4 unit. Light cosmetic wear only.' })}
+        now={NOW}
+      />,
+    );
     const section = screen.getByRole('region', { name: /bid panel/i });
     expect(within(section).getByText(/ai summary/i)).toBeInTheDocument();
+    expect(within(section).getByText(/Clean grade-4 unit\./)).toBeInTheDocument();
+  });
+
+  it('renders the templated Condition snapshot when ai_summary is missing', () => {
+    render(<BidPanel vehicle={vehicleFixture()} now={NOW} />);
+    const section = screen.getByRole('region', { name: /bid panel/i });
+    expect(within(section).getByText(/Condition snapshot/i)).toBeInTheDocument();
+    expect(within(section).queryByText(/AI summary/i)).not.toBeInTheDocument();
   });
 });
 
