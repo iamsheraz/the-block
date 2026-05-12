@@ -13,7 +13,9 @@
       ".claude/**",
       "mockups/**",
       "prep/**",
-      "stories/**"
+      "stories/**",
+      "test-results/**",
+      "playwright-report/**"
     ]
   },
   "linter": {

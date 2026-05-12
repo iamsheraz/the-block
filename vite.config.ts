@@ -17,5 +17,9 @@ export default defineConfig({
     environment: 'jsdom',
     globals: false,
     setupFiles: ['./src/test/setup.ts'],
+    // Playwright specs under tests/e2e/** must not be picked up by Vitest;
+    // they only run via `npm run test:e2e`. Limit Vitest to co-located *.test.ts(x)
+    // files under src/ plus the scripts/ unit tests.
+    include: ['src/**/*.test.{ts,tsx}', 'scripts/**/*.test.{mjs,ts}'],
   },
 });

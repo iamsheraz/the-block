@@ -12,7 +12,10 @@ describe('Header', () => {
     );
 
     expect(screen.getByText(/the block/i)).toBeInTheDocument();
-    expect(screen.getByRole('link', { name: /the block.*inventory/i })).toHaveAttribute('href', '/');
+    expect(screen.getByRole('link', { name: /the block.*inventory/i })).toHaveAttribute(
+      'href',
+      '/',
+    );
   });
 
   it('renders no auxiliary navigation links beyond the brand', () => {
