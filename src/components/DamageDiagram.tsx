@@ -1,13 +1,22 @@
-import { classifyNote, mapToRegion } from '../lib/damage';
+import { type DamagePoint, classifyNote, mapToRegion } from '../lib/damage';
 
 type DamageDiagramProps = {
   notes: string[];
 };
 
+type Marker = { note: string; point: DamagePoint; key: string };
+
+// Body rect is x=50 y=22 w=120 h=298. Clamp marker centers a few pixels inside
+// the rect so an 8-radius dot never escapes the silhouette.
+const BODY_MIN_X = 56;
+const BODY_MAX_X = 164;
+const BODY_MIN_Y = 28;
+const BODY_MAX_Y = 314;
+
 export function DamageDiagram({ notes }: DamageDiagramProps) {
   const bodyNotes = notes.filter((n) => classifyNote(n) === 'body');
   const seen = new Map<string, number>();
-  const markers = bodyNotes.map((note) => {
+  const markers: Marker[] = bodyNotes.map((note) => {
     const count = seen.get(note) ?? 0;
     seen.set(note, count + 1);
     return { note, point: mapToRegion(note), key: `${note}#${count}` };
@@ -91,39 +100,53 @@ export function DamageDiagram({ notes }: DamageDiagramProps) {
             strokeDasharray="2 3"
           />
 
-          {/* Damage markers, jittered when a region collides with itself */}
-          {markers.map((marker, idx) => {
-            const offsetIdx = countSameRegionBefore(markers, idx);
-            const jitter = offsetIdx === 0 ? 0 : offsetIdx * 8;
-            const cx = marker.point.x + jitter;
-            return (
-              <g key={marker.key} data-testid="damage-marker">
-                <circle
-                  cx={cx}
-                  cy={marker.point.y}
-                  r="6"
-                  fill="#f59e0b"
-                  stroke="white"
-                  strokeWidth="2"
-                >
-                  <title>{marker.note}</title>
-                </circle>
-              </g>
-            );
-          })}
+          {/* Damage markers, jittered when several notes share a region. */}
+          {placeMarkers(markers).map((placement) => (
+            <g key={placement.marker.key} data-testid="damage-marker">
+              <circle
+                cx={placement.cx}
+                cy={placement.cy}
+                r="6"
+                fill="#f59e0b"
+                stroke="white"
+                strokeWidth="2"
+              >
+                <title>{placement.marker.note}</title>
+              </circle>
+            </g>
+          ))}
         </svg>
       </div>
     </div>
   );
 }
 
-function countSameRegionBefore(markers: { point: { region: string } }[], index: number): number {
-  const current = markers[index];
-  if (!current) return 0;
-  const region = current.point.region;
-  let count = 0;
-  for (let i = 0; i < index; i += 1) {
-    if (markers[i]?.point.region === region) count += 1;
-  }
-  return count;
+type Placement = { marker: Marker; cx: number; cy: number };
+
+// Spread same-region markers along a small spiral around the region anchor,
+// clamped to stay inside the body silhouette so no dot escapes the rect.
+function placeMarkers(markers: Marker[]): Placement[] {
+  const counts = new Map<string, number>();
+  return markers.map((marker) => {
+    const seenSoFar = counts.get(marker.point.region) ?? 0;
+    counts.set(marker.point.region, seenSoFar + 1);
+    const { dx, dy } = spiralOffset(seenSoFar);
+    const cx = clamp(marker.point.x + dx, BODY_MIN_X, BODY_MAX_X);
+    const cy = clamp(marker.point.y + dy, BODY_MIN_Y, BODY_MAX_Y);
+    return { marker, cx, cy };
+  });
+}
+
+function spiralOffset(idx: number): { dx: number; dy: number } {
+  if (idx === 0) return { dx: 0, dy: 0 };
+  // Ring index grows every 6 markers; angle steps around 60° each.
+  const ring = Math.ceil(idx / 6);
+  const slot = (idx - 1) % 6;
+  const angle = (slot * Math.PI) / 3;
+  const radius = ring * 9;
+  return { dx: Math.cos(angle) * radius, dy: Math.sin(angle) * radius };
+}
+
+function clamp(value: number, min: number, max: number): number {
+  return Math.min(Math.max(value, min), max);
 }

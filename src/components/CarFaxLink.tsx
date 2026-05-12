@@ -3,7 +3,19 @@ type CarFaxLinkProps = {
 };
 
 export function CarFaxLink({ vin }: CarFaxLinkProps) {
-  const href = `https://www.carfax.ca/vehicle-history/${encodeURIComponent(vin)}`;
+  const trimmedVin = vin.trim();
+
+  if (trimmedVin === '') {
+    return (
+      <div className="flex items-center justify-between rounded-md border border-slate-200 bg-white px-3 py-2.5 text-[13px] text-slate-400">
+        <span>
+          <span className="font-semibold">CarFax Canada</span> lookup unavailable — no VIN on file
+        </span>
+      </div>
+    );
+  }
+
+  const href = `https://www.carfax.ca/vehicle-history/${encodeURIComponent(trimmedVin)}`;
   return (
     <a
       href={href}

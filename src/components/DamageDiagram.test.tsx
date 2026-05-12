@@ -31,4 +31,34 @@ describe('DamageDiagram', () => {
     render(<DamageDiagram notes={['Scratch on liftgate (8cm)']} />);
     expect(screen.getByText('Scratch on liftgate (8cm)')).toBeInTheDocument();
   });
+
+  it('jitters dots when several notes resolve to the same region so they do not overlap', () => {
+    render(
+      <DamageDiagram notes={['Scratch on liftgate', 'Dent on tailgate', 'Crack in rear bumper']} />,
+    );
+    const markers = screen.getAllByTestId('damage-marker');
+    expect(markers).toHaveLength(3);
+    const circles = markers.map((g) => g.querySelector('circle'));
+    const positions = circles.map((c) => `${c?.getAttribute('cx')}:${c?.getAttribute('cy')}`);
+    const unique = new Set(positions);
+    expect(unique.size).toBe(positions.length);
+  });
+
+  it('keeps every dot inside the body silhouette x range even with many collisions', () => {
+    const sameRegion = Array.from({ length: 10 }, (_, i) => `Scratch on liftgate (${i})`);
+    render(<DamageDiagram notes={sameRegion} />);
+    const circles = screen
+      .getAllByTestId('damage-marker')
+      .map((g) => g.querySelector('circle'))
+      .filter((c): c is SVGCircleElement => c !== null);
+    expect(circles).toHaveLength(10);
+    for (const c of circles) {
+      const cx = Number(c.getAttribute('cx'));
+      const cy = Number(c.getAttribute('cy'));
+      expect(cx).toBeGreaterThanOrEqual(50);
+      expect(cx).toBeLessThanOrEqual(170);
+      expect(cy).toBeGreaterThanOrEqual(22);
+      expect(cy).toBeLessThanOrEqual(320);
+    }
+  });
 });

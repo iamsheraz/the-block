@@ -23,7 +23,9 @@ export function VehicleDetailPage() {
     return <NotFoundState />;
   }
 
-  return <DetailView vehicle={vehicle} now={now} />;
+  // Key on vehicle.id so navigating /vehicle/a → /vehicle/b resets internal
+  // state in children (ImageGallery activeIndex/erroredIndices, BidPanel draft).
+  return <DetailView key={vehicle.id} vehicle={vehicle} now={now} />;
 }
 
 function DetailView({ vehicle, now }: { vehicle: Vehicle; now: number }) {
@@ -113,17 +115,23 @@ function NotFoundState() {
 }
 
 function TitleStatusInline({ status }: { status: Vehicle['title_status'] }) {
-  if (status === 'clean') {
-    return (
-      <span className="inline-flex items-center gap-1 text-emerald-700">
-        <CheckIcon /> Clean title
-      </span>
-    );
+  switch (status) {
+    case 'clean':
+      return (
+        <span className="inline-flex items-center gap-1 text-emerald-700">
+          <CheckIcon /> Clean title
+        </span>
+      );
+    case 'rebuilt':
+      return <span className="font-semibold text-amber-700">Rebuilt title</span>;
+    case 'salvage':
+      return <span className="font-semibold text-red-700">Salvage title</span>;
+    default: {
+      const _exhaustive: never = status;
+      void _exhaustive;
+      return <span className="font-semibold text-slate-600">Title status unknown</span>;
+    }
   }
-  if (status === 'rebuilt') {
-    return <span className="font-semibold text-amber-700">Rebuilt title</span>;
-  }
-  return <span className="font-semibold text-red-700">Salvage title</span>;
 }
 
 function BackArrow() {

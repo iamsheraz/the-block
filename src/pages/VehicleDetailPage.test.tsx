@@ -22,8 +22,11 @@ function renderAt(path: string) {
 describe('VehicleDetailPage', () => {
   it('renders the trust triptych for a known vehicle id', () => {
     renderAt(`/vehicle/${FIRST_VEHICLE.id}`);
-    // Heading is built from year/make/model/trim — confirm the make appears.
-    expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent(FIRST_VEHICLE.make);
+    // Heading is built from year/make/model/trim — confirm all three structural parts appear.
+    const heading = screen.getByRole('heading', { level: 1 });
+    expect(heading).toHaveTextContent(String(FIRST_VEHICLE.year));
+    expect(heading).toHaveTextContent(FIRST_VEHICLE.make);
+    expect(heading).toHaveTextContent(FIRST_VEHICLE.model);
     // Above-the-fold sections rendered.
     expect(screen.getByRole('region', { name: /above the fold/i })).toBeInTheDocument();
     expect(screen.getByRole('region', { name: /bid panel/i })).toBeInTheDocument();

@@ -47,9 +47,22 @@ describe('ImageGallery', () => {
     expect(screen.getByLabelText(/image unavailable for 2019 Honda Civic/i)).toBeInTheDocument();
   });
 
-  it('renders a placeholder when no images are provided', () => {
+  it('renders a "no photos on file" placeholder when no images are provided', () => {
     render(<ImageGallery images={[]} title={TITLE} />);
-    expect(screen.getByLabelText(/image unavailable for 2019 Honda Civic/i)).toBeInTheDocument();
+    expect(screen.getByLabelText(/no photos on file for 2019 Honda Civic/i)).toBeInTheDocument();
     expect(screen.getByText('0 photos')).toBeInTheDocument();
+  });
+
+  it('hides the thumbnail strip when there is a single image', () => {
+    render(<ImageGallery images={['/only.jpg']} title={TITLE} />);
+    expect(hero()).toHaveAttribute('src', '/only.jpg');
+    expect(screen.getByText('1 / 1')).toBeInTheDocument();
+    expect(screen.queryByRole('tablist')).not.toBeInTheDocument();
+  });
+
+  it('renders every image as a focusable thumbnail (not just the first five)', () => {
+    const eight = Array.from({ length: 8 }, (_, i) => `/img-${i}.jpg`);
+    render(<ImageGallery images={eight} title={TITLE} />);
+    expect(screen.getAllByRole('tab')).toHaveLength(8);
   });
 });

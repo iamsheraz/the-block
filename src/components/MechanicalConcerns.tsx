@@ -16,14 +16,11 @@ export function MechanicalConcerns({ notes }: MechanicalConcernsProps) {
   if (mechanical.length === 0) return null;
 
   return (
-    <div
-      className="rounded-lg border border-amber-200 bg-amber-50 p-4"
-      aria-label={`Mechanical concerns (${mechanical.length})`}
-    >
+    <div className="rounded-lg border border-amber-200 bg-amber-50 p-4">
       <div className="flex items-center gap-2">
         <WrenchIcon />
         <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-amber-900">
-          ⚙ Mechanical concerns ({mechanical.length})
+          Mechanical concerns ({mechanical.length})
         </p>
       </div>
       <ul className="mt-2.5 space-y-1.5 text-[13px] text-slate-800">

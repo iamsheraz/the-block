@@ -1,5 +1,6 @@
 import { Suspense, lazy } from 'react';
 import { Route, Routes } from 'react-router';
+import { DetailPageErrorBoundary } from './components/DetailPageErrorBoundary';
 import { InventoryPage } from './pages/InventoryPage';
 
 // Code-split the detail page so the inventory grid doesn't pay for it on load.
@@ -16,9 +17,11 @@ export function App() {
       <Route
         path="/vehicle/:id"
         element={
-          <Suspense fallback={<DetailPageFallback />}>
-            <VehicleDetailPage />
-          </Suspense>
+          <DetailPageErrorBoundary>
+            <Suspense fallback={<DetailPageFallback />}>
+              <VehicleDetailPage />
+            </Suspense>
+          </DetailPageErrorBoundary>
         }
       />
     </Routes>

@@ -58,7 +58,6 @@ const MECHANICAL_KEYWORDS: readonly string[] = [
   'compressor',
   'check engine',
   'catalytic',
-  'flood damage',
   'electrical',
   'brake rotor',
   'brake pad',
@@ -84,8 +83,6 @@ const REGION_RULES: readonly Rule[] = [
   { match: (s) => s.includes('passenger-rear') && s.includes('wheel'), region: 'wheel-rr' },
   { match: (s) => s.includes('front-right') && s.includes('wheel'), region: 'wheel-fr' },
   { match: (s) => s.includes('front-left') && s.includes('wheel'), region: 'wheel-fl' },
-  // Front-right wheel: dataset uses hyphenated and bare forms.
-  { match: (s) => s.includes('curb rash') && s.includes('front-right'), region: 'wheel-fr' },
   // Rear quarter panel (steel above the rear wheel).
   { match: (s) => s.includes('rear quarter'), region: 'rear-quarter' },
   // Generic wheel-well note with no side specified → split across rear wheels.

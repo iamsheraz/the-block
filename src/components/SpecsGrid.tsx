@@ -1,5 +1,4 @@
 import { clsx } from 'clsx';
-import { formatMileage } from '../lib/format';
 import type { Vehicle } from '../types';
 
 type SpecsGridProps = {
@@ -15,14 +14,12 @@ export function SpecsGrid({ vehicle }: SpecsGridProps) {
     { label: 'Interior color', value: vehicle.interior_color },
     { label: 'Body style', value: capitalize(vehicle.body_style) },
     { label: 'Fuel type', value: capitalize(vehicle.fuel_type) },
-    { label: 'Odometer', value: formatMileage(vehicle.odometer_km) },
     { label: 'VIN', value: vehicle.vin, mono: true },
     {
       label: 'Title',
       value: capitalize(vehicle.title_status),
       tone: vehicle.title_status === 'clean' ? 'clean' : 'flag',
     },
-    { label: 'Lot', value: vehicle.lot, mono: true },
   ];
 
   return (

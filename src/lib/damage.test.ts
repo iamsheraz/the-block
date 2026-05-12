@@ -61,4 +61,18 @@ describe('mapToRegion', () => {
     expect(typeof point.x).toBe('number');
     expect(typeof point.y).toBe('number');
   });
+
+  it('prefers the front-bumper rule over the headlight rule when both terms appear', () => {
+    expect(mapToRegion('Crack in front bumper near headlight').region).toBe('front');
+  });
+
+  it('places a generic headlight note at the hood region', () => {
+    expect(mapToRegion('Headlight housing cloudy').region).toBe('hood');
+  });
+});
+
+describe('classifyNote (flood damage carved out)', () => {
+  it('classifies a flood-damage note as body, since the title_status field carries the brand', () => {
+    expect(classifyNote('Flood damage noted in carpet')).toBe('body');
+  });
 });
