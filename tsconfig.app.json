@@ -20,9 +20,8 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true,
-    "noImplicitOverride": true,
-
-    "types": ["vite/client"]
+    "noUncheckedIndexedAccess": true,
+    "noImplicitOverride": true
   },
   "include": ["src"]
 }
