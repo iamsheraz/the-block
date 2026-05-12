@@ -5,5 +5,19 @@ node_modules/
 *.log
 *.bak
 
+# Build & tooling outputs
+dist/
+build/
+coverage/
+.vite/
+.vercel/
+.cache/
+*.tsbuildinfo
+
+# Playwright
+playwright-report/
+test-results/
+playwright/.cache/
+
 # Personal study material — never committed
 prep/

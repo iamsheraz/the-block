@@ -6,6 +6,10 @@
 
 ### A coding challenge from OPENLANE
 
+<!-- TEMP placeholder per Story 1.0 AC4 & AC5 — replaced by Story 1.7 final README -->
+**Live URL:** _set after first Vercel deploy_ · ![CI](https://github.com/iamsheraz/the-block/actions/workflows/ci.yml/badge.svg)
+<!-- END TEMP placeholder -->
+
 ---
 
 OPENLANE powers one of the world's largest digital marketplaces for used vehicles. Every day, thousands of vehicles move through our platform - inspected, listed, auctioned, and sold. Your job is to interpret what we do and bring a working prototype to life.
