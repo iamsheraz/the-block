@@ -46,7 +46,12 @@ export type BidError =
 
 export type BidResult = { ok: true; bid: Bid } | { ok: false; error: BidError };
 
-export type SortKey = 'ending-soon' | 'price-low-high' | 'price-high-low' | 'condition-best-worst';
+export type SortKey =
+  | 'ending-soon'
+  | 'recently-added'
+  | 'price-low-high'
+  | 'price-high-low'
+  | 'condition-best-worst';
 
 export type FilterState = {
   search: string;
