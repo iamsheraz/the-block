@@ -113,15 +113,13 @@ describe('EndingSoonStrip', () => {
   it('excludes upcoming auctions even if they will end within the hour from now', () => {
     // start is in the future → not live yet
     const start = NOW + 5 * 60_000;
-    renderStrip([
+    const { container } = renderStrip([
       vehicleFixture({
         id: 'upcoming',
         auction_start: new Date(start).toISOString(),
       }),
     ]);
-    const { container } = renderStrip([]);
     expect(container.firstChild).toBeNull();
-    // sanity: the rendered query above also returned nothing
     expect(screen.queryByRole('region', { name: /ending soon/i })).toBeNull();
   });
 
@@ -130,8 +128,13 @@ describe('EndingSoonStrip', () => {
     expect(screen.getByText('12:43')).toBeInTheDocument();
   });
 
-  it('threshold boundary: exactly at the threshold is included', () => {
+  it('threshold boundary: exactly at the threshold is excluded (strict <)', () => {
     renderStrip([endsIn('edge', ENDING_SOON_THRESHOLD)]);
+    expect(screen.queryByRole('region', { name: /ending soon/i })).toBeNull();
+  });
+
+  it('threshold boundary: one ms inside the threshold is included', () => {
+    renderStrip([endsIn('just-under', ENDING_SOON_THRESHOLD - 1)]);
     expect(screen.getByRole('region', { name: /ending soon/i })).toBeInTheDocument();
   });
 });

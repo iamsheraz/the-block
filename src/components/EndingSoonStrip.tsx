@@ -23,12 +23,12 @@ function formatCountdown(ms: number): string {
 
 // Picks live auctions in the last hour, sorted soonest first, capped at five.
 // Independent of the page's active filter — the strip is a global urgency
-// surface, not a filtered slice.
+// surface, not a filtered slice. The threshold is strict (< not <=) per AC6.
 function selectEndingSoon(vehicles: Vehicle[], now: number): Vehicle[] {
   return vehicles
     .filter((v) => getAuctionStatus(v, now) === 'live')
     .map((v) => ({ v, remaining: timeRemaining(v, now) }))
-    .filter(({ remaining }) => remaining > 0 && remaining <= ENDING_SOON_THRESHOLD)
+    .filter(({ remaining }) => remaining > 0 && remaining < ENDING_SOON_THRESHOLD)
     .sort((a, b) => a.remaining - b.remaining)
     .slice(0, MAX)
     .map(({ v }) => v);

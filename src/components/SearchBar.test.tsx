@@ -1,25 +1,48 @@
-import { render, screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
-import { describe, expect, it, vi } from 'vitest';
+import { act, fireEvent, render, screen } from '@testing-library/react';
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { SearchBar } from './SearchBar';
 
 describe('SearchBar', () => {
+  beforeEach(() => {
+    vi.useFakeTimers();
+  });
+  afterEach(() => {
+    vi.useRealTimers();
+  });
+
   it('renders the current value', () => {
     render(<SearchBar value="Honda" onChange={() => {}} />);
     expect(screen.getByRole('searchbox', { name: /search/i })).toHaveValue('Honda');
   });
 
-  it('fires onChange for every keystroke (no debounce at the URL boundary)', async () => {
+  it('updates the input visually on every keystroke', () => {
+    render(<SearchBar value="" onChange={() => {}} />);
+    const input = screen.getByRole('searchbox', { name: /search/i }) as HTMLInputElement;
+
+    fireEvent.change(input, { target: { value: 'a' } });
+    fireEvent.change(input, { target: { value: 'ab' } });
+    fireEvent.change(input, { target: { value: 'abc' } });
+
+    expect(input.value).toBe('abc');
+  });
+
+  it('debounces onChange to 200ms (single call with the final value)', () => {
     const onChange = vi.fn();
     render(<SearchBar value="" onChange={onChange} />);
-
     const input = screen.getByRole('searchbox', { name: /search/i });
-    await userEvent.type(input, 'abc');
 
-    expect(onChange).toHaveBeenCalledTimes(3);
-    expect(onChange).toHaveBeenNthCalledWith(1, 'a');
-    expect(onChange).toHaveBeenNthCalledWith(2, 'ab');
-    expect(onChange).toHaveBeenNthCalledWith(3, 'abc');
+    fireEvent.change(input, { target: { value: 'a' } });
+    fireEvent.change(input, { target: { value: 'ab' } });
+    fireEvent.change(input, { target: { value: 'abc' } });
+
+    expect(onChange).not.toHaveBeenCalled();
+
+    act(() => {
+      vi.advanceTimersByTime(200);
+    });
+
+    expect(onChange).toHaveBeenCalledTimes(1);
+    expect(onChange).toHaveBeenCalledWith('abc');
   });
 
   it('syncs back to a new external value (e.g. browser back button)', () => {

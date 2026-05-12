@@ -1,22 +1,44 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 type SearchBarProps = {
   value: string;
   onChange(next: string): void;
 };
 
-// The URL is the source of truth (see useFilters), but rendering a controlled
-// input directly off the URL causes a flicker on fast typing under React's
-// concurrent rendering — the input field appears to lag the cursor. We hold a
-// local string for snappy keystrokes and propagate every change to the URL on
-// the same render. The reverse-sync useEffect handles the rarer back/forward
-// case where the URL changes from outside the input.
+const DEBOUNCE_MS = 200;
+
+// The URL is the source of truth (see useFilters), but we hold a local string
+// for snappy keystrokes and emit a debounced change so each character doesn't
+// rewrite the URL on its own. setSearch in useFilters uses replace history
+// semantics for the same reason — Back skips the typing burst entirely.
 export function SearchBar({ value, onChange }: SearchBarProps) {
   const [draft, setDraft] = useState(value);
+  const lastEmittedRef = useRef(value);
+  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  useEffect(() => {
+  // If the URL changes from outside the input (Clear filters, back/forward,
+  // shared link), pull the new value into the draft without an effect.
+  if (value !== lastEmittedRef.current && value !== draft) {
     setDraft(value);
-  }, [value]);
+    lastEmittedRef.current = value;
+  }
+
+  useEffect(
+    () => () => {
+      if (timerRef.current !== null) clearTimeout(timerRef.current);
+    },
+    [],
+  );
+
+  function handleChange(next: string) {
+    setDraft(next);
+    if (timerRef.current !== null) clearTimeout(timerRef.current);
+    timerRef.current = setTimeout(() => {
+      timerRef.current = null;
+      lastEmittedRef.current = next;
+      onChange(next);
+    }, DEBOUNCE_MS);
+  }
 
   return (
     <div className="relative">
@@ -24,10 +46,7 @@ export function SearchBar({ value, onChange }: SearchBarProps) {
       <input
         type="search"
         value={draft}
-        onChange={(e) => {
-          setDraft(e.target.value);
-          onChange(e.target.value);
-        }}
+        onChange={(e) => handleChange(e.target.value)}
         placeholder="Search make, model, VIN, lot #"
         aria-label="Search vehicles"
         className="h-12 w-full rounded-lg border border-slate-200 bg-white pl-11 pr-4 text-sm text-slate-900 placeholder:text-slate-400 focus:border-slate-900 focus:outline-none focus:ring-2 focus:ring-slate-900/10"

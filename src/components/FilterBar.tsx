@@ -46,18 +46,29 @@ type MakeDropdownProps = {
 function MakeDropdown({ options, selected, onChange }: MakeDropdownProps) {
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement | null>(null);
+  const triggerRef = useRef<HTMLButtonElement | null>(null);
 
-  // Click-outside to dismiss; the dropdown owns nothing else, so a tiny mount
-  // listener is cheaper than a Portal/Floating UI dependency.
+  // Click-outside to dismiss; Escape closes and restores focus to the trigger
+  // so keyboard users have a symmetric way out.
   useEffect(() => {
     if (!open) return;
-    function handle(event: MouseEvent) {
+    function handleMouse(event: MouseEvent) {
       if (ref.current && !ref.current.contains(event.target as Node)) {
         setOpen(false);
       }
     }
-    document.addEventListener('mousedown', handle);
-    return () => document.removeEventListener('mousedown', handle);
+    function handleKey(event: KeyboardEvent) {
+      if (event.key === 'Escape') {
+        setOpen(false);
+        triggerRef.current?.focus();
+      }
+    }
+    document.addEventListener('mousedown', handleMouse);
+    document.addEventListener('keydown', handleKey);
+    return () => {
+      document.removeEventListener('mousedown', handleMouse);
+      document.removeEventListener('keydown', handleKey);
+    };
   }, [open]);
 
   function toggle(option: string) {
@@ -70,8 +81,8 @@ function MakeDropdown({ options, selected, onChange }: MakeDropdownProps) {
   return (
     <div className="relative" ref={ref}>
       <button
+        ref={triggerRef}
         type="button"
-        aria-haspopup="listbox"
         aria-expanded={open}
         onClick={() => setOpen((v) => !v)}
         className={clsx(

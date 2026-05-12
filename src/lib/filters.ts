@@ -18,6 +18,21 @@ const FUSE_OPTIONS: IFuseOptions<Vehicle> = {
   minMatchCharLength: 2,
 };
 
+const MIN_QUERY_LENGTH = 2;
+
+// Cache the Fuse index by the vehicles array identity so the index is built
+// once per dataset, not once per keystroke. WeakMap so a swapped-out fleet
+// can be garbage-collected.
+const fuseCache = new WeakMap<Vehicle[], Fuse<Vehicle>>();
+function getFuse(vehicles: Vehicle[]): Fuse<Vehicle> {
+  let fuse = fuseCache.get(vehicles);
+  if (fuse === undefined) {
+    fuse = new Fuse(vehicles, FUSE_OPTIONS);
+    fuseCache.set(vehicles, fuse);
+  }
+  return fuse;
+}
+
 // Price comparison uses current_bid when a bid exists (that's the price a buyer
 // would now pay) and falls back to starting_bid for the empty-bid majority case.
 function priceFor(vehicle: Vehicle): number {
@@ -33,20 +48,30 @@ function matchesStructured(vehicle: Vehicle, state: FilterState): boolean {
   return true;
 }
 
-// Time remaining is `start + duration - now`. Ended auctions get +Infinity so
-// they fall to the bottom of the "ending soon" sort while still appearing in
-// results (so a buyer can see the lot they were watching as ended, not
-// silently disappeared).
-function timeRemaining(vehicle: Vehicle, now: number): number {
+// Returns the live time-remaining in ms, or null if the auction has ended.
+// Callers that need a sortable scalar branch on null explicitly so we never
+// produce NaN in a comparator (Infinity - Infinity is undefined-behaviour
+// territory for Array.sort).
+function timeRemaining(vehicle: Vehicle, now: number): number | null {
   const end = new Date(vehicle.auction_start).getTime() + AUCTION_DURATION;
   const remaining = end - now;
-  return remaining <= 0 ? Number.POSITIVE_INFINITY : remaining;
+  return remaining <= 0 ? null : remaining;
+}
+
+function compareEndingSoon(a: Vehicle, b: Vehicle, now: number): number {
+  const ra = timeRemaining(a, now);
+  const rb = timeRemaining(b, now);
+  // Ended auctions sort to the bottom; among ended-vs-ended, they tie.
+  if (ra === null && rb === null) return 0;
+  if (ra === null) return 1;
+  if (rb === null) return -1;
+  return ra - rb;
 }
 
 function compareSort(a: Vehicle, b: Vehicle, sort: SortKey, now: number): number {
   switch (sort) {
     case 'ending-soon':
-      return timeRemaining(a, now) - timeRemaining(b, now);
+      return compareEndingSoon(a, b, now);
     case 'price-low-high':
       return priceFor(a) - priceFor(b);
     case 'price-high-low':
@@ -64,11 +89,15 @@ export function applyFilters(vehicles: Vehicle[], state: FilterState, now: numbe
   const query = state.search.trim();
   let pool: Vehicle[];
 
-  if (query.length === 0) {
+  // Queries shorter than Fuse's minMatchCharLength would yield zero results
+  // and flash the empty state on the first keystroke — treat sub-threshold
+  // input as no-search instead.
+  if (query.length < MIN_QUERY_LENGTH) {
     pool = vehicles;
   } else {
-    const fuse = new Fuse(vehicles, FUSE_OPTIONS);
-    pool = fuse.search(query).map((r) => r.item);
+    pool = getFuse(vehicles)
+      .search(query)
+      .map((r) => r.item);
   }
 
   const matched = pool.filter((v) => matchesStructured(v, state));

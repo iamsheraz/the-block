@@ -24,10 +24,9 @@ export function InventoryPage() {
     clear,
   } = useFilters();
 
-  // The URL is written on every keystroke (back-button correctness), but the
-  // expensive Fuse search/sort runs against a deferred filter snapshot so the
-  // input stays responsive while typing. React 19 schedules the deferred work
-  // as a low-priority transition.
+  // SearchBar debounces its own URL write (replace history); filter/sort
+  // clicks push immediately. useDeferredValue keeps the page interactive if
+  // Fuse re-runs after a filter toggle while typing.
   const deferredFilters = useDeferredValue(filters);
 
   const makesOptions = useMemo(() => uniqueMakes(vehicles), [vehicles]);
