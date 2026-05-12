@@ -95,6 +95,54 @@ describe('validateSummary', () => {
     expect(result.ok).toBe(false);
   });
 
+  it('rejects a one-sentence summary (AC2 — exactly two)', () => {
+    const text = 'Grade-4 unit with light cosmetic wear and no damage notes on file.';
+    expect(validateSummary(text, FIXTURES.clean).ok).toBe(false);
+  });
+
+  it('rejects copy that lacks terminal punctuation (truncated by max_tokens)', () => {
+    const text = 'Grade-4 unit with light cosmetic wear. Drives clean per inspection';
+    expect(validateSummary(text, FIXTURES.clean).ok).toBe(false);
+  });
+
+  it('rejects comma-formatted prices that bypass the four-digit boundary', () => {
+    const text = 'Grade-4 unit. Resale around 18,500 next quarter.';
+    expect(validateSummary(text, FIXTURES.clean).ok).toBe(false);
+  });
+
+  it('allows comma-formatted mileage that exactly matches the odometer', () => {
+    const text =
+      'Grade-3 rebuilt-title vehicle with 142,800 km on the odometer. Diagnosis recommended on driveline noises.';
+    expect(validateSummary(text, FIXTURES.rebuilt)).toEqual({ ok: true });
+  });
+
+  it('allows rounded mileage when followed by km, even if the digits do not match the odometer', () => {
+    const text = 'Grade-4 unit with sub-40,000 km on the clock. Drives clean per inspection.';
+    expect(validateSummary(text, FIXTURES.clean)).toEqual({ ok: true });
+  });
+
+  it('rejects four-digit substring leakage that the old odometer-includes check let through', () => {
+    // odometer 24534 — fabricated "2453" no longer slips through as a substring.
+    const text = 'Grade-4 unit. Light reconditioning at 2453 dollars projected.';
+    expect(validateSummary(text, FIXTURES.clean).ok).toBe(false);
+  });
+
+  it('rejects non-USD currency symbols', () => {
+    expect(validateSummary('Grade-4 unit. Worth €500 in parts.', FIXTURES.clean).ok).toBe(false);
+    expect(validateSummary('Grade-4 unit. Worth £500 in parts.', FIXTURES.clean).ok).toBe(false);
+    expect(validateSummary('Grade-4 unit. Worth ¥500 in parts.', FIXTURES.clean).ok).toBe(false);
+  });
+
+  it('counts decimals and abbreviations correctly when measuring sentences', () => {
+    // "3.5L" and "i.e." should NOT count as terminators.
+    const text = 'Grade-4 unit with a 3.5L V6, i.e. the base trim configuration. Drives clean.';
+    expect(validateSummary(text, FIXTURES.clean)).toEqual({ ok: true });
+  });
+
+  it('rejects "Appraised favorably" via bare "appraised" rule', () => {
+    expect(validateSummary('Grade-4 unit. Appraised favorably.', FIXTURES.clean).ok).toBe(false);
+  });
+
   it('rejects empty input', () => {
     expect(validateSummary('', FIXTURES.clean).ok).toBe(false);
     expect(validateSummary('   ', FIXTURES.clean).ok).toBe(false);

@@ -27,7 +27,7 @@ export function ConditionSummary({ vehicle }: ConditionSummaryProps) {
 
 function buildFallback(vehicle: Pick<Vehicle, 'condition_report' | 'damage_notes'>): string {
   const report = vehicle.condition_report?.trim() || 'Condition details not recorded.';
-  const count = vehicle.damage_notes.length;
+  const count = vehicle.damage_notes?.length ?? 0;
   const damageLine =
     count === 0
       ? 'No damage notes on file.'

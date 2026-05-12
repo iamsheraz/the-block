@@ -45,16 +45,18 @@ describe('ConditionSummary', () => {
     );
     expect(screen.getByText(/AI summary/i)).toBeInTheDocument();
     expect(screen.queryByText(/Condition snapshot/i)).not.toBeInTheDocument();
-    // Chat-bubble path data is unique to the bubble icon — verifies the right SVG renders.
+    // Chat-bubble path is present; clipboard body path is not.
     expect(container.querySelector('path[d^="M21 11.5"]')).not.toBeNull();
+    expect(container.querySelector('path[d^="M16 4h2"]')).toBeNull();
   });
 
   it('uses "Condition snapshot" label and clipboard icon when ai_summary is missing', () => {
     const { container } = render(<ConditionSummary vehicle={makeVehicle()} />);
     expect(screen.getByText(/Condition snapshot/i)).toBeInTheDocument();
     expect(screen.queryByText(/AI summary/i)).not.toBeInTheDocument();
-    // Clipboard icon has a unique <rect>; chat bubble has none.
-    expect(container.querySelector('rect')).not.toBeNull();
+    // Clipboard body path is present; chat-bubble path is not.
+    expect(container.querySelector('path[d^="M16 4h2"]')).not.toBeNull();
+    expect(container.querySelector('path[d^="M21 11.5"]')).toBeNull();
   });
 
   it('falls back when ai_summary is only whitespace', () => {

@@ -7,13 +7,13 @@
 //
 // Flags:
 //   --force   regenerate ai_summary for every vehicle (otherwise idempotent)
-//   --check   verify every vehicle has an ai_summary, exit non-zero if any
-//             are missing. Used by CI to gate the committed dataset.
-//             Makes no API calls.
+//   --check   re-validate every vehicle's ai_summary against the compliance
+//             rules and exit non-zero on any missing or non-compliant summary.
+//             Used by CI to gate the committed dataset. Makes no API calls.
 
-import { readFile, writeFile } from 'node:fs/promises';
+import { readFile, rename, writeFile } from 'node:fs/promises';
 import { dirname, resolve } from 'node:path';
-import { fileURLToPath } from 'node:url';
+import { fileURLToPath, pathToFileURL } from 'node:url';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const DATA_PATH = resolve(__dirname, '..', 'data', 'vehicles.json');
@@ -29,7 +29,8 @@ Rules:
 1. Exactly two sentences.
 2. Describe condition (grade context, mileage context, damage themes).
 3. Do NOT include dollar amounts, repair-cost estimates, market values,
-   appraisal claims, or any numeric figures other than the grade or mileage.
+   appraisal claims, or any numeric figures other than the vehicle's year,
+   condition grade, or odometer mileage.
 4. Do NOT predict resale or wholesale price.
 5. Mechanical concerns must be named generically — "reconditioning work,"
    "diagnosis recommended" — never quantified by cost.
@@ -48,25 +49,59 @@ async function loadVehicles() {
   return JSON.parse(raw);
 }
 
+// Atomic write: stage to a sibling `.tmp` file and rename into place so a
+// crash mid-write can't truncate the committed dataset.
 async function saveVehicles(vehicles) {
   const json = `${JSON.stringify(vehicles, null, 2)}\n`;
-  await writeFile(DATA_PATH, json, 'utf8');
+  const tmpPath = `${DATA_PATH}.tmp`;
+  await writeFile(tmpPath, json, 'utf8');
+  await rename(tmpPath, DATA_PATH);
 }
 
 function vehicleLabel(v) {
   return `${v.year} ${v.make} ${v.model} (${v.id.slice(0, 8)})`;
 }
 
-// AC5 — compliance validator. Rejects price-claim leakage so the prompt
-// instructions can't silently regress.
+// AC5 — compliance validator. Runs at generation time AND at `--check` time,
+// so a hand-edited or stale summary can't silently slip past the CI gate.
 const FORBIDDEN_PHRASES = [
   'estimated cost',
   'market value',
-  'appraised at',
+  'appraised',
   'appraisal',
   'resale value',
   'wholesale price',
 ];
+
+// Any currency symbol — USD, GBP, EUR, JPY/CNY, fullwidth variants — counts
+// as price leakage. A literal-`$` check missed €, £, ¥, ￥, ￡, etc.
+const CURRENCY_SYMBOLS = /[$¢£¥₤€＄￠￡￥￦]/;
+
+// Abbreviations whose internal period would otherwise inflate the
+// sentence-terminator count.
+const ABBREVIATIONS = [
+  'e.g', 'i.e', 'etc', 'vs', 'cf', 'approx',
+  'mr', 'mrs', 'ms', 'dr', 'st', 'jr', 'sr',
+  'inc', 'ltd', 'co', 'no', 'pp', 'vol', 'fig',
+];
+
+function countSentences(text) {
+  let cleaned = text;
+  // Mask decimal numbers ("3.5L", "grade 1.9") so the inner period doesn't
+  // register as a terminator.
+  cleaned = cleaned.replace(/(\d)\.(\d)/g, '$1·$2');
+  // Mask known abbreviations case-insensitively. The trailing period becomes
+  // a middle dot so the terminator regex skips it.
+  for (const abbr of ABBREVIATIONS) {
+    const escaped = abbr.replace(/\./g, '\\.');
+    cleaned = cleaned.replace(
+      new RegExp(`\\b${escaped}\\.`, 'gi'),
+      (match) => `${match.slice(0, -1)}·`,
+    );
+  }
+  const terminators = cleaned.match(/[.!?](\s|$)/g) ?? [];
+  return terminators.length;
+}
 
 export function validateSummary(text, vehicle) {
   if (!text || typeof text !== 'string') {
@@ -76,8 +111,8 @@ export function validateSummary(text, vehicle) {
   if (trimmed.length === 0) {
     return { ok: false, reason: 'empty after trim' };
   }
-  if (trimmed.includes('$')) {
-    return { ok: false, reason: 'contains $ character' };
+  if (CURRENCY_SYMBOLS.test(trimmed)) {
+    return { ok: false, reason: 'contains currency symbol' };
   }
   const lower = trimmed.toLowerCase();
   for (const phrase of FORBIDDEN_PHRASES) {
@@ -85,25 +120,42 @@ export function validateSummary(text, vehicle) {
       return { ok: false, reason: `contains forbidden phrase "${phrase}"` };
     }
   }
-  // Reject any four-digit number that isn't the vehicle's year, part of the
-  // odometer reading, or a digit token already in the model name (e.g. "1500"
-  // for a Ram 1500, "2500" for a Silverado 2500). Mileage is allowed in
-  // whatever form Claude writes it ("24,534 km" or "24534 km").
+  // Reject any 4+ digit number that isn't the vehicle's year, the odometer
+  // reading, a digit token in the model name (e.g. "1500" for a Ram 1500), or
+  // immediately followed by "km" (rounded-mileage context like
+  // "sub-40,000 km"). Comma-formatted figures like "18,500" are normalized
+  // to bare digits so they can't slip past the word-boundary check.
   const yearStr = String(vehicle.year);
   const odoStr = String(vehicle.odometer_km);
   const modelDigits = vehicle.model?.match(/\d{3,}/g) ?? [];
-  const fourDigitMatches = trimmed.match(/\b\d{4,}\b/g) ?? [];
-  for (const match of fourDigitMatches) {
-    if (match === yearStr) continue;
-    if (odoStr.includes(match) || match.includes(odoStr)) continue;
-    if (modelDigits.includes(match)) continue;
-    return { ok: false, reason: `disallowed numeric figure "${match}"` };
+  const numericTokenRe = /\b\d{1,3}(?:,\d{3})+\b|\b\d{4,}\b/g;
+  let m = numericTokenRe.exec(trimmed);
+  while (m !== null) {
+    const token = m[0];
+    const digits = token.replace(/,/g, '');
+    if (digits.length >= 4 &&
+      digits !== yearStr &&
+      digits !== odoStr &&
+      !modelDigits.includes(digits)
+    ) {
+      // Allow mileage-context numbers (followed by km / kilometers / miles).
+      const after = trimmed.slice(m.index + token.length, m.index + token.length + 14);
+      if (!/^[\s-]*(?:km|kilometers?|kilometres?|mi|miles)\b/i.test(after)) {
+        return { ok: false, reason: `disallowed numeric figure "${token}"` };
+      }
+    }
+    m = numericTokenRe.exec(trimmed);
   }
-  // AC2 — two sentences max. Tolerate Oxford abbreviations by counting
-  // terminal punctuation followed by a space or end of string.
-  const sentenceTerminators = trimmed.match(/[.!?](\s|$)/g) ?? [];
-  if (sentenceTerminators.length > 2) {
-    return { ok: false, reason: `more than two sentences (${sentenceTerminators.length})` };
+  // AC2 — exactly two sentences. Abbreviations and decimals are masked above
+  // so they don't inflate the count.
+  const sentenceCount = countSentences(trimmed);
+  if (sentenceCount !== 2) {
+    return { ok: false, reason: `expected 2 sentences, got ${sentenceCount}` };
+  }
+  // Reject truncated copy that lacks terminal punctuation — would otherwise
+  // squeak past the count check if max_tokens cuts mid-word.
+  if (!/[.!?]$/.test(trimmed)) {
+    return { ok: false, reason: 'missing terminal punctuation' };
   }
   return { ok: true };
 }
@@ -152,19 +204,39 @@ async function generateSummary(client, vehicle) {
 
 async function runCheck() {
   const vehicles = await loadVehicles();
-  const missing = vehicles.filter(
-    (v) => typeof v.ai_summary !== 'string' || v.ai_summary.trim().length === 0,
-  );
-  if (missing.length === 0) {
-    console.log(`✓ all ${vehicles.length} vehicles have ai_summary`);
+  const missing = [];
+  const invalid = [];
+  for (const v of vehicles) {
+    if (typeof v.ai_summary !== 'string' || v.ai_summary.trim().length === 0) {
+      missing.push(v);
+      continue;
+    }
+    const verdict = validateSummary(v.ai_summary, v);
+    if (!verdict.ok) {
+      invalid.push({ vehicle: v, reason: verdict.reason });
+    }
+  }
+  if (missing.length === 0 && invalid.length === 0) {
+    console.log(`✓ all ${vehicles.length} vehicles have a compliant ai_summary`);
     return 0;
   }
-  console.error(`✗ ${missing.length} of ${vehicles.length} vehicles missing ai_summary:`);
-  for (const v of missing.slice(0, 10)) {
-    console.error(`  - ${vehicleLabel(v)}`);
+  if (missing.length > 0) {
+    console.error(`✗ ${missing.length} of ${vehicles.length} vehicles missing ai_summary:`);
+    for (const v of missing.slice(0, 10)) {
+      console.error(`  - ${vehicleLabel(v)}`);
+    }
+    if (missing.length > 10) {
+      console.error(`  …and ${missing.length - 10} more`);
+    }
   }
-  if (missing.length > 10) {
-    console.error(`  …and ${missing.length - 10} more`);
+  if (invalid.length > 0) {
+    console.error(`✗ ${invalid.length} of ${vehicles.length} vehicles have non-compliant ai_summary:`);
+    for (const { vehicle, reason } of invalid.slice(0, 10)) {
+      console.error(`  - ${vehicleLabel(vehicle)}: ${reason}`);
+    }
+    if (invalid.length > 10) {
+      console.error(`  …and ${invalid.length - 10} more`);
+    }
   }
   return 1;
 }
@@ -202,12 +274,12 @@ async function runEnrich({ force }) {
       vehicle.ai_summary = summary;
       done += 1;
       console.log(`  ✓ [${done}/${targets.length}] ${label}`);
+      // Persist after each success so a crash mid-run doesn't lose progress.
+      await saveVehicles(vehicles);
     } catch (err) {
       failed.push({ id: vehicle.id, label, error: err?.message ?? String(err) });
       console.error(`  ✗ [${done + failed.length}/${targets.length}] ${label} — ${err?.message}`);
     }
-    // Persist after each success so a crash mid-run doesn't lose progress.
-    await saveVehicles(vehicles);
   }
 
   console.log(`done: ${done} enriched, ${failed.length} failed`);
@@ -232,16 +304,22 @@ async function runEnrich({ force }) {
 
 async function main() {
   const args = parseArgs(process.argv.slice(2));
-  const code = args.check ? await runCheck() : await runEnrich({ force: args.force });
-  process.exit(code);
+  if (args.check && args.force) {
+    console.error('--check and --force are mutually exclusive');
+    return 2;
+  }
+  return args.check ? await runCheck() : await runEnrich({ force: args.force });
 }
 
-// Skip main when imported (e.g. by tests). import.meta.url comparison handles
-// cross-platform Windows path quirks via fileURLToPath.
-const invokedDirectly = fileURLToPath(import.meta.url) === resolve(process.argv[1] ?? '');
-if (invokedDirectly) {
-  main().catch((err) => {
-    console.error(err);
-    process.exit(1);
-  });
+// Skip main when imported (e.g. by tests). pathToFileURL normalizes the entry
+// path into the same file:// URL form as import.meta.url, so the comparison
+// survives Windows path quirks (npm wrappers, drive-letter casing, symlinks).
+const entryHref = process.argv[1] ? pathToFileURL(process.argv[1]).href : '';
+if (import.meta.url === entryHref) {
+  main()
+    .then((code) => process.exit(code))
+    .catch((err) => {
+      console.error(err);
+      process.exit(1);
+    });
 }
