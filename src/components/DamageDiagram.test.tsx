@@ -29,7 +29,28 @@ describe('DamageDiagram', () => {
 
   it('renders each dot with a tooltip that contains the full note text', () => {
     render(<DamageDiagram notes={['Scratch on liftgate (8cm)']} />);
-    expect(screen.getByText('Scratch on liftgate (8cm)')).toBeInTheDocument();
+    // Note appears twice: as the <title> tooltip on the SVG dot and as legend text.
+    const matches = screen.getAllByText('Scratch on liftgate (8cm)');
+    expect(matches.length).toBeGreaterThanOrEqual(1);
+    expect(matches.some((el) => el.tagName.toLowerCase() === 'title')).toBe(true);
+  });
+
+  it('renders a legend entry for each unique body note', () => {
+    render(
+      <DamageDiagram notes={['Rust on driver-rear wheel well', 'Scratch on liftgate (8cm)']} />,
+    );
+    const legend = screen.getByRole('list', { name: /damage map legend/i });
+    expect(legend).toBeInTheDocument();
+    const items = legend.querySelectorAll('li');
+    expect(items).toHaveLength(2);
+  });
+
+  it('deduplicates identical notes in the legend', () => {
+    render(
+      <DamageDiagram notes={['Rust on wheel well', 'Rust on wheel well', 'Scratch on liftgate']} />,
+    );
+    const legend = screen.getByRole('list', { name: /damage map legend/i });
+    expect(legend.querySelectorAll('li')).toHaveLength(2);
   });
 
   it('jitters dots when several notes resolve to the same region so they do not overlap', () => {

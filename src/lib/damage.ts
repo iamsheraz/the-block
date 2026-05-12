@@ -11,6 +11,13 @@
 
 export type DamageClassification = 'body' | 'mechanical';
 
+export type DamageType = 'rust' | 'scratch' | 'dent' | 'crack' | 'chip' | 'hail' | 'other';
+
+// Severity is the dimension the buyer triages on: cosmetic (skip), wear (note
+// it, factor into bid), structural (stop, click in). Drives the diagram's
+// colour + shape language so a glance answers "anything I need to worry about".
+export type DamageSeverity = 'cosmetic' | 'wear' | 'structural';
+
 export type RegionKey =
   | 'front'
   | 'hood'
@@ -74,6 +81,71 @@ export function classifyNote(note: string): DamageClassification {
   const lower = note.toLowerCase();
   return MECHANICAL_KEYWORDS.some((k) => lower.includes(k)) ? 'mechanical' : 'body';
 }
+
+// Body-damage subtype, used by the diagram to colour each marker and by the
+// legend to show what each colour means. Order matters: more specific keywords
+// (e.g. "hail" before "dent") win.
+const TYPE_RULES: ReadonlyArray<{ keyword: string; type: DamageType }> = [
+  { keyword: 'rust', type: 'rust' },
+  { keyword: 'corrosion', type: 'rust' },
+  { keyword: 'hail', type: 'hail' },
+  { keyword: 'crack', type: 'crack' },
+  { keyword: 'chip', type: 'chip' },
+  { keyword: 'dent', type: 'dent' },
+  { keyword: 'ding', type: 'dent' },
+  { keyword: 'scratch', type: 'scratch' },
+  { keyword: 'scuff', type: 'scratch' },
+  { keyword: 'scrape', type: 'scratch' },
+];
+
+export function classifyDamageType(note: string): DamageType {
+  const lower = note.toLowerCase();
+  const match = TYPE_RULES.find((rule) => lower.includes(rule.keyword));
+  return match ? match.type : 'other';
+}
+
+// Severity rules run top-down; structural keywords sit first so "crack in
+// frame" never falls through to a softer band. Unmatched body notes default to
+// cosmetic — a dealer can downgrade their attention but shouldn't be lied to
+// in the other direction.
+const SEVERITY_RULES: ReadonlyArray<{ keyword: string; severity: DamageSeverity }> = [
+  { keyword: 'frame damage', severity: 'structural' },
+  { keyword: 'frame', severity: 'structural' },
+  { keyword: 'crack', severity: 'structural' },
+  { keyword: 'collision', severity: 'structural' },
+  { keyword: 'structural', severity: 'structural' },
+  { keyword: 'panel detached', severity: 'structural' },
+  { keyword: 'panel separated', severity: 'structural' },
+  { keyword: 'panel missing', severity: 'structural' },
+  { keyword: 'airbag', severity: 'structural' },
+  { keyword: 'rust', severity: 'wear' },
+  { keyword: 'corrosion', severity: 'wear' },
+  { keyword: 'hail', severity: 'wear' },
+  { keyword: 'dent', severity: 'wear' },
+  { keyword: 'ding', severity: 'wear' },
+  { keyword: 'tear', severity: 'wear' },
+  { keyword: 'scratch', severity: 'cosmetic' },
+  { keyword: 'scuff', severity: 'cosmetic' },
+  { keyword: 'scrape', severity: 'cosmetic' },
+  { keyword: 'chip', severity: 'cosmetic' },
+  { keyword: 'peel', severity: 'cosmetic' },
+  { keyword: 'fade', severity: 'cosmetic' },
+  { keyword: 'paint', severity: 'cosmetic' },
+];
+
+export function classifyDamageSeverity(note: string): DamageSeverity {
+  const lower = note.toLowerCase();
+  const match = SEVERITY_RULES.find((rule) => lower.includes(rule.keyword));
+  return match ? match.severity : 'cosmetic';
+}
+
+// Sort order for the legend: structural concerns rise to the top so a buyer
+// triaging the card sees the worst first. Lower number = higher visual priority.
+export const SEVERITY_RANK: Record<DamageSeverity, number> = {
+  structural: 0,
+  wear: 1,
+  cosmetic: 2,
+};
 
 type Rule = { match: (lower: string) => boolean; region: RegionKey };
 

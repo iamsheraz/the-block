@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { classifyNote, mapToRegion } from './damage';
+import { classifyDamageSeverity, classifyDamageType, classifyNote, mapToRegion } from './damage';
 
 describe('classifyNote', () => {
   it('classifies "Scratch on liftgate" as body', () => {
@@ -74,5 +74,81 @@ describe('mapToRegion', () => {
 describe('classifyNote (flood damage carved out)', () => {
   it('classifies a flood-damage note as body, since the title_status field carries the brand', () => {
     expect(classifyNote('Flood damage noted in carpet')).toBe('body');
+  });
+});
+
+describe('classifyDamageType', () => {
+  it('classifies rust notes as rust', () => {
+    expect(classifyDamageType('Minor rust on wheel wells')).toBe('rust');
+  });
+
+  it('classifies scratch notes as scratch', () => {
+    expect(classifyDamageType('Scratch on liftgate (8cm)')).toBe('scratch');
+  });
+
+  it('classifies dent notes as dent', () => {
+    expect(classifyDamageType('Dent on tailgate')).toBe('dent');
+  });
+
+  it('classifies hail damage as hail, not dent, even though hail produces dents', () => {
+    expect(classifyDamageType('Hail damage across roof')).toBe('hail');
+  });
+
+  it('classifies a windshield chip as chip', () => {
+    expect(classifyDamageType('Chip in windshield')).toBe('chip');
+  });
+
+  it('classifies a crack note as crack', () => {
+    expect(classifyDamageType('Crack in front bumper')).toBe('crack');
+  });
+
+  it('falls back to "other" for unrecognised body notes', () => {
+    expect(classifyDamageType('Faded paint on hood')).toBe('other');
+  });
+});
+
+describe('classifyDamageSeverity', () => {
+  it('classifies a cracked frame as structural', () => {
+    expect(classifyDamageSeverity('Crack in front bumper near headlight')).toBe('structural');
+  });
+
+  it('classifies frame damage as structural', () => {
+    expect(classifyDamageSeverity('Frame damage, prior collision repair')).toBe('structural');
+  });
+
+  it('classifies an airbag note as structural', () => {
+    expect(classifyDamageSeverity('Airbag deployed in prior incident')).toBe('structural');
+  });
+
+  it('classifies rust as wear', () => {
+    expect(classifyDamageSeverity('Minor rust on wheel wells')).toBe('wear');
+  });
+
+  it('classifies a dent as wear', () => {
+    expect(classifyDamageSeverity('Small dent on driver-side door')).toBe('wear');
+  });
+
+  it('classifies hail damage as wear', () => {
+    expect(classifyDamageSeverity('Hail damage across roof')).toBe('wear');
+  });
+
+  it('classifies a scratch as cosmetic', () => {
+    expect(classifyDamageSeverity('Scratch along driver-side fender')).toBe('cosmetic');
+  });
+
+  it('classifies paint peeling as cosmetic, not "other"', () => {
+    expect(classifyDamageSeverity('Paint peeling on roof rack')).toBe('cosmetic');
+  });
+
+  it('classifies a windshield chip as cosmetic', () => {
+    expect(classifyDamageSeverity('Chip in windshield (passenger side)')).toBe('cosmetic');
+  });
+
+  it('defaults unmatched body notes to cosmetic (never silently upgrades concern)', () => {
+    expect(classifyDamageSeverity('Faded clearcoat on trunk lid')).toBe('cosmetic');
+  });
+
+  it('prefers structural over wear when both keywords appear (e.g. cracked rust spot)', () => {
+    expect(classifyDamageSeverity('Crack in rust patch on rocker panel')).toBe('structural');
   });
 });
