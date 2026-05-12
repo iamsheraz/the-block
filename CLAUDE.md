@@ -8,7 +8,7 @@ Project rules for **The Block**. Every Claude Code session in this repo reads th
 
 Buyer-side vehicle auction prototype. Frontend-only SPA against a committed 200-vehicle JSON dataset. The detail view is the product; the list is a funnel to it. Buyer is a wholesale dealer, desktop-anchored, deciding under uncertainty.
 
-**Live URL:** *(set after first Vercel deploy)*
+**Live URL:** https://the-block-beta.vercel.app
 
 ## Documentation map
 

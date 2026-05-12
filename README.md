@@ -1,6 +1,6 @@
 # The Block
 
-**Live:** _set after first Vercel deploy_ · ![CI](https://github.com/iamsheraz/the-block/actions/workflows/ci.yml/badge.svg)
+**Live:** https://the-block-beta.vercel.app · ![CI](https://github.com/iamsheraz/the-block/actions/workflows/ci.yml/badge.svg)
 
 A buyer-side vehicle auction prototype for OPENLANE's coding challenge — a frontend-only SPA against a committed 200-vehicle dataset, where the detail view is the product and the list is a funnel to it.
 
