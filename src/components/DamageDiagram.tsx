@@ -18,12 +18,15 @@ type Marker = {
   key: string;
 };
 
-// Body rect is x=50 y=22 w=120 h=298. Clamp marker centers a few pixels inside
-// the rect so the largest marker (r=10 pulse) never escapes the silhouette.
-const BODY_MIN_X = 58;
-const BODY_MAX_X = 162;
-const BODY_MIN_Y = 30;
-const BODY_MAX_Y = 312;
+// The diagram paints the body rect (x=50..170) AND four wheel boxes
+// (x=38..52 / 168..182), so wheel-region anchors live at x=45 / 175. Clamping
+// only to the body rect yanked wheel markers off their wheels and into the
+// sidewall — widen to the outer painted extent so wheel notes land where the
+// buyer expects them. r=10 pulse still fits comfortably inside the viewBox.
+const DIAGRAM_MIN_X = 38;
+const DIAGRAM_MAX_X = 182;
+const DIAGRAM_MIN_Y = 30;
+const DIAGRAM_MAX_Y = 312;
 
 // Severity-driven palette. The legend pill and the marker share a colour so
 // matching dot ↔ row is one saccade. Cosmetic stays hollow + still (no
@@ -248,8 +251,8 @@ function placeMarkers(markers: Marker[]): Placement[] {
     const seenSoFar = counts.get(marker.point.region) ?? 0;
     counts.set(marker.point.region, seenSoFar + 1);
     const { dx, dy } = spiralOffset(seenSoFar);
-    const cx = clamp(marker.point.x + dx, BODY_MIN_X, BODY_MAX_X);
-    const cy = clamp(marker.point.y + dy, BODY_MIN_Y, BODY_MAX_Y);
+    const cx = clamp(marker.point.x + dx, DIAGRAM_MIN_X, DIAGRAM_MAX_X);
+    const cy = clamp(marker.point.y + dy, DIAGRAM_MIN_Y, DIAGRAM_MAX_Y);
     return { marker, cx, cy };
   });
 }

@@ -65,6 +65,25 @@ describe('DamageDiagram', () => {
     expect(unique.size).toBe(positions.length);
   });
 
+  it('places wheel-region markers on the visible wheel boxes, not inside the body rect', () => {
+    // Wheel boxes are painted at x=38..52 (left) and x=168..182 (right).
+    // A regression in the marker clamp pulled wheel anchors (x=45 / 175) into
+    // the body sidewall — this test pins the fix.
+    render(
+      <DamageDiagram
+        notes={['Rust on driver-rear wheel well', 'Scratch on passenger-rear wheel well']}
+      />,
+    );
+    const circles = screen
+      .getAllByTestId('damage-marker')
+      .map((g) => g.querySelector('circle'))
+      .filter((c): c is SVGCircleElement => c !== null);
+    expect(circles).toHaveLength(2);
+    const xs = circles.map((c) => Number(c.getAttribute('cx'))).sort((a, b) => a - b);
+    expect(xs[0]).toBeLessThanOrEqual(52);
+    expect(xs[1]).toBeGreaterThanOrEqual(168);
+  });
+
   it('keeps every dot inside the body silhouette x range even with many collisions', () => {
     const sameRegion = Array.from({ length: 10 }, (_, i) => `Scratch on liftgate (${i})`);
     render(<DamageDiagram notes={sameRegion} />);
