@@ -21,23 +21,28 @@ const HOUR = 60 * MINUTE;
 const DAY = 24 * HOUR;
 const WEEK = 7 * DAY;
 
-export function formatTimeRemaining(input: TimeRemainingInput): string {
-  if (input.kind === 'live') return 'LIVE';
-  if (input.kind === 'ended') return 'Ended';
-
-  const { ms } = input;
+// Bare duration string with no "Ends " prefix. Useful for contexts that already
+// label the field (e.g., a dl row whose dt reads "Time remaining").
+export function formatDuration(ms: number): string {
   if (ms <= 0) return 'Ended';
-  if (ms < MINUTE) return 'Ends <1m';
-  if (ms < HOUR) return `Ends ${Math.floor(ms / MINUTE)}m`;
+  if (ms < MINUTE) return '<1m';
+  if (ms < HOUR) return `${Math.floor(ms / MINUTE)}m`;
   if (ms < DAY) {
     const hours = Math.floor(ms / HOUR);
     const minutes = Math.floor((ms % HOUR) / MINUTE);
-    return `Ends ${hours}h ${minutes}m`;
+    return `${hours}h ${minutes}m`;
   }
   if (ms < WEEK) {
     const days = Math.floor(ms / DAY);
     const hours = Math.floor((ms % DAY) / HOUR);
-    return `Ends ${days}d ${hours}h`;
+    return `${days}d ${hours}h`;
   }
-  return `Ends ${Math.floor(ms / DAY)}d`;
+  return `${Math.floor(ms / DAY)}d`;
+}
+
+export function formatTimeRemaining(input: TimeRemainingInput): string {
+  if (input.kind === 'live') return 'LIVE';
+  if (input.kind === 'ended') return 'Ended';
+  const bare = formatDuration(input.ms);
+  return bare === 'Ended' ? 'Ended' : `Ends ${bare}`;
 }

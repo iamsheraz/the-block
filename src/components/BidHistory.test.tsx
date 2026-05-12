@@ -50,4 +50,20 @@ describe('BidHistory', () => {
     expect(screen.getByText(/5m ago/)).toBeInTheDocument();
     expect(screen.getByText(/1h ago/)).toBeInTheDocument();
   });
+
+  it('renders two bids placed in the same millisecond as distinct list items', () => {
+    const sameMs = new Date(NOW - 5 * 60_000).toISOString();
+    useBidsForVehicleMock.mockReturnValue([
+      { vehicleId: 'v-1', bidderId: 'b-1', amount: 15_000, placedAt: sameMs },
+      { vehicleId: 'v-1', bidderId: 'b-1', amount: 15_100, placedAt: sameMs },
+    ]);
+    const consoleError = vi.spyOn(console, 'error').mockImplementation(() => {});
+    render(<BidHistory vehicleId="v-1" now={NOW} />);
+    expect(screen.getAllByRole('listitem')).toHaveLength(2);
+    const keyWarnings = consoleError.mock.calls.filter((args) =>
+      String(args[0] ?? '').includes('Encountered two children with the same key'),
+    );
+    expect(keyWarnings).toHaveLength(0);
+    consoleError.mockRestore();
+  });
 });

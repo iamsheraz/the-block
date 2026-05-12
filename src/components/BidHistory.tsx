@@ -26,7 +26,10 @@ export function BidHistory({ vehicleId, now }: BidHistoryProps) {
       ) : (
         <ol className="mt-4 divide-y divide-slate-100">
           {sorted.map((bid) => (
-            <li key={bid.placedAt} className="flex items-baseline justify-between gap-4 py-2.5">
+            <li
+              key={`${bid.placedAt}-${bid.bidderId}-${bid.amount}`}
+              className="flex items-baseline justify-between gap-4 py-2.5"
+            >
               <span className="text-sm font-semibold tabular-nums text-slate-900">
                 {formatCurrency(bid.amount)}
               </span>

@@ -1,5 +1,5 @@
 import { act, render, screen } from '@testing-library/react';
-import { afterEach, describe, expect, it } from 'vitest';
+import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 import { dataStore } from '../lib/dataStore';
 import { getAuctionStatus } from '../lib/timestamps';
 import type { Vehicle } from '../types';
@@ -13,8 +13,14 @@ function aLiveVehicle(): Vehicle {
   return v;
 }
 
+beforeEach(() => {
+  localStorage.removeItem('the-block:bids');
+  dataStore.resetForTests();
+});
+
 afterEach(() => {
   localStorage.removeItem('the-block:bids');
+  dataStore.resetForTests();
 });
 
 describe('useBids', () => {

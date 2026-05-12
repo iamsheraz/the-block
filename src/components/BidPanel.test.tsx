@@ -242,4 +242,55 @@ describe('BidPanel — submission flow', () => {
     expect(submitBidMock).not.toHaveBeenCalled();
     expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
   });
+
+  it('blocks a synchronous double-fire of Confirm bid via the submittingRef guard', async () => {
+    const user = userEvent.setup();
+    submitBidMock.mockReturnValue({
+      ok: true,
+      bid: {
+        vehicleId: 'v-1',
+        bidderId: 'b-1',
+        amount: 15_200,
+        placedAt: new Date(NOW).toISOString(),
+      },
+    });
+    render(<BidPanel vehicle={vehicleFixture({ starting_bid: 14_500 })} now={NOW} />);
+    await user.type(screen.getByLabelText(/your bid/i), '15200');
+    await user.click(screen.getByRole('button', { name: /place bid/i }));
+    const confirm = screen.getByRole('button', { name: /confirm bid/i });
+    // Simulate a double-click that lands before React commits the disabled prop.
+    confirm.click();
+    confirm.click();
+    expect(submitBidMock).toHaveBeenCalledTimes(1);
+  });
+
+  it('shows an inline error when the typed amount exceeds MAX_BID', async () => {
+    const user = userEvent.setup();
+    render(<BidPanel vehicle={vehicleFixture({ starting_bid: 14_500 })} now={NOW} />);
+    // MAX_BID is 10_000_000; type something past it.
+    await user.type(screen.getByLabelText(/your bid/i), '99999999');
+    expect(screen.getByText(/bids cap at \$10,000,000/i)).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /place bid/i })).toBeDisabled();
+  });
+
+  it('focuses the SuccessPanel "Place another bid" button on a successful submit', async () => {
+    const user = userEvent.setup();
+    submitBidMock.mockReturnValueOnce({
+      ok: true,
+      bid: {
+        vehicleId: 'v-1',
+        bidderId: 'b-1',
+        amount: 15_200,
+        placedAt: new Date(NOW).toISOString(),
+      },
+    });
+    render(<BidPanel vehicle={vehicleFixture({ starting_bid: 14_500 })} now={NOW} />);
+    await user.type(screen.getByLabelText(/your bid/i), '15200');
+    await user.click(screen.getByRole('button', { name: /place bid/i }));
+    await user.click(screen.getByRole('button', { name: /confirm bid/i }));
+
+    // Allow the queueMicrotask focus call to flush.
+    await new Promise((resolve) => queueMicrotask(() => resolve(undefined)));
+    expect(screen.getByRole('button', { name: /place another bid/i })).toHaveFocus();
+  });
 });

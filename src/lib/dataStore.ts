@@ -13,6 +13,7 @@ export interface DataStore {
   getBidderId(): string;
   submitBid(input: { vehicleId: string; amount: number }): BidResult;
   subscribe(listener: () => void): () => void;
+  resetForTests(): void;
 }
 
 type CreateDataStoreOptions = {
@@ -115,6 +116,15 @@ export function createDataStore(options: CreateDataStoreOptions = {}): DataStore
       return () => {
         listeners.delete(listener);
       };
+    },
+    resetForTests() {
+      bidsByVehicle.clear();
+      for (const bid of readBids(storage)) {
+        const list = bidsByVehicle.get(bid.vehicleId) ?? [];
+        list.push(bid);
+        bidsByVehicle.set(bid.vehicleId, list);
+      }
+      notify();
     },
   };
 }

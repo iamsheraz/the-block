@@ -14,7 +14,9 @@ export function useBids(): UseBidsApi {
 
 // Per-vehicle reactive bid history. Returns a stable array reference between
 // store writes so useSyncExternalStore can compare snapshots without firing
-// extra renders. Mirrors the caching pattern in useVehicles.
+// extra renders. Mirrors the caching pattern in useVehicles. The single
+// subscription survives the page lifetime; `dataStore.resetForTests()` re-fires
+// notify() which flips `dirty` so cached snapshots are dropped between tests.
 const snapshotCache = new Map<string, Bid[]>();
 let dirty = false;
 

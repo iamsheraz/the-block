@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { useBids } from '../hooks/useBids';
-import { MIN_BID_INCREMENT } from '../lib/constants';
+import { MAX_BID, MIN_BID_INCREMENT } from '../lib/constants';
 import { formatCurrency } from '../lib/format';
 import { getAuctionStatus } from '../lib/timestamps';
 import type { BidError, Vehicle } from '../types';
@@ -26,6 +26,10 @@ export function BidPanel({ vehicle, now }: BidPanelProps) {
   const [flow, setFlow] = useState<FlowState>({ kind: 'idle' });
   const placeBidRef = useRef<HTMLButtonElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  const successDismissRef = useRef<HTMLButtonElement>(null);
+  // Guards against double-fire of submitBid before the React state flip to
+  // `submitting` propagates to the disabled prop on the Confirm button.
+  const submittingRef = useRef(false);
   const { submitBid } = useBids();
 
   const hasBid = vehicle.current_bid !== null;
@@ -42,8 +46,10 @@ export function BidPanel({ vehicle, now }: BidPanelProps) {
   });
   const canSubmit = parsedAmount !== null && inlineError === null && auctionLive;
 
-  // When the modal closes (idle / success), return focus to the Place Bid
-  // trigger that opened it. Skip on initial mount.
+  // When the modal closes, restore focus. On `idle` close we go back to the
+  // Place Bid trigger that opened the modal. On `success` the form is unmounted
+  // and replaced by SuccessPanel — focus its "Place another bid" button instead
+  // so keyboard / screen-reader users land somewhere meaningful.
   const previousFlow = useRef<FlowState['kind']>(flow.kind);
   useEffect(() => {
     const prev = previousFlow.current;
@@ -51,18 +57,31 @@ export function BidPanel({ vehicle, now }: BidPanelProps) {
       flow.kind === 'confirming' || flow.kind === 'submitting' || flow.kind === 'submitError';
     const wasOpen = prev === 'confirming' || prev === 'submitting' || prev === 'submitError';
     if (wasOpen && !isOpen) {
-      placeBidRef.current?.focus();
+      if (flow.kind === 'success') {
+        // SuccessPanel is mounted on the next paint; defer the focus call.
+        queueMicrotask(() => successDismissRef.current?.focus());
+      } else {
+        placeBidRef.current?.focus();
+      }
     }
     previousFlow.current = flow.kind;
   }, [flow.kind]);
 
   function openConfirmation(): void {
     if (parsedAmount === null) return;
+    // Fresh flow — clear the double-submit latch.
+    submittingRef.current = false;
     setFlow({ kind: 'confirming', amount: parsedAmount });
   }
 
   function handleConfirm(): void {
     if (flow.kind !== 'confirming') return;
+    // Synchronous double-click guard. React's setFlow disable on the Confirm
+    // button doesn't take effect within the same event-loop tick, so a rapid
+    // second click can re-enter this handler with flow.kind still 'confirming'.
+    // The latch stays held until the flow returns to 'idle' / 'confirming'.
+    if (submittingRef.current) return;
+    submittingRef.current = true;
     const amount = flow.amount;
     setFlow({ kind: 'submitting', amount });
     const result = submitBid({ vehicleId: vehicle.id, amount });
@@ -75,10 +94,12 @@ export function BidPanel({ vehicle, now }: BidPanelProps) {
   }
 
   function handleCancel(): void {
+    submittingRef.current = false;
     setFlow({ kind: 'idle' });
   }
 
   function handleAdjust(nextAmount: number): void {
+    submittingRef.current = false;
     setDraft(String(nextAmount));
     setFlow({ kind: 'idle' });
     // Defer focus so the input is back in the layout when we call it.
@@ -86,6 +107,7 @@ export function BidPanel({ vehicle, now }: BidPanelProps) {
   }
 
   function dismissSuccess(): void {
+    submittingRef.current = false;
     setFlow({ kind: 'idle' });
   }
 
@@ -158,7 +180,12 @@ export function BidPanel({ vehicle, now }: BidPanelProps) {
 
         <div className="border-t border-slate-200 bg-slate-50 p-6 lg:col-span-2 lg:border-l lg:border-t-0">
           {flow.kind === 'success' ? (
-            <SuccessPanel vehicle={vehicle} amount={flow.amount} onDismiss={dismissSuccess} />
+            <SuccessPanel
+              vehicle={vehicle}
+              amount={flow.amount}
+              onDismiss={dismissSuccess}
+              dismissRef={successDismissRef}
+            />
           ) : (
             <BidForm
               draft={draft}
@@ -283,10 +310,12 @@ function SuccessPanel({
   vehicle,
   amount,
   onDismiss,
+  dismissRef,
 }: {
   vehicle: Vehicle;
   amount: number;
   onDismiss: () => void;
+  dismissRef: React.RefObject<HTMLButtonElement | null>;
 }) {
   const reserveLine = (() => {
     if (vehicle.reserve_price === null) return 'No reserve.';
@@ -296,7 +325,10 @@ function SuccessPanel({
   })();
 
   return (
-    <div className="overflow-hidden rounded-lg border border-emerald-200 bg-white">
+    <output
+      aria-live="polite"
+      className="block overflow-hidden rounded-lg border border-emerald-200 bg-white"
+    >
       <div className="flex items-start gap-3 border-b border-emerald-100 bg-emerald-50 px-4 py-3">
         <span className="grid h-7 w-7 flex-shrink-0 place-items-center rounded-full bg-emerald-600 text-white">
           <CheckIcon />
@@ -311,6 +343,7 @@ function SuccessPanel({
       <div className="px-4 py-3 text-sm text-slate-700">
         <p>{reserveLine}</p>
         <button
+          ref={dismissRef}
           type="button"
           onClick={onDismiss}
           className="mt-3 inline-flex h-9 items-center justify-center rounded-md border border-slate-300 bg-white px-3 text-xs font-semibold text-slate-700 hover:bg-slate-100"
@@ -318,7 +351,7 @@ function SuccessPanel({
           Place another bid
         </button>
       </div>
-    </div>
+    </output>
   );
 }
 
@@ -344,6 +377,9 @@ function deriveInlineError(input: InlineErrorInput): string | null {
   if (input.parsed === null) return 'Enter a whole-dollar amount.';
   if (input.parsed < input.minBid) {
     return `Minimum bid is ${formatCurrency(input.minBid)}.`;
+  }
+  if (input.parsed > MAX_BID) {
+    return `Bids cap at ${formatCurrency(MAX_BID)}.`;
   }
   return null;
 }

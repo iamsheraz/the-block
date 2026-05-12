@@ -147,8 +147,9 @@ describe('BidConfirmationModal — confirm view', () => {
   it('calls onCancel when the backdrop is clicked', async () => {
     const user = userEvent.setup();
     const { onCancel } = renderConfirm();
-    const dialog = screen.getByRole('dialog');
-    await user.click(dialog);
+    const backdrop = screen.getByRole('dialog').parentElement;
+    if (!backdrop) throw new Error('backdrop missing');
+    await user.click(backdrop);
     expect(onCancel).toHaveBeenCalled();
   });
 
@@ -267,5 +268,83 @@ describe('BidConfirmationModal — error view', () => {
     expect(
       within(screen.getByRole('dialog')).getByRole('button', { name: /^cancel$/i }),
     ).toBeInTheDocument();
+  });
+
+  it('renders the error body inside a role="alert" / aria-live region', () => {
+    render(
+      <BidConfirmationModal
+        vehicle={vehicleFixture()}
+        amount={15_100}
+        now={NOW}
+        view={{ kind: 'error', error: { type: 'amount_too_low', min: 15_300 } }}
+        submitting={false}
+        onCancel={vi.fn()}
+        onConfirm={vi.fn()}
+        onAdjust={vi.fn()}
+      />,
+    );
+    const alert = screen.getByRole('alert');
+    expect(alert).toBeInTheDocument();
+    expect(alert).toHaveAttribute('aria-live', 'assertive');
+  });
+
+  it('moves focus to the Adjust bid button when the view transitions to error', () => {
+    const { rerender } = render(
+      <BidConfirmationModal
+        vehicle={vehicleFixture()}
+        amount={15_100}
+        now={NOW}
+        view={{ kind: 'confirm' }}
+        submitting={false}
+        onCancel={vi.fn()}
+        onConfirm={vi.fn()}
+        onAdjust={vi.fn()}
+      />,
+    );
+    expect(screen.getByRole('button', { name: /confirm bid/i })).toHaveFocus();
+    rerender(
+      <BidConfirmationModal
+        vehicle={vehicleFixture()}
+        amount={15_100}
+        now={NOW}
+        view={{ kind: 'error', error: { type: 'amount_too_low', min: 15_300 } }}
+        submitting={false}
+        onCancel={vi.fn()}
+        onConfirm={vi.fn()}
+        onAdjust={vi.fn()}
+      />,
+    );
+    expect(screen.getByRole('button', { name: /adjust bid/i })).toHaveFocus();
+  });
+});
+
+describe('BidConfirmationModal — submitting + auction-end gates', () => {
+  it('ignores ESC while submitting is true', async () => {
+    const user = userEvent.setup();
+    const onCancel = vi.fn();
+    renderConfirm({ submitting: true, onCancel });
+    await user.keyboard('{Escape}');
+    expect(onCancel).not.toHaveBeenCalled();
+  });
+
+  it('ignores backdrop clicks while submitting is true', async () => {
+    const user = userEvent.setup();
+    const onCancel = vi.fn();
+    renderConfirm({ submitting: true, onCancel });
+    // Click the backdrop (outside the role="dialog" content).
+    const backdrop = screen.getByRole('dialog').parentElement;
+    if (!backdrop) throw new Error('backdrop missing');
+    await user.click(backdrop);
+    expect(onCancel).not.toHaveBeenCalled();
+  });
+
+  it('disables Confirm bid and shows "Auction ended" copy when msRemaining <= 0', () => {
+    const endedStart = new Date(NOW - 10 * 60 * 60 * 1000).toISOString();
+    renderConfirm({
+      vehicle: vehicleFixture({ auction_start: endedStart, starting_bid: 14_500 }),
+    });
+    const confirm = screen.getByRole('button', { name: /auction ended/i });
+    expect(confirm).toBeDisabled();
+    expect(screen.getByText(/this auction ended while you were deciding/i)).toBeInTheDocument();
   });
 });

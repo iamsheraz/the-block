@@ -1,7 +1,8 @@
+import { clsx } from 'clsx';
 import { useEffect, useId, useRef } from 'react';
 import { AUCTION_DURATION, MIN_BID_INCREMENT } from '../lib/constants';
 import { classifyNote } from '../lib/damage';
-import { formatCurrency, formatTimeRemaining } from '../lib/format';
+import { formatCurrency, formatDuration } from '../lib/format';
 import type { BidError, Vehicle } from '../types';
 
 type ConfirmationView = { kind: 'confirm' } | { kind: 'error'; error: BidError };
@@ -22,23 +23,34 @@ export function BidConfirmationModal(props: BidConfirmationModalProps) {
   const titleId = useId();
   const containerRef = useRef<HTMLDivElement>(null);
 
-  // Focus the primary action on mount. Trap Tab inside the modal until close.
+  // Move focus to the primary action on mount AND whenever the view transitions
+  // (confirm ↔ error), since the primary action button is replaced. The
+  // [data-autofocus] target moves between Confirm bid and Adjust bid; reading
+  // view.kind makes the dependency explicit so the effect re-fires.
   useEffect(() => {
+    void view.kind;
     const container = containerRef.current;
     if (!container) return;
-    const focusables = () =>
-      Array.from(
+    const focusables = container.querySelectorAll<HTMLElement>(
+      'button:not([disabled]), [href], input:not([disabled]), [tabindex]:not([tabindex="-1"])',
+    );
+    const initial =
+      container.querySelector<HTMLElement>('[data-autofocus]') ?? focusables[0] ?? null;
+    initial?.focus();
+  }, [view.kind]);
+
+  // Trap Tab inside the modal until close. Lives in its own effect so the
+  // listener isn't re-registered on every view change.
+  useEffect(() => {
+    function onKeyDown(event: KeyboardEvent): void {
+      if (event.key !== 'Tab') return;
+      const container = containerRef.current;
+      if (!container) return;
+      const list = Array.from(
         container.querySelectorAll<HTMLElement>(
           'button:not([disabled]), [href], input:not([disabled]), [tabindex]:not([tabindex="-1"])',
         ),
       );
-
-    const initial = container.querySelector<HTMLElement>('[data-autofocus]') ?? focusables()[0];
-    initial?.focus();
-
-    function onKeyDown(event: KeyboardEvent): void {
-      if (event.key !== 'Tab') return;
-      const list = focusables();
       if (list.length === 0) return;
       const first = list[0];
       const last = list[list.length - 1];
@@ -52,7 +64,6 @@ export function BidConfirmationModal(props: BidConfirmationModalProps) {
         first.focus();
       }
     }
-
     document.addEventListener('keydown', onKeyDown);
     return () => {
       document.removeEventListener('keydown', onKeyDown);
@@ -61,28 +72,34 @@ export function BidConfirmationModal(props: BidConfirmationModalProps) {
 
   const auctionEnd = new Date(vehicle.auction_start).getTime() + AUCTION_DURATION;
   const msRemaining = auctionEnd - now;
+  const auctionExpired = msRemaining <= 0;
   const hasCurrentBid = vehicle.current_bid !== null;
-  const anchor = hasCurrentBid ? (vehicle.current_bid ?? 0) : vehicle.starting_bid;
+  const anchor: number = hasCurrentBid ? (vehicle.current_bid as number) : vehicle.starting_bid;
   const delta = amount - anchor;
   const reserveStatus = reserveLine(vehicle, amount);
   const worstNote = pickWorstNote(vehicle.damage_notes);
+  const confirmDisabled = submitting || auctionExpired;
 
   return (
     <div
-      role="dialog"
-      aria-modal="true"
-      aria-labelledby={titleId}
-      tabIndex={-1}
       className="fixed inset-0 z-50 flex items-start justify-center overflow-y-auto bg-slate-900/55 px-4 py-12"
       onClick={(event) => {
-        if (event.target === event.currentTarget) onCancel();
+        if (event.target !== event.currentTarget) return;
+        if (submitting) return;
+        onCancel();
       }}
       onKeyDown={(event) => {
-        if (event.key === 'Escape') onCancel();
+        if (event.key !== 'Escape') return;
+        if (submitting) return;
+        onCancel();
       }}
     >
       <div
         ref={containerRef}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby={titleId}
+        tabIndex={-1}
         className="w-full max-w-md rounded-2xl bg-white shadow-2xl ring-1 ring-slate-900/5"
       >
         <div className="flex items-center justify-between border-b border-slate-100 px-6 py-4">
@@ -92,7 +109,8 @@ export function BidConfirmationModal(props: BidConfirmationModalProps) {
           <button
             type="button"
             onClick={onCancel}
-            className="grid h-8 w-8 place-items-center rounded-md text-slate-500 hover:bg-slate-100"
+            disabled={submitting}
+            className="grid h-8 w-8 place-items-center rounded-md text-slate-500 hover:bg-slate-100 disabled:cursor-not-allowed disabled:opacity-60"
             aria-label="Close"
           >
             <CloseIcon />
@@ -108,6 +126,7 @@ export function BidConfirmationModal(props: BidConfirmationModalProps) {
             delta={delta}
             reserveStatus={reserveStatus}
             msRemaining={msRemaining}
+            auctionExpired={auctionExpired}
             worstNote={worstNote}
           />
         ) : (
@@ -128,8 +147,8 @@ export function BidConfirmationModal(props: BidConfirmationModalProps) {
               <button
                 type="button"
                 onClick={onConfirm}
-                disabled={submitting}
-                aria-disabled={submitting}
+                disabled={confirmDisabled}
+                aria-disabled={confirmDisabled}
                 aria-busy={submitting}
                 data-autofocus
                 className="inline-flex h-10 min-w-[8.5rem] items-center justify-center gap-2 rounded-md bg-slate-900 px-5 text-sm font-semibold text-white shadow-sm transition hover:bg-slate-800 disabled:cursor-not-allowed disabled:bg-slate-500"
@@ -138,6 +157,8 @@ export function BidConfirmationModal(props: BidConfirmationModalProps) {
                   <>
                     <Spinner /> Placing bid…
                   </>
+                ) : auctionExpired ? (
+                  <>Auction ended</>
                 ) : (
                   <>
                     <GavelIcon /> Confirm bid
@@ -178,10 +199,20 @@ function ConfirmBody(props: {
   delta: number;
   reserveStatus: ReserveStatus;
   msRemaining: number;
+  auctionExpired: boolean;
   worstNote: string | null;
 }) {
-  const { vehicle, amount, anchor, anchorLabel, delta, reserveStatus, msRemaining, worstNote } =
-    props;
+  const {
+    vehicle,
+    amount,
+    anchor,
+    anchorLabel,
+    delta,
+    reserveStatus,
+    msRemaining,
+    auctionExpired,
+    worstNote,
+  } = props;
   const trim = vehicle.trim ? ` ${vehicle.trim}` : '';
   const titleStatusLabel =
     vehicle.title_status === 'clean'
@@ -215,11 +246,10 @@ function ConfirmBody(props: {
             <span className="tabular-nums text-slate-700">{formatCurrency(anchor)}</span>
           </dt>
           <dd
-            className={
-              delta >= 0
-                ? 'inline-flex items-center gap-1 text-sm font-semibold tabular-nums text-emerald-700'
-                : 'inline-flex items-center gap-1 text-sm font-semibold tabular-nums text-rose-700'
-            }
+            className={clsx(
+              'inline-flex items-center gap-1 text-sm font-semibold tabular-nums',
+              delta >= 0 ? 'text-emerald-700' : 'text-rose-700',
+            )}
           >
             {delta >= 0 ? <ArrowUpIcon /> : <ArrowDownIcon />}
             {delta >= 0 ? '+' : '−'}
@@ -235,16 +265,31 @@ function ConfirmBody(props: {
               </span>
             ) : null}
           </dt>
-          <dd className={`text-sm font-medium ${reserveStatus.tone}`}>{reserveStatus.label}</dd>
+          <dd className={clsx('text-sm font-medium', reserveStatus.tone)}>{reserveStatus.label}</dd>
         </div>
         <div className="flex items-baseline justify-between gap-4">
           <dt className="text-slate-500">Time remaining</dt>
-          <dd className="inline-flex items-center gap-1 text-sm font-medium tabular-nums text-slate-700">
+          <dd
+            className={clsx(
+              'inline-flex items-center gap-1 text-sm font-medium tabular-nums',
+              auctionExpired ? 'text-rose-700' : 'text-slate-700',
+            )}
+          >
             <ClockIcon />
-            {formatTimeRemaining({ kind: 'remaining', ms: msRemaining }).replace(/^Ends /, '')}
+            {formatDuration(msRemaining)}
           </dd>
         </div>
       </dl>
+
+      {auctionExpired ? (
+        <div
+          role="status"
+          aria-live="polite"
+          className="mt-4 rounded-lg border border-rose-200 bg-rose-50 px-3.5 py-2.5 text-sm text-rose-800"
+        >
+          This auction ended while you were deciding. Bidding is no longer available.
+        </div>
+      ) : null}
 
       {worstNote ? (
         <div className="mt-5 rounded-lg border border-amber-200 bg-amber-50 p-3.5">
@@ -271,7 +316,11 @@ function ConfirmBody(props: {
 function ErrorBody({ error, attemptedAmount }: { error: BidError; attemptedAmount: number }) {
   return (
     <div className="px-6 py-5">
-      <div className="flex items-start gap-3 rounded-lg border border-red-100 bg-red-50 px-4 py-3.5">
+      <div
+        role="alert"
+        aria-live="assertive"
+        className="flex items-start gap-3 rounded-lg border border-red-100 bg-red-50 px-4 py-3.5"
+      >
         <span className="grid h-8 w-8 flex-shrink-0 place-items-center rounded-full bg-red-600 text-white">
           <CloseIcon />
         </span>
@@ -304,28 +353,56 @@ function pickWorstNote(notes: string[]): string | null {
 }
 
 function errorHeadline(error: BidError): string {
-  if (error.type === 'amount_too_low') return 'Someone bid first';
-  if (error.type === 'amount_too_high') return 'Bid exceeds maximum';
-  return error.status === 'ended' ? 'Auction has ended' : 'Auction has not started';
+  switch (error.type) {
+    case 'amount_too_low':
+      return 'Someone bid first';
+    case 'amount_too_high':
+      return 'Bid exceeds maximum';
+    case 'auction_not_live':
+      return auctionStatusHeadline(error.status);
+  }
 }
 
 function errorDetail(error: BidError, attemptedAmount: number): string {
-  if (error.type === 'amount_too_low') {
-    const competing = error.min - MIN_BID_INCREMENT;
-    return `Someone bid ${formatCurrency(competing)} first. Try ${formatCurrency(error.min)} or higher.`;
+  switch (error.type) {
+    case 'amount_too_low': {
+      const competing = error.min - MIN_BID_INCREMENT;
+      return `Someone bid ${formatCurrency(competing)} first. Try ${formatCurrency(error.min)} or higher.`;
+    }
+    case 'amount_too_high':
+      return `Bids cap at ${formatCurrency(error.max)}. Your bid of ${formatCurrency(attemptedAmount)} is over the limit.`;
+    case 'auction_not_live':
+      return auctionStatusDetail(error.status);
   }
-  if (error.type === 'amount_too_high') {
-    return `Bids cap at ${formatCurrency(error.max)}. Your bid of ${formatCurrency(attemptedAmount)} is over the limit.`;
+}
+
+function auctionStatusHeadline(status: 'upcoming' | 'ended'): string {
+  switch (status) {
+    case 'ended':
+      return 'Auction has ended';
+    case 'upcoming':
+      return 'Auction has not started';
   }
-  return error.status === 'ended'
-    ? 'This lot closed before your bid could be placed.'
-    : 'This auction is not live yet.';
+}
+
+function auctionStatusDetail(status: 'upcoming' | 'ended'): string {
+  switch (status) {
+    case 'ended':
+      return 'This lot closed before your bid could be placed.';
+    case 'upcoming':
+      return 'This auction is not live yet.';
+  }
 }
 
 function suggestedNextAmount(error: BidError, attemptedAmount: number): number {
-  if (error.type === 'amount_too_low') return error.min;
-  if (error.type === 'amount_too_high') return Math.min(attemptedAmount, error.max);
-  return attemptedAmount;
+  switch (error.type) {
+    case 'amount_too_low':
+      return error.min;
+    case 'amount_too_high':
+      return Math.min(attemptedAmount, error.max);
+    case 'auction_not_live':
+      return attemptedAmount;
+  }
 }
 
 function CloseIcon() {
