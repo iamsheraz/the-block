@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { flushSync } from 'react-dom';
 import { useBids } from '../hooks/useBids';
 import { MAX_BID, MIN_BID_INCREMENT } from '../lib/constants';
 import { formatCurrency } from '../lib/format';
@@ -83,7 +84,15 @@ export function BidPanel({ vehicle, now }: BidPanelProps) {
     if (submittingRef.current) return;
     submittingRef.current = true;
     const amount = flow.amount;
-    setFlow({ kind: 'submitting', amount });
+    // dataStore.submitBid is synchronous today, so a plain setFlow + submitBid
+    // + setFlow chain batches into a single render and the "Placing bid…"
+    // spinner never paints. flushSync forces React to commit the submitting
+    // view before the write — gives the buyer honest visual confirmation that
+    // Confirm was received, and stays the seam a future async backend uses
+    // verbatim. The submittingRef guard above already blocks double-fires.
+    flushSync(() => {
+      setFlow({ kind: 'submitting', amount });
+    });
     const result = submitBid({ vehicleId: vehicle.id, amount });
     if (result.ok) {
       setDraft('');
