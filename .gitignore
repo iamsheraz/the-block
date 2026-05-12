@@ -21,3 +21,8 @@ playwright/.cache/
 
 # Personal study material — never committed
 prep/
+
+# Local agent / workflow scratch space
+.claude/
+_bmad/
+_bmad-output/
