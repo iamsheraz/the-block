@@ -9,6 +9,8 @@ const BIDDER_ID_KEY = 'the-block:bidder-id';
 export interface DataStore {
   getVehicles(): Vehicle[];
   getVehicle(id: string): Vehicle | undefined;
+  getBidsForVehicle(vehicleId: string): Bid[];
+  getBidderId(): string;
   submitBid(input: { vehicleId: string; amount: number }): BidResult;
   subscribe(listener: () => void): () => void;
 }
@@ -85,6 +87,12 @@ export function createDataStore(options: CreateDataStoreOptions = {}): DataStore
     getVehicle(id) {
       const base = baseVehicles.find((v) => v.id === id);
       return base ? mergeOverrides(base) : undefined;
+    },
+    getBidsForVehicle(vehicleId) {
+      return bidsByVehicle.get(vehicleId)?.slice() ?? [];
+    },
+    getBidderId() {
+      return bidderId;
     },
     submitBid({ vehicleId, amount }) {
       const base = baseVehicles.find((v) => v.id === vehicleId);

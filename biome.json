@@ -28,6 +28,9 @@
       },
       "style": {
         "useImportType": "error"
+      },
+      "a11y": {
+        "useSemanticElements": "off"
       }
     }
   },

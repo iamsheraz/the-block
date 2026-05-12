@@ -85,7 +85,7 @@ function DetailView({ vehicle, now }: { vehicle: Vehicle; now: number }) {
           city={vehicle.city}
           province={vehicle.province}
         />
-        <BidHistory />
+        <BidHistory vehicleId={vehicle.id} now={now} />
       </section>
     </main>
   );
