@@ -1,0 +1,36 @@
+@import "tailwindcss";
+
+/* Respect users who have requested reduced motion at the OS level.
+   Disables CSS animations, transitions, and smooth scrolling everywhere
+   without forcing every component to declare a motion-reduce: variant.
+   See AC4 in stories/1.7-polish-e2e-docs.md. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    transition-delay: 0ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Radar-ping ring under each damage marker. transform-box: fill-box anchors
+   transform-origin to the circle's own bbox; without it SVG defaults scale
+   from the viewBox origin and the ring drifts off its dot. */
+@keyframes damage-pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.45;
+  }
+  100% {
+    transform: scale(2.4);
+    opacity: 0;
+  }
+}
+.damage-pulse {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: damage-pulse 2.4s ease-out infinite;
+}

@@ -33,7 +33,8 @@
     "selling_dealership": "Highway 7 Auto Sales",
     "lot": "A-0001",
     "current_bid": 21000,
-    "bid_count": 11
+    "bid_count": 11,
+    "ai_summary": "This low-mileage 2025 Mazda CX-5 Turbo presents as a very clean example with minimal cosmetic wear and fully functional electronics throughout. The grade 4 condition and near-new mileage indicate a well-maintained vehicle ready for resale with minimal reconditioning needed."
   },
   {
     "id": "0d6607da-d827-4da6-bfbb-ecab5dbd77c5",
@@ -74,7 +75,8 @@
     "selling_dealership": "Golden Horseshoe Motors",
     "lot": "A-0002",
     "current_bid": 12500,
-    "bid_count": 13
+    "bid_count": 13,
+    "ai_summary": "This 2019 Chevrolet Equinox LS shows a 2.7 grade with 126,793 km, presenting rough overall condition including curb damage to the front-right wheel and minor scratches on the front bumper. Core mechanical systems are operational, though the vehicle is best suited for buyers prepared to undertake cosmetic and reconditioning work."
   },
   {
     "id": "c42d7e04-4ae5-4ad4-b638-67f11789f269",
@@ -114,7 +116,8 @@
     "selling_dealership": "Grand Touring Motors",
     "lot": "A-0003",
     "current_bid": 10000,
-    "bid_count": 1
+    "bid_count": 1,
+    "ai_summary": "This 2017 Volkswagen Golf GTI SE shows below-average condition with 145,064 kilometers and visible exterior damage including dents on the tailgate and rear quarter panel. The vehicle may require reconditioning work to address noted mechanical or operational concerns identified during inspection."
   },
   {
     "id": "1dfa77c7-854a-4ada-bf95-6220eeb28d01",
@@ -153,7 +156,8 @@
     "selling_dealership": "Fraser Valley Auto Group",
     "lot": "A-0004",
     "current_bid": 34000,
-    "bid_count": 9
+    "bid_count": 9,
+    "ai_summary": "This 2023 Ram 1500 Laramie with 58,993 km presents fair overall condition with light hail damage to the roof and scattered exterior blemishes. Interior wear is moderate with no significant structural damage, and the vehicle drives well with mechanical function intact."
   },
   {
     "id": "dc3de592-b252-469d-853f-4e792323b665",
@@ -190,7 +194,8 @@
     "selling_dealership": "Harbour City Auto",
     "lot": "A-0005",
     "current_bid": 30500,
-    "bid_count": 2
+    "bid_count": 2,
+    "ai_summary": "This 2023 Ford Explorer ST shows average condition with moderate wear on high-touch interior surfaces, though the powertrain operates normally. With 83,180 kilometers and a clean title, the vehicle presents typical use-related wear consistent with its mileage and model year."
   },
   {
     "id": "7d173c88-92ed-4d22-9b71-2eec3fc43092",
@@ -234,7 +239,8 @@
     "selling_dealership": "Westcoast Auto Sales",
     "lot": "A-0006",
     "current_bid": null,
-    "bid_count": 0
+    "bid_count": 0,
+    "ai_summary": "This 2021 BMW 330i xDrive with 69,042 km carries a salvage title and a 1.7 condition grade, indicating substantial structural or mechanical damage requiring significant reconditioning work. The vehicle presents multiple concerns including transmission issues, water damage to the cargo area, worn brakes, and various dents and paint damage, making it suitable primarily for parts harvesting or complete rebuild by experienced technicians."
   },
   {
     "id": "64dd7819-a112-41ef-8826-0f7edc8999ad",
@@ -270,7 +276,8 @@
     "selling_dealership": "Island Auto Exchange",
     "lot": "A-0007",
     "current_bid": null,
-    "bid_count": 0
+    "bid_count": 0,
+    "ai_summary": "This 2024 Subaru Crosstrek Premium presents as a well-maintained example with minimal cosmetic wear and full functionality across all systems and features. At grade 4 with under 43,000 kilometers, the vehicle offers strong condition for a relatively new model with no reported damage concerns."
   },
   {
     "id": "1e5fa504-2dae-44ad-862e-3f24aeb85c29",
@@ -312,7 +319,8 @@
     "selling_dealership": "Maple Motors",
     "lot": "A-0008",
     "current_bid": 15500,
-    "bid_count": 9
+    "bid_count": 9,
+    "ai_summary": "This 2020 Jeep Grand Cherokee Overland with 60,344 km carries a rebuilt title and grade 2.1 condition, reflecting multiple cosmetic concerns including hail damage, paint peeling on the roof rack, curb rash, and various scratches across the exterior. Core mechanical systems are operational, though the vehicle's overall condition indicates it is suitable for buyers prepared to undertake cosmetic and reconditioning work."
   },
   {
     "id": "dc698185-c2c8-47c9-b042-884ec9f48bc5",
@@ -347,7 +355,8 @@
     "selling_dealership": "Parkway Ford",
     "lot": "A-0009",
     "current_bid": 47000,
-    "bid_count": 12
+    "bid_count": 12,
+    "ai_summary": "This 2024 Tesla Model 3 Long Range presents above-average condition with low mileage and no reported damage, featuring recently serviced mechanical systems and new tires. All major components are functioning properly, positioning this vehicle as a low-risk acquisition for reconditioning or direct retail placement."
   },
   {
     "id": "1e9da018-4bac-4154-a00a-421a3cf4bb66",
@@ -390,7 +399,8 @@
     "selling_dealership": "Chinook Auto Group",
     "lot": "A-0010",
     "current_bid": null,
-    "bid_count": 0
+    "bid_count": 0,
+    "ai_summary": "This 2021 Chevrolet Equinox RS shows heavy use at 148k km with a 2.7 condition grade reflecting multiple wear items across interior and exterior surfaces. Recommended reconditioning work includes taillight housing replacement, upholstery repair, paint correction on hood and bumper areas, and cosmetic detailing of sill and trim components."
   },
   {
     "id": "0d92938b-e078-448b-93a6-ad2cf43223c8",
@@ -434,7 +444,8 @@
     "selling_dealership": "Laurentian Auto Group",
     "lot": "A-0011",
     "current_bid": null,
-    "bid_count": 0
+    "bid_count": 0,
+    "ai_summary": "This 2020 Kia Sportage with 150,074 km presents a Grade 2.8 condition vehicle showing significant cosmetic wear including door dents, scuff marks, upholstery damage, and faded lighting elements. Mechanical diagnosis is recommended before proceeding, as the overall condition suggests reconditioning work will be needed."
   },
   {
     "id": "e9979e45-f71f-49ac-b2bc-d28220e9c091",
@@ -475,7 +486,8 @@
     "selling_dealership": "Rive-Sud Motors",
     "lot": "A-0012",
     "current_bid": null,
-    "bid_count": 0
+    "bid_count": 0,
+    "ai_summary": "This 2020 Mazda3 Turbo shows average wear consistent with its mileage, featuring scuff marks on door sill plates, a minor scrape on the passenger mirror, and worn leather on the driver seat bolster. The engine and transmission operate normally, though the vehicle would benefit from cosmetic reconditioning to address the high-touch surface wear."
   },
   {
     "id": "619113d9-6207-406e-9baf-015ca103f8f6",
@@ -515,7 +527,8 @@
     "selling_dealership": "Laurentian Auto Group",
     "lot": "A-0013",
     "current_bid": null,
-    "bid_count": 0
+    "bid_count": 0,
+    "ai_summary": "This 2020 Mazda CX-5 Turbo presents moderate overall wear consistent with a previous daily driver, showing cosmetic damage including a small rear seat tear and rear quarter panel dent that would benefit from touch-up work. The vehicle runs and drives without mechanical issues at under 90,000 kilometers, though the grade of 3.2 reflects the accumulated interior and exterior wear typical of its usage history."
   },
   {
     "id": "047128d1-44da-44f3-8259-e6af732ffb15",
@@ -555,7 +568,8 @@
     "selling_dealership": "Metropolitain Auto",
     "lot": "A-0014",
     "current_bid": null,
-    "bid_count": 0
+    "bid_count": 0,
+    "ai_summary": "This 2021 Nissan Rogue SV shows average wear consistent with its mileage, with a cracked front grille and scuff marks on the door sill plates representing the primary cosmetic concerns. The engine and transmission operate normally, though the vehicle would benefit from cosmetic reconditioning to address the exterior trim damage."
   },
   {
     "id": "629d5ba0-3a11-4d6f-b34f-841de887888a",
@@ -598,7 +612,8 @@
     "selling_dealership": "King City Auto",
     "lot": "A-0015",
     "current_bid": null,
-    "bid_count": 0
+    "bid_count": 0,
+    "ai_summary": "This 2018 GMC Sierra shows a 2.8 condition grade with 116,207 km and displays cumulative wear across exterior and interior surfaces, including seat deterioration, fender scratching, windshield damage, and surface rust on wheel wells. Core systems are operational, though brake reconditioning work is needed and diagnosis on remaining mechanical components is recommended for a buyer planning repairs."
   },
   {
     "id": "ab4c783d-9f1a-4147-88b4-a24a7ae356f5",
@@ -640,7 +655,8 @@
     "selling_dealership": "Durham Auto Exchange",
     "lot": "A-0016",
     "current_bid": 18000,
-    "bid_count": 18
+    "bid_count": 18,
+    "ai_summary": "This 2018 Ram 1500 Laramie presents below-average condition with 98,107 km and visible cosmetic damage including a scratched liftgate and worn driver seat leather. A diagnostic check of the catalytic converter fault code and any related emission system concerns will be necessary before resale."
   },
   {
     "id": "e2f096b7-ae41-45f1-94bb-67990ce845c7",
@@ -675,7 +691,8 @@
     "selling_dealership": "Prairie Sun Motors",
     "lot": "A-0017",
     "current_bid": null,
-    "bid_count": 0
+    "bid_count": 0,
+    "ai_summary": "This nearly-new 2026 Subaru WRX GT with minimal mileage presents in excellent condition across both interior and exterior, with only minor cosmetic wear typical of light use. The clean title and low odometer reading indicate this is a low-risk acquisition suitable for retail or quick wholesale channels."
   },
   {
     "id": "dc6f1a25-5b0e-4919-b816-eb41d3b5e581",
@@ -715,7 +732,8 @@
     "selling_dealership": "Highway 7 Auto Sales",
     "lot": "A-0018",
     "current_bid": null,
-    "bid_count": 0
+    "bid_count": 0,
+    "ai_summary": "This 2019 Ford Escape S shows heavy use at 151,708 km with a salvage title requiring careful evaluation. The vehicle presents cosmetic wear including paint chips on the hood and worn driver seat leather, along with minor missing trim, and reconditioning work should be anticipated before retail placement."
   },
   {
     "id": "13ba6ca1-67c1-4a2f-8f5d-01ef55cc7bc6",
@@ -753,7 +771,8 @@
     "selling_dealership": "King City Auto",
     "lot": "A-0019",
     "current_bid": 29000,
-    "bid_count": 14
+    "bid_count": 14,
+    "ai_summary": "This 2021 GMC Sierra 1500 AT4 presents average condition at 90k kilometers with light cosmetic wear typical of its age and mileage, including a dent on the rear quarter panel and general wear on high-touch surfaces. The engine and transmission operate normally, though standard reconditioning work on exterior appearance would benefit the vehicle's presentation."
   },
   {
     "id": "aafb1dad-0c45-4456-a39e-4dd52edecc25",
@@ -791,7 +810,8 @@
     "selling_dealership": "Parkway Ford",
     "lot": "A-0020",
     "current_bid": null,
-    "bid_count": 0
+    "bid_count": 0,
+    "ai_summary": "This 2025 Nissan Pathfinder SL with just over 11,000 km shows average cosmetic wear consistent with its age and low mileage, earning a 3.8 condition grade. The vehicle is mechanically sound with no reported damage and carries a clean title."
   },
   {
     "id": "ae71e698-1d72-4bea-95c5-9c5a4c7ff556",
@@ -827,7 +847,8 @@
     "selling_dealership": "Laurentian Auto Group",
     "lot": "A-0021",
     "current_bid": null,
-    "bid_count": 0
+    "bid_count": 0,
+    "ai_summary": "This 2025 GMC Sierra 1500 AT4 is in above-average condition with minimal wear for its mileage, backed by recent service work and new tires across all systems functioning properly. No structural or mechanical damage is noted, making this a relatively low-risk acquisition for reconditioning or resale."
   },
   {
     "id": "599e7dbe-377c-4b84-958f-06167459bfcf",
@@ -867,7 +888,8 @@
     "selling_dealership": "Laurentian Auto Group",
     "lot": "A-0022",
     "current_bid": 37000,
-    "bid_count": 1
+    "bid_count": 1,
+    "ai_summary": "This 2022 Subaru WRX Base shows fair condition at 70,988 km with general interior wear and light exterior cosmetic damage including a door dent and liftgate scratch. The vehicle operates well mechanically, though minor reconditioning work on trim and paint would benefit presentation for retail resale."
   },
   {
     "id": "18183763-79d8-43b0-be01-7242477cf0da",
@@ -902,7 +924,8 @@
     "selling_dealership": "Stampede Auto Exchange",
     "lot": "A-0023",
     "current_bid": null,
-    "bid_count": 0
+    "bid_count": 0,
+    "ai_summary": "This 2023 Nissan Pathfinder Rock Creek shows exceptional condition with low mileage and a single owner history, having been garage-kept throughout its life. No mechanical issues or damage are reported, presenting a low-risk acquisition for resale or retail."
   },
   {
     "id": "620ff36e-df82-4574-8225-36103ca43dcb",
@@ -938,7 +961,8 @@
     "selling_dealership": "Prairie Motors",
     "lot": "A-0024",
     "current_bid": null,
-    "bid_count": 0
+    "bid_count": 0,
+    "ai_summary": "This 2025 Subaru WRX Limited presents as a well-maintained example with minimal wear throughout the interior and exterior, consistent with its low mileage of 14,565 km. The excellent condition grade of 4.7 reflects a vehicle that requires minimal reconditioning and carries a clean title."
   },
   {
     "id": "a1a67541-dfb2-412e-925a-508e13dde1fe",
@@ -975,7 +999,8 @@
     "selling_dealership": "Champlain Motors",
     "lot": "A-0025",
     "current_bid": 15000,
-    "bid_count": 1
+    "bid_count": 1,
+    "ai_summary": "This 2026 Hyundai Elantra N Line carries a rebuilt title with minimal mileage at 500 km, presenting fair overall condition with some interior wear including worn leather on the driver seat bolster and minor exterior blemishes. The vehicle drives well, though the rebuilt title status warrants thorough inspection and documentation review by the buyer."
   },
   {
     "id": "07e6b39c-da56-4979-93b3-af10e339502d",
@@ -1016,7 +1041,8 @@
     "selling_dealership": "Stampede Auto Exchange",
     "lot": "A-0026",
     "current_bid": null,
-    "bid_count": 0
+    "bid_count": 0,
+    "ai_summary": "This 2018 Hyundai Elantra with 96,381 km presents average condition with typical wear on interior surfaces and functioning drivetrain components. Minor cosmetic damage includes curb rash on the front-right wheel and a parking-lot scratch on the rear bumper that require attention."
   },
   {
     "id": "26955807-abf7-43c9-9023-09ecb60bf678",
@@ -1058,7 +1084,8 @@
     "selling_dealership": "Parkway Ford",
     "lot": "A-0027",
     "current_bid": 13500,
-    "bid_count": 14
+    "bid_count": 14,
+    "ai_summary": "This 2016 Jeep Grand Cherokee Overland displays a 2.7 condition grade with 121,425 km, showing cosmetic damage including dents on the driver-side door and rear quarter panel along with minor rust on the wheel wells. Core mechanical systems are operational, though the intermittent AC compressor requires diagnosis and the vehicle is suitable for buyers prepared to undertake reconditioning work."
   },
   {
     "id": "91cd2d52-0c56-4084-8124-271850793086",
@@ -1097,7 +1124,8 @@
     "selling_dealership": "Grain Belt Auto",
     "lot": "A-0028",
     "current_bid": null,
-    "bid_count": 0
+    "bid_count": 0,
+    "ai_summary": "This 2017 Kia Forte shows wear at 178,390 km with a grade of 2.2, featuring cosmetic damage including a rear bumper scratch and cracked taillight housing. Core mechanical systems are operational, though the vehicle is suitable for buyers prepared to address reconditioning work."
   },
   {
     "id": "abf672d7-5178-4dd7-84a7-e86d616776ef",
@@ -1134,7 +1162,8 @@
     "selling_dealership": "Harbour City Auto",
     "lot": "A-0029",
     "current_bid": null,
-    "bid_count": 0
+    "bid_count": 0,
+    "ai_summary": "This 2021 Tesla Model Y Performance with rebuilt title status carries a 3.2 condition grade and shows average cosmetic wear consistent with its low mileage of 34,780 km. The vehicle is mechanically sound with no reported damage, though the rebuilt title designation warrants verification of repair history and structural integrity by a qualified inspector."
   },
   {
     "id": "fa9e3dfc-40f4-40dd-b890-7b5213369713",
@@ -1175,7 +1204,8 @@
     "selling_dealership": "Champlain Motors",
     "lot": "A-0030",
     "current_bid": null,
-    "bid_count": 0
+    "bid_count": 0,
+    "ai_summary": "This 2018 Ram 1500 Big Horn carries a salvage title and 1.7 condition grade with significant structural and water damage, requiring comprehensive mechanical diagnosis and reconditioning work before it is roadworthy. Multiple systems including electrical components show flood-related issues, frame damage has prior repair history, and cosmetic damage is present throughout, making this vehicle suitable only for experienced rebuilders with full diagnostic capability."
   },
   {
     "id": "18dfa2fb-2d22-4580-96d5-5748a402b879",
@@ -1216,7 +1246,8 @@
     "selling_dealership": "Highway 7 Auto Sales",
     "lot": "A-0031",
     "current_bid": 14500,
-    "bid_count": 14
+    "bid_count": 14,
+    "ai_summary": "This 2018 Tesla Model 3 presents a 2.6-grade vehicle with 76,818 km showing visible cosmetic wear including liftgate scratching, windshield chipping, and rear seat tearing alongside worn brake components requiring replacement. Core drivetrain and electrical systems remain functional, though reconditioning work on braking and interior trim should be anticipated by the acquiring buyer."
   },
   {
     "id": "6d1b93a8-47a6-4581-8e99-c3f54b20bc5e",
@@ -1257,7 +1288,8 @@
     "selling_dealership": "Capital City Auto",
     "lot": "A-0032",
     "current_bid": 7500,
-    "bid_count": 16
+    "bid_count": 16,
+    "ai_summary": "This 2016 Nissan Rogue SL with 131,156 km shows significant cosmetic wear throughout and carries a grade of 2.7, indicating below-average condition. The vehicle requires mechanical diagnosis for intermittent AC functionality and cosmetic reconditioning work on the driver-side fender scratch."
   },
   {
     "id": "eb28fe31-646c-4aa7-9f60-654408232fb5",
@@ -1296,7 +1328,8 @@
     "selling_dealership": "Parkway Ford",
     "lot": "A-0033",
     "current_bid": null,
-    "bid_count": 0
+    "bid_count": 0,
+    "ai_summary": "This 2023 Mazda CX-5 Select with moderate mileage shows reasonable wear consistent with its age and use, requiring detailing and a missing wheel center cap replacement. No major mechanical concerns were identified, though the 3.5 grade suggests minor reconditioning work may optimize its presentation for retail."
   },
   {
     "id": "a4872199-050b-400c-8298-e0194969b3ba",
@@ -1336,7 +1369,8 @@
     "selling_dealership": "Maple Motors",
     "lot": "A-0034",
     "current_bid": null,
-    "bid_count": 0
+    "bid_count": 0,
+    "ai_summary": "This 2022 Subaru WRX Premium shows reasonable overall condition at 76k kilometers with typical wear expected for its age and mileage. Minor cosmetic concerns include a cracked rear taillight housing, peeling paint on the roof rack, and a tailgate dent that would benefit from detailing and light reconditioning work."
   },
   {
     "id": "b0ddeb15-baca-4e77-b936-5fb55e41cda3",
@@ -1373,7 +1407,8 @@
     "selling_dealership": "Metropolitain Auto",
     "lot": "A-0035",
     "current_bid": 18000,
-    "bid_count": 8
+    "bid_count": 8,
+    "ai_summary": "This 2020 Toyota Corolla XLE presents in reasonable condition with 117,998 kilometers showing expected wear throughout the interior and exterior. The vehicle requires detailing and general reconditioning work but has no identified major mechanical concerns."
   },
   {
     "id": "2d937ed0-b8f5-4513-bca9-b80fd75ede22",
@@ -1413,7 +1448,8 @@
     "selling_dealership": "Northland Chrysler",
     "lot": "A-0036",
     "current_bid": 12000,
-    "bid_count": 17
+    "bid_count": 17,
+    "ai_summary": "This 2016 Jeep Wrangler Sahara presents below-average condition with moderate mileage exposure and visible cosmetic damage including mirror scrapes, a damaged mud flap, and wheel curb rash. Diagnosis and reconditioning work are recommended to address the noted issues before retail placement."
   },
   {
     "id": "1361d151-34c6-4ca0-bc0f-903a11e23a23",
@@ -1456,7 +1492,8 @@
     "selling_dealership": "Champlain Motors",
     "lot": "A-0037",
     "current_bid": 7500,
-    "bid_count": 5
+    "bid_count": 5,
+    "ai_summary": "This 2018 Nissan Pathfinder Platinum with 131,402 km displays significant wear consistent with its 2.6 condition grade, featuring multiple cosmetic defects including a tailgate dent, missing wheel center cap, cracked rear taillight housing, and minor rust on wheel wells. Mechanical diagnosis is recommended prior to purchase to assess any underlying concerns beyond the documented cosmetic issues."
   },
   {
     "id": "e2d7b07f-37e2-48cc-aa61-ffa34018b9af",
@@ -1497,7 +1534,8 @@
     "selling_dealership": "Stampede Auto Exchange",
     "lot": "A-0038",
     "current_bid": 7500,
-    "bid_count": 5
+    "bid_count": 5,
+    "ai_summary": "This 2017 Ford Explorer Platinum shows extensive flood damage with electrical system concerns and a catalytic converter code requiring diagnosis. With a rebuilt title, low condition grade of 1.9, and frame damage that needs professional structural assessment, this vehicle requires significant reconditioning work before resale consideration."
   },
   {
     "id": "31b7298a-557c-4cdb-969b-7e835d7d066b",
@@ -1538,7 +1576,8 @@
     "selling_dealership": "Rive-Sud Motors",
     "lot": "A-0039",
     "current_bid": null,
-    "bid_count": 0
+    "bid_count": 0,
+    "ai_summary": "This 2019 Chevrolet Traverse LT with 99,511 km carries a 2.9 condition grade reflecting significant cosmetic wear, including minor rust on wheel wells, a rear bumper scratch, and a cracked taillight housing. Mechanical reconditioning work is needed, particularly brake rotor replacement and a full diagnostic inspection recommended before purchase."
   },
   {
     "id": "b25d0c2a-5f56-4e00-9f61-3c5b18edf7ef",
@@ -1575,7 +1614,8 @@
     "selling_dealership": "Harbourfront Motors",
     "lot": "A-0040",
     "current_bid": null,
-    "bid_count": 0
+    "bid_count": 0,
+    "ai_summary": "This 2022 Nissan Rogue S presents average condition with light cosmetic wear on interior trim and surfaces consistent with its mileage, though the powertrain operates normally. No structural damage is noted, making this a straightforward reconditioning candidate for the wholesale market."
   },
   {
     "id": "041b2f83-f77f-4ebd-8539-18aab4fc7647",
@@ -1616,7 +1656,8 @@
     "selling_dealership": "Durham Auto Exchange",
     "lot": "A-0041",
     "current_bid": null,
-    "bid_count": 0
+    "bid_count": 0,
+    "ai_summary": "This 2022 Hyundai Tucson shows moderate wear consistent with a previous daily driver at 84,138 kilometers, with a 3.3 condition grade reflecting cosmetic issues including a small dent on the driver-side door, minor scrape on the passenger mirror, and a missing wheel center cap. The vehicle runs and drives without issue, requiring only cosmetic touch-ups and trim replacements to present well at retail."
   },
   {
     "id": "5b7bba8e-8e5d-4579-a408-1301e8fca316",
@@ -1653,7 +1694,8 @@
     "selling_dealership": "AutoPark Toronto",
     "lot": "A-0042",
     "current_bid": null,
-    "bid_count": 0
+    "bid_count": 0,
+    "ai_summary": "This 2025 Mazda CX-5 Carbon Edition presents above-average condition with low mileage and no reported damage, supported by recent service work and new tires. All mechanical systems are operating properly, making this a solid acquisition with minimal reconditioning anticipated."
   },
   {
     "id": "a83d8694-96e4-4ee0-91f0-b22443a3fa92",
@@ -1692,7 +1734,8 @@
     "selling_dealership": "Maple Motors",
     "lot": "A-0043",
     "current_bid": null,
-    "bid_count": 0
+    "bid_count": 0,
+    "ai_summary": "This 2016 Kia Forte GT with 106,581 km carries a 2.1 condition grade reflecting significant cosmetic wear throughout the vehicle. The front-right wheel shows curb rash and the passenger mirror has minor scraping, with mechanical inspection recommended prior to purchase."
   },
   {
     "id": "c35ce472-2d9d-4d87-a03c-56abbe63b720",
@@ -1730,7 +1773,8 @@
     "selling_dealership": "Durham Auto Exchange",
     "lot": "A-0044",
     "current_bid": null,
-    "bid_count": 0
+    "bid_count": 0,
+    "ai_summary": "This 2022 Mazda3 GX shows average condition with 51,136 km on the odometer and typical wear consistent with its grade across high-touch interior surfaces. Engine and transmission operate normally with no reported damage, requiring only routine reconditioning work."
   },
   {
     "id": "f8c0d9bb-8222-4446-93c1-43bcd61175e8",
@@ -1767,7 +1811,8 @@
     "selling_dealership": "Foothills Auto Sales",
     "lot": "A-0045",
     "current_bid": null,
-    "bid_count": 0
+    "bid_count": 0,
+    "ai_summary": "This near-new 2026 Jeep Wrangler Rubicon presents exceptional condition with minimal mileage and a clean title, having been garage-kept by a single owner with no reported mechanical concerns. The vehicle shows virtually no wear and represents low-risk acquisition for inventory."
   },
   {
     "id": "426a36b7-ab4e-4558-94d9-c48476925c8f",
@@ -1805,7 +1850,8 @@
     "selling_dealership": "Maple Motors",
     "lot": "A-0046",
     "current_bid": null,
-    "bid_count": 0
+    "bid_count": 0,
+    "ai_summary": "This 2023 Kia Forte GT-Line presents above-average condition with modest mileage and recent service including new tires, supported by a 4.1 grade and clean title. A minor tear in the rear seat upholstery represents the only notable cosmetic defect on an otherwise mechanically sound vehicle."
   },
   {
     "id": "2827dcd5-9cf1-483a-a53d-30c39ac750da",
@@ -1842,7 +1888,8 @@
     "selling_dealership": "Rive-Sud Motors",
     "lot": "A-0047",
     "current_bid": null,
-    "bid_count": 0
+    "bid_count": 0,
+    "ai_summary": "This 2025 Honda Pilot EX-L presents above-average condition with minimal wear for its mileage, supported by recent service work and new tires across all mechanical systems. No significant damage is noted, making this a straightforward acquisition for resale-focused buyers."
   },
   {
     "id": "845c3157-0810-4bd4-9abd-37c39bb34123",
@@ -1877,7 +1924,8 @@
     "selling_dealership": "Golden Horseshoe Motors",
     "lot": "A-0048",
     "current_bid": null,
-    "bid_count": 0
+    "bid_count": 0,
+    "ai_summary": "This 2024 Subaru Outback Onyx XT is in excellent condition with minimal wear throughout the interior and only minor cosmetic imperfections on the exterior, well-suited for immediate retail or minimal reconditioning. At 21,300 km with a clean title and 4.2 grade, the vehicle represents low-mileage inventory with minimal risk exposure."
   },
   {
     "id": "5401d32e-e90a-4e09-b0fd-544d009eb9fd",
@@ -1915,7 +1963,8 @@
     "selling_dealership": "Stampede Auto Exchange",
     "lot": "A-0049",
     "current_bid": null,
-    "bid_count": 0
+    "bid_count": 0,
+    "ai_summary": "This 2025 Nissan Rogue S is very clean with low mileage and a 4.3 condition grade, showing only minor cosmetic wear throughout the interior and exterior. A windshield chip on the passenger side is the primary concern, with all electronics and features reported as fully functional."
   },
   {
     "id": "0afe1c4d-4ce1-423f-8976-5b8078d4bb45",
@@ -1958,7 +2007,8 @@
     "selling_dealership": "St-Laurent Auto Exchange",
     "lot": "A-0050",
     "current_bid": null,
-    "bid_count": 0
+    "bid_count": 0,
+    "ai_summary": "This 2018 Mazda CX-5 Turbo with 134,644 km carries a salvage title and a grade of 1.3, indicating substantial structural and mechanical compromise not suitable for immediate road use. Major reconditioning work is required, including brake system service, frame damage assessment on the right front, and upholstery repair, making this suitable only for experienced rebuilders with proper diagnostic capability."
   },
   {
     "id": "330014a7-c6dc-40ac-b52d-3f83c7d4339d",
@@ -1998,7 +2048,8 @@
     "selling_dealership": "Northland Chrysler",
     "lot": "B-0001",
     "current_bid": 6500,
-    "bid_count": 6
+    "bid_count": 6,
+    "ai_summary": "This 2017 Nissan Pathfinder SV presents a grade 2.6 condition with 114,468 km, showing rough cosmetic wear including missing wheel trim and faded headlight lenses that will require attention. Core mechanical systems are operational, but the vehicle suits buyers prepared to undertake cosmetic and minor reconditioning work."
   },
   {
     "id": "5f275cda-08fc-4c21-874e-18c0425c976c",
@@ -2038,7 +2089,8 @@
     "selling_dealership": "Harbour City Auto",
     "lot": "B-0002",
     "current_bid": null,
-    "bid_count": 0
+    "bid_count": 0,
+    "ai_summary": "This 2018 Volkswagen Jetta SEL presents below-average condition at 171,382 km with multiple exterior concerns including tailgate denting, wheel well rust development, and light hail damage across the roof. Diagnosis and reconditioning work should be anticipated to address the visible wear and corrosion patterns noted throughout the vehicle."
   },
   {
     "id": "02fcc151-d1a2-4d55-b205-109f69028741",
@@ -2080,7 +2132,8 @@
     "selling_dealership": "Durham Auto Exchange",
     "lot": "B-0003",
     "current_bid": null,
-    "bid_count": 0
+    "bid_count": 0,
+    "ai_summary": "This 2016 Subaru WRX Premium with 127,579 km presents a grade 2.5 condition with cosmetic and trim damage including a cracked grille, door dent, windshield chip, and interior wear on the driver's seat. Core mechanical systems are operational, though the vehicle will require reconditioning work to address the exterior and interior condition issues."
   },
   {
     "id": "30541fbc-0752-4865-abb5-99d242a0cd85",
@@ -2118,7 +2171,8 @@
     "selling_dealership": "Chinook Auto Group",
     "lot": "B-0004",
     "current_bid": 14000,
-    "bid_count": 18
+    "bid_count": 18,
+    "ai_summary": "This 2025 Subaru Outback with rebuilt title shows average cosmetic wear including light hail damage on the roof and a scratch on the liftgate, consistent with its low mileage. The vehicle is mechanically sound with a 3.3 condition grade, though the rebuilt status warrants standard title documentation review before acquisition."
   },
   {
     "id": "8c0d975e-62a8-481c-a0c2-37c312705c65",
@@ -2159,7 +2213,8 @@
     "selling_dealership": "Northern Ridge Motors",
     "lot": "B-0005",
     "current_bid": null,
-    "bid_count": 0
+    "bid_count": 0,
+    "ai_summary": "This 2020 BMW X5 xDrive40i with 82,957 km carries a rebuilt/salvage title and shows extensive incident damage requiring professional frame inspection before any purchase decision. Beyond structural concerns, the vehicle needs brake rotor replacement and presents multiple cosmetic issues including headlight lens degradation, tailgate denting, and interior upholstery damage."
   },
   {
     "id": "35129fef-d80e-44c0-a11d-a82ebb61f293",
@@ -2195,7 +2250,8 @@
     "selling_dealership": "Maple Motors",
     "lot": "B-0006",
     "current_bid": null,
-    "bid_count": 0
+    "bid_count": 0,
+    "ai_summary": "This 2024 Subaru Crosstrek Premium shows reasonable condition with light wear consistent with its sub-40,000 km mileage and grade 3.9 profile. The vehicle would benefit from detailing and presents no major mechanical concerns, making it suitable for reconditioning and resale."
   },
   {
     "id": "f6ee850f-d655-4d7d-b171-be16b528d5a9",
@@ -2236,7 +2292,8 @@
     "selling_dealership": "Highway 7 Auto Sales",
     "lot": "B-0007",
     "current_bid": 13500,
-    "bid_count": 9
+    "bid_count": 9,
+    "ai_summary": "This 2018 GMC Terrain SLE shows considerable wear at 155,848 km with a 2.5 condition grade reflecting heavy use and multiple cosmetic and minor structural concerns including paint damage, upholstery issues, and surface rust. Several reconditioning areas are present across exterior trim and seating that warrant diagnosis and attention before retail placement."
   },
   {
     "id": "f2e39568-53d8-494c-ae23-b9182658baab",
@@ -2274,7 +2331,8 @@
     "selling_dealership": "Lakeshore Auto Group",
     "lot": "B-0008",
     "current_bid": 32000,
-    "bid_count": 7
+    "bid_count": 7,
+    "ai_summary": "This 2026 GMC Terrain SLE is essentially new with minimal mileage and presents in excellent condition throughout the cabin and exterior. Minor cosmetic imperfections typical of a low-mileage vehicle are present, but no structural damage or mechanical concerns are reported."
   },
   {
     "id": "d36b5211-c003-41c9-87d4-9179a5b2ecf2",
@@ -2311,7 +2369,8 @@
     "selling_dealership": "Capital City Auto",
     "lot": "B-0009",
     "current_bid": null,
-    "bid_count": 0
+    "bid_count": 0,
+    "ai_summary": "This 2020 Tesla Model Y Long Range presents average condition with moderate wear visible on interior high-touch surfaces, though the powertrain operates normally. At under 45,000 kilometers, the vehicle shows typical early-use wear consistent with its grade and would benefit from standard reconditioning attention before retail placement."
   },
   {
     "id": "87f7343a-cb17-425c-8f41-0c63223bef5c",
@@ -2346,7 +2405,8 @@
     "selling_dealership": "Highway 7 Auto Sales",
     "lot": "B-0010",
     "current_bid": null,
-    "bid_count": 0
+    "bid_count": 0,
+    "ai_summary": "This 2021 Mazda CX-5 Preferred displays average wear consistent with its mileage, with minor cosmetic imperfections throughout. The vehicle is mechanically sound with no reported damage, making it suitable for retail resale with minimal reconditioning needs."
   },
   {
     "id": "fbc1bbdf-9bb6-4279-9c69-029968bcaefb",
@@ -2384,7 +2444,8 @@
     "selling_dealership": "King City Auto",
     "lot": "B-0011",
     "current_bid": 31000,
-    "bid_count": 12
+    "bid_count": 12,
+    "ai_summary": "This 2024 Jeep Wrangler Rubicon presents in exceptional condition with low mileage from a single owner who maintained it in garage storage. No mechanical issues or damage have been reported, making this a minimal-risk acquisition for resale."
   },
   {
     "id": "32158e11-4df3-4252-ad4d-cd8c974c6303",
@@ -2419,7 +2480,8 @@
     "selling_dealership": "Metropolitain Auto",
     "lot": "B-0012",
     "current_bid": 23500,
-    "bid_count": 6
+    "bid_count": 6,
+    "ai_summary": "This 2025 Ford Escape SEL presents above-average condition with low mileage and no reported damage, backed by recent service work and new tires. All mechanical systems are functioning properly, making this unit ready for retail with minimal reconditioning needs."
   },
   {
     "id": "e398d584-b10e-489c-a488-142178bb05a6",
@@ -2456,7 +2518,8 @@
     "selling_dealership": "Chinook Auto Group",
     "lot": "B-0013",
     "current_bid": null,
-    "bid_count": 0
+    "bid_count": 0,
+    "ai_summary": "This 2026 Mazda CX-5 Select presents as a nearly new vehicle with minimal use and comprehensive service documentation supporting its pristine condition throughout. Paint and interior finishes exhibit no wear or damage, making this a low-risk acquisition for resale or retail placement."
   },
   {
     "id": "fd1279c4-5cbb-4b4e-b908-9873d2fe9607",
@@ -2497,7 +2560,8 @@
     "selling_dealership": "AutoPark Toronto",
     "lot": "B-0014",
     "current_bid": 14000,
-    "bid_count": 15
+    "bid_count": 15,
+    "ai_summary": "This 2024 Honda Civic Touring presents a 3.8 grade with average wear consistent with its low mileage of 34,888 km, featuring minor cosmetic imperfections including a driver-side fender scratch and slight wheel well rust. The vehicle is mechanically sound with a clean title, making it a straightforward acquisition requiring only minor cosmetic reconditioning."
   },
   {
     "id": "e3068dd8-0fed-440b-8c7d-70e7912bc0e8",
@@ -2536,7 +2600,8 @@
     "selling_dealership": "Highway 7 Auto Sales",
     "lot": "B-0015",
     "current_bid": null,
-    "bid_count": 0
+    "bid_count": 0,
+    "ai_summary": "This 2016 Subaru Crosstrek Sport shows extensive flood damage with unresolved electrical issues and carries a salvage title requiring frame integrity assessment by a professional. Beyond electrical reconditioning work, the AC system needs diagnosis and a windshield chip requires attention before retail consideration."
   },
   {
     "id": "2f99ad9e-1bdf-4869-8e8e-395b8d66b406",
@@ -2576,7 +2641,8 @@
     "selling_dealership": "Mountain View Motors",
     "lot": "B-0016",
     "current_bid": 11000,
-    "bid_count": 18
+    "bid_count": 18,
+    "ai_summary": "This 2017 Volkswagen Tiguan SEL R-Line has moderate mileage at 118,811 km and carries a grade 2.8 condition rating, reflecting rough overall condition with visible cosmetic damage including a cracked rear taillight housing and missing wheel center cap. Core mechanical systems are operational, though the vehicle would benefit from diagnosis and reconditioning work before retail placement."
   },
   {
     "id": "24b86ff2-dad1-40d9-af6b-b08c92b0b996",
@@ -2617,7 +2683,8 @@
     "selling_dealership": "Grain Belt Auto",
     "lot": "B-0017",
     "current_bid": null,
-    "bid_count": 0
+    "bid_count": 0,
+    "ai_summary": "This 2019 Hyundai Elantra SEL presents a 2.4 grade condition with 139,724 kilometers, showing notable cosmetic damage including scratches on the rear bumper and driver-side fender that will require refinishing work. Core mechanical systems are operational, though the overall rough condition suggests diagnosis and reconditioning work may be warranted before resale."
   },
   {
     "id": "4aaba9e2-6884-4672-a0f5-be08df00d666",
@@ -2655,7 +2722,8 @@
     "selling_dealership": "Laurentian Auto Group",
     "lot": "B-0018",
     "current_bid": 37500,
-    "bid_count": 8
+    "bid_count": 8,
+    "ai_summary": "This low-mileage 2025 Tesla Model 3 Long Range presents a 4.4-grade vehicle with minimal wear, supported by full service history and pristine paint condition. The clean title and light interior wear aligned with just under 14,000 km indicate a well-cared-for unit requiring no immediate reconditioning."
   },
   {
     "id": "7ac5e28a-8bf8-4063-883c-905cde04508c",
@@ -2698,7 +2766,8 @@
     "selling_dealership": "Mountain View Motors",
     "lot": "B-0019",
     "current_bid": null,
-    "bid_count": 0
+    "bid_count": 0,
+    "ai_summary": "This 2019 Tiguan SE R-Line shows heavy wear at 147,352 km with a grade 2.3 condition reflecting multiple reconditioning needs across exterior, interior, and mechanical systems. Damage includes driver-side fender scratching, AC intermittent operation requiring diagnosis, rear seat upholstery tear, hood paint chips, and a windshield chip, indicating this vehicle will require comprehensive attention before retail resale."
   },
   {
     "id": "5533456e-2b71-445f-a910-f35342c7a2d4",
@@ -2737,7 +2806,8 @@
     "selling_dealership": "Maple Motors",
     "lot": "B-0020",
     "current_bid": null,
-    "bid_count": 0
+    "bid_count": 0,
+    "ai_summary": "This 2022 Volkswagen Jetta SEL presents fair condition with 82,240 kilometers and modest cosmetic wear including faded headlight lenses, minor wheel damage, and a missing center cap. The interior shows typical use-related wear while the vehicle operates normally, requiring only routine aesthetic reconditioning work."
   },
   {
     "id": "0f7fac8d-fdb9-40eb-a9d0-15cbfa942adc",
@@ -2777,7 +2847,8 @@
     "selling_dealership": "Northland Chrysler",
     "lot": "B-0021",
     "current_bid": null,
-    "bid_count": 0
+    "bid_count": 0,
+    "ai_summary": "This 2026 Ford Mustang EcoBoost is in exceptional condition with minimal mileage and a clean title, showing no reported mechanical concerns. The only notable imperfection is a minor scratch on the rear bumper from parking, making this a low-risk acquisition for resale."
   },
   {
     "id": "ac60d7c8-27f7-46a6-a24e-52cbda3938e8",
@@ -2815,7 +2886,8 @@
     "selling_dealership": "Chinook Auto Group",
     "lot": "B-0022",
     "current_bid": 12500,
-    "bid_count": 10
+    "bid_count": 10,
+    "ai_summary": "This 2022 Toyota Camry XSE shows average wear consistent with its mileage, with scuffing and marks visible on interior trim and contact points. The engine and transmission are functioning normally, though the vehicle would benefit from detailing and minor cosmetic reconditioning to present competitively."
   },
   {
     "id": "5fb2eb3d-4f72-49de-8e1a-2eaa5dd2b7fc",
@@ -2852,7 +2924,8 @@
     "selling_dealership": "AutoPark Toronto",
     "lot": "B-0023",
     "current_bid": null,
-    "bid_count": 0
+    "bid_count": 0,
+    "ai_summary": "This 2021 Ram 1500 Rebel with 92,914 km presents a 3.7-grade condition reflecting average wear appropriate for its mileage, with cosmetic imperfections and a small tear in the rear seat upholstery. The vehicle is mechanically sound with a clean title, requiring only minor cosmetic reconditioning."
   },
   {
     "id": "c01f21a9-1adb-43d2-9dd4-ddd328d38fda",
@@ -2890,7 +2963,8 @@
     "selling_dealership": "Harbour City Auto",
     "lot": "B-0024",
     "current_bid": 24000,
-    "bid_count": 3
+    "bid_count": 3,
+    "ai_summary": "This 2023 BMW M340i xDrive shows fair overall condition with moderate mileage, displaying some interior wear including a small tear in the rear seat upholstery and minor exterior blemishes. The vehicle drives well and presents as a reasonable reconditioning candidate with cosmetic and trim work being the primary focus areas."
   },
   {
     "id": "ba5b49ae-212a-48dc-908c-c02d33a82360",
@@ -2930,7 +3004,8 @@
     "selling_dealership": "Foothills Auto Sales",
     "lot": "B-0025",
     "current_bid": null,
-    "bid_count": 0
+    "bid_count": 0,
+    "ai_summary": "This 2023 Ford Explorer Platinum shows moderate wear consistent with previous daily driving at just over 50,000 km, with cosmetic scratches on the driver-side fender, rear bumper, and passenger mirror requiring touch-up work. The vehicle runs and drives without issue, though minor reconditioning of exterior surfaces is recommended before retail placement."
   },
   {
     "id": "f6a1fe2c-c11e-4046-987c-564855e7ea68",
@@ -2966,7 +3041,8 @@
     "selling_dealership": "Maple Motors",
     "lot": "B-0026",
     "current_bid": 29000,
-    "bid_count": 4
+    "bid_count": 4,
+    "ai_summary": "This 2026 Hyundai Santa Fe Calligraphy presents in excellent condition with minimal interior wear and a clean title, supported by its 4.6 grade and near-new mileage of 500 km. Exterior shows only minor cosmetic imperfections typical of a new vehicle, with no reported mechanical concerns or structural damage."
   },
   {
     "id": "62a63e05-93a8-432b-8ad4-06589bd51da5",
@@ -3005,7 +3081,8 @@
     "selling_dealership": "Metropolitain Auto",
     "lot": "B-0027",
     "current_bid": null,
-    "bid_count": 0
+    "bid_count": 0,
+    "ai_summary": "This 2020 Jeep Grand Cherokee Overland shows below-average condition at 124,976 km with visible exterior damage including a rear quarter panel dent and interior wear on the driver seat. The vehicle displays a check engine light related to the catalytic converter, requiring diagnosis and likely reconditioning work before resale."
   },
   {
     "id": "f8224c61-c93e-425b-b1c4-b581172b158c",
@@ -3045,7 +3122,8 @@
     "selling_dealership": "Capital City Auto",
     "lot": "B-0028",
     "current_bid": 11000,
-    "bid_count": 18
+    "bid_count": 18,
+    "ai_summary": "This 2020 Honda Accord LX with 88,981 km presents a 2.9-grade vehicle showing light hail damage on the roof and a rear bumper scratch from parking, requiring cosmetic attention. The AC compressor operates intermittently and warrants diagnosis, though core mechanical systems remain operational and the vehicle is suitable for buyers prepared for reconditioning work."
   },
   {
     "id": "126354f5-84f1-4a83-bcec-a08c2b354b4a",
@@ -3086,7 +3164,8 @@
     "selling_dealership": "King City Auto",
     "lot": "B-0029",
     "current_bid": null,
-    "bid_count": 0
+    "bid_count": 0,
+    "ai_summary": "This 2016 Subaru Crosstrek Limited with 185,213 km presents a grade 2 condition with notable cosmetic deterioration including light hail damage, faded headlight lenses, scratches on the rear bumper, and a windshield chip. A mechanical inspection is recommended to identify any underlying issues that may require reconditioning work."
   },
   {
     "id": "5d6572c9-e1aa-4b02-8c6b-e312757d2624",
@@ -3125,7 +3204,8 @@
     "selling_dealership": "Champlain Motors",
     "lot": "B-0030",
     "current_bid": 19000,
-    "bid_count": 11
+    "bid_count": 11,
+    "ai_summary": "This 2019 Jeep Grand Cherokee Overland with 118,736 km presents average cosmetic wear consistent with its age and mileage, including a cracked front grille that requires replacement. The vehicle is mechanically sound with a clean title and Grade 3 condition rating suitable for wholesale reconditioning."
   },
   {
     "id": "c282aa0f-c138-4ee6-9cad-5ce5187d37d7",
@@ -3168,7 +3248,8 @@
     "selling_dealership": "Parkway Ford",
     "lot": "B-0031",
     "current_bid": null,
-    "bid_count": 0
+    "bid_count": 0,
+    "ai_summary": "This nearly new 2026 BMW 5 Series 530i shows significant cosmetic damage including hail marks on the roof, a cracked taillight housing, and a rear quarter panel dent, with worn brake rotors requiring replacement. The rebuilt title and 2.9 condition grade indicate this vehicle requires reconditioning work, though core mechanical systems remain operational and low mileage provides a solid foundation for a buyer comfortable with repairs."
   },
   {
     "id": "21960a78-393a-4207-b23b-1fa4ae6e37ea",
@@ -3205,7 +3286,8 @@
     "selling_dealership": "Champlain Motors",
     "lot": "B-0032",
     "current_bid": null,
-    "bid_count": 0
+    "bid_count": 0,
+    "ai_summary": "This 2024 Subaru Crosstrek Premium shows average condition with visible wear on high-touch surfaces typical of normal use at 41,106 km. The engine and transmission operate within normal parameters with no reported damage, making it suitable for reconditioning to retail standards."
   },
   {
     "id": "5675434b-47b8-4c36-902d-b9d3a8c8bacb",
@@ -3244,7 +3326,8 @@
     "selling_dealership": "St-Laurent Auto Exchange",
     "lot": "B-0033",
     "current_bid": null,
-    "bid_count": 0
+    "bid_count": 0,
+    "ai_summary": "This 2017 Chevrolet Silverado 1500 RST presents a grade 2 condition with significant cosmetic wear including windshield damage, cracked front grille, and higher mileage at 182,355 km. Mechanical diagnosis is recommended, particularly for the intermittent AC compressor, and general reconditioning work should be anticipated."
   },
   {
     "id": "44a3db7b-7ebb-4a42-b0a8-92996fb3ec42",
@@ -3281,7 +3364,8 @@
     "selling_dealership": "Harbourfront Motors",
     "lot": "B-0034",
     "current_bid": 31000,
-    "bid_count": 16
+    "bid_count": 16,
+    "ai_summary": "This 2023 Mazda CX-5 Preferred presents in excellent condition with 75,342 km on the odometer, featuring a clean interior with minimal wear and only minor exterior imperfections typical of its age. The vehicle carries a clean title and requires no significant reconditioning, making it suitable for most retail buyer profiles."
   },
   {
     "id": "245c51ef-1e4d-46f7-9617-0eaeacc83c54",
@@ -3324,7 +3408,8 @@
     "selling_dealership": "Highway 7 Auto Sales",
     "lot": "B-0035",
     "current_bid": null,
-    "bid_count": 0
+    "bid_count": 0,
+    "ai_summary": "This 2019 Honda Civic Touring shows below-average condition at 183,348 km with multiple cosmetic concerns including a cracked front grille, faded headlight lenses, light hail damage on the roof, and a dent on the driver-side door. The vehicle may require reconditioning work and diagnosis to address noted mechanical or operational issues."
   },
   {
     "id": "2ad9266a-0a7b-4717-a19b-e13fed157927",
@@ -3363,7 +3448,8 @@
     "selling_dealership": "St-Laurent Auto Exchange",
     "lot": "B-0036",
     "current_bid": 29000,
-    "bid_count": 12
+    "bid_count": 12,
+    "ai_summary": "This 2021 Ram 1500 Laramie shows significant wear at 106,924 km with a 2.8 grade reflecting cosmetic and interior deterioration including paint peeling and worn leather seating. Core mechanical systems are operational, though the vehicle will require reconditioning work to address surface damage and aesthetic concerns."
   },
   {
     "id": "8bf6ff33-eb45-4fbc-b37e-d2fe3ed13dd1",
@@ -3401,7 +3487,8 @@
     "selling_dealership": "Mountain View Motors",
     "lot": "B-0037",
     "current_bid": 30000,
-    "bid_count": 6
+    "bid_count": 6,
+    "ai_summary": "This 2026 Ram 1500 Big Horn carries a salvage title and a condition grade of 1.2, reflecting substantial structural or mechanical damage requiring significant reconditioning work. With airbag deployment history and cosmetic deterioration, this vehicle is suitable only for parts harvesting or comprehensive rebuild by qualified technicians."
   },
   {
     "id": "c4491bcf-a310-4f36-b89a-015a32ce7f1d",
@@ -3436,7 +3523,8 @@
     "selling_dealership": "Metropolitain Auto",
     "lot": "B-0038",
     "current_bid": null,
-    "bid_count": 0
+    "bid_count": 0,
+    "ai_summary": "This 2021 Subaru WRX Premium presents in reasonable condition with approximately 79,312 kilometers and typical wear patterns that would benefit from detailing prior to retail sale. No major mechanical concerns were identified, though standard reconditioning work is recommended."
   },
   {
     "id": "56708c56-eb20-4c5f-af2c-ae3f9c3ad8ca",
@@ -3480,7 +3568,8 @@
     "selling_dealership": "Capital City Auto",
     "lot": "B-0039",
     "current_bid": null,
-    "bid_count": 0
+    "bid_count": 0,
+    "ai_summary": "This 2020 GMC Terrain AT4 with 123,987 km carries a rebuilt title and grades 2.1, presenting a rough-condition unit with cosmetic damage including dents on the tailgate and rear quarter panel, missing trim, faded headlight lenses, and curb damage to the front-right wheel. Core mechanical systems are operational, though the vehicle will require cosmetic and detailing reconditioning work suitable for buyers prepared to address multiple repair items."
   },
   {
     "id": "d5eb3d31-91f3-4919-bdcb-227826787250",
@@ -3516,7 +3605,8 @@
     "selling_dealership": "Northern Ridge Motors",
     "lot": "B-0040",
     "current_bid": null,
-    "bid_count": 0
+    "bid_count": 0,
+    "ai_summary": "This 2021 BMW 5 Series M550i presents average condition for its mileage with minor cosmetic imperfections typical of its age and use. The vehicle is mechanically sound with a clean title, making it suitable for reconditioning and resale through standard wholesale channels."
   },
   {
     "id": "82f0a77b-0191-47b9-b21d-7186c912b44c",
@@ -3554,7 +3644,8 @@
     "selling_dealership": "Grand Touring Motors",
     "lot": "B-0041",
     "current_bid": 24000,
-    "bid_count": 15
+    "bid_count": 15,
+    "ai_summary": "This 2022 Toyota Tundra shows moderate wear consistent with a previous daily driver at 77,046 km, with minor rust developing on wheel wells and a dent on the rear quarter panel requiring cosmetic attention. The vehicle runs and drives without reported mechanical issues, though standard inspection and cosmetic touch-ups are recommended prior to retail placement."
   },
   {
     "id": "bfb04c5e-e23f-4426-b02a-3ce67c694590",
@@ -3597,7 +3688,8 @@
     "selling_dealership": "Atlantic Auto Exchange",
     "lot": "B-0042",
     "current_bid": 9500,
-    "bid_count": 16
+    "bid_count": 16,
+    "ai_summary": "This 2019 Volkswagen Jetta SEL carries moderate-high mileage at 157,816 km with a 2.2 grade reflecting significant cosmetic wear including light hail damage, bumper scratches, and mirror scuffing alongside interior seat deterioration. Mechanical reconditioning work is needed, particularly brake rotor replacement, and a thorough diagnosis is recommended before purchase."
   },
   {
     "id": "37a60b36-82bd-4ed9-b361-78a1d06c7d36",
@@ -3641,7 +3733,8 @@
     "selling_dealership": "St-Laurent Auto Exchange",
     "lot": "B-0043",
     "current_bid": null,
-    "bid_count": 0
+    "bid_count": 0,
+    "ai_summary": "This 2018 Honda Pilot Touring carries a salvage title and a 1.8 grade with 110,084 km, indicating major structural and mechanical concerns requiring experienced rebuilder attention. Frame damage to the right front has been previously repaired, brake system reconditioning work is needed, and multiple cosmetic issues including rear quarter panel denting and bumper scratching are present."
   },
   {
     "id": "994ee446-ca13-4aec-9a21-797307742f2c",
@@ -3681,7 +3774,8 @@
     "selling_dealership": "Capital City Auto",
     "lot": "B-0044",
     "current_bid": null,
-    "bid_count": 0
+    "bid_count": 0,
+    "ai_summary": "This 2019 Jeep Grand Cherokee Overland shows below-average condition at 116,611 km with multiple mechanical and cosmetic concerns requiring attention. Notable issues include an intermittent AC compressor needing diagnosis, an active check engine light related to the catalytic converter, a cracked front grille, and a scratched liftgate that warrant reconditioning work."
   },
   {
     "id": "a2a483de-eb38-496f-b3ec-f3bf9270b03f",
@@ -3716,7 +3810,8 @@
     "selling_dealership": "Rive-Sud Motors",
     "lot": "B-0045",
     "current_bid": null,
-    "bid_count": 0
+    "bid_count": 0,
+    "ai_summary": "This 2025 Ford F-150 Lariat presents above-average condition with low mileage and no reported damage, featuring recently serviced mechanical systems and new tires. All major components are functioning properly, making this a solid acquisition for retail or quick wholesale placement."
   },
   {
     "id": "283bcc43-ba86-4f2e-8b35-eb95e2c137f2",
@@ -3754,7 +3849,8 @@
     "selling_dealership": "Fraser Valley Auto Group",
     "lot": "B-0046",
     "current_bid": null,
-    "bid_count": 0
+    "bid_count": 0,
+    "ai_summary": "This 2021 Nissan Pathfinder S shows average wear consistent with its mileage, with cosmetic marks on frequently touched interior surfaces, though the engine and transmission operate normally. The clean title and mechanically sound status make this a straightforward wholesale opportunity with minimal reconditioning needs beyond aesthetic detailing."
   },
   {
     "id": "9f1bfd72-71f3-4857-9e2c-9b9fe4ccdbd9",
@@ -3794,7 +3890,8 @@
     "selling_dealership": "Champlain Motors",
     "lot": "B-0047",
     "current_bid": 10500,
-    "bid_count": 7
+    "bid_count": 7,
+    "ai_summary": "This 2018 Nissan Pathfinder shows a 2.9 grade with cosmetic damage including a rear mud flap, driver-side door dent, and liftgate scratch, requiring body work and finish refinishing. Core mechanical systems are operational, though diagnosis is recommended to assess any underlying wear at 93,536 km before retail preparation."
   },
   {
     "id": "9f33bda8-c648-4384-8771-462d94d3b649",
@@ -3835,7 +3932,8 @@
     "selling_dealership": "Stampede Auto Exchange",
     "lot": "B-0048",
     "current_bid": 23000,
-    "bid_count": 5
+    "bid_count": 5,
+    "ai_summary": "This 2020 Honda Pilot Touring shows moderate wear consistent with daily-driver usage at 122,771 km, with cosmetic concerns including a rear quarter panel dent, minor wheel well rust, and door sill scuff marks. The vehicle runs and drives without mechanical issues, though cosmetic touch-ups and rust assessment are recommended before retail placement."
   },
   {
     "id": "c4338fb0-b5a0-43aa-9eee-3be722a8aed4",
@@ -3879,7 +3977,8 @@
     "selling_dealership": "Northland Chrysler",
     "lot": "B-0049",
     "current_bid": 3500,
-    "bid_count": 14
+    "bid_count": 14,
+    "ai_summary": "This 2018 Honda CR-V Touring with salvage title shows below-average condition at 178,149 km, featuring visible exterior damage including dents on the tailgate and driver-side door, scratching along the fender, and peeling paint on the roof rack. The vehicle has an active check engine light related to the catalytic converter system and will require diagnosis and reconditioning work to address mechanical concerns before retail resale."
   },
   {
     "id": "43a5a06c-ea82-408c-8799-b6754f8b6bdc",
@@ -3921,7 +4020,8 @@
     "selling_dealership": "Stampede Auto Exchange",
     "lot": "B-0050",
     "current_bid": null,
-    "bid_count": 0
+    "bid_count": 0,
+    "ai_summary": "This 2018 Kia Forte LXS with 131,590 km carries a 2.6 condition grade and shows significant cosmetic wear including faded headlight lenses, a cracked rear taillight housing, and minor front bumper scratches. Mechanical inspection is recommended prior to purchase to identify any reconditioning work needed."
   },
   {
     "id": "a001c6a5-a43d-4e34-a2e9-ca7b63a97a77",
@@ -3961,7 +4061,8 @@
     "selling_dealership": "Durham Auto Exchange",
     "lot": "C-0001",
     "current_bid": null,
-    "bid_count": 0
+    "bid_count": 0,
+    "ai_summary": "This 2025 GMC Sierra 1500 AT4 presents fair overall condition with low mileage, showing minor interior wear including a small tear in the rear seat upholstery and a passenger-side windshield chip. The vehicle drives well mechanically, though the cosmetic issues and interior wear suggest modest reconditioning work would be appropriate for retail preparation."
   },
   {
     "id": "34d67e45-eaf1-4470-8572-4617d9b5ee98",
@@ -4006,7 +4107,8 @@
     "selling_dealership": "Golden Horseshoe Motors",
     "lot": "C-0002",
     "current_bid": null,
-    "bid_count": 0
+    "bid_count": 0,
+    "ai_summary": "This 2016 Mazda3 GT has incurred significant incident damage with high mileage at 273,340 km, including frame damage to the right front that has been repaired and extensive water intrusion affecting the electrical system. Professional frame inspection and comprehensive reconditioning work addressing flood-related electrical issues are essential before this vehicle can be safely deployed."
   },
   {
     "id": "89365990-e2fd-43da-a5b3-0bb158fd2535",
@@ -4048,7 +4150,8 @@
     "selling_dealership": "Chinook Auto Group",
     "lot": "C-0003",
     "current_bid": null,
-    "bid_count": 0
+    "bid_count": 0,
+    "ai_summary": "This 2016 Mazda3 Turbo with 174,987 km shows rough cosmetic wear including a dented driver-side door, cracked front grille, wheel curb rash, and missing trim pieces, alongside a check engine light related to emissions that requires diagnosis. Core mechanical systems are operational, but the vehicle is suitable only for buyers prepared to undertake reconditioning work on both appearance and emissions components."
   },
   {
     "id": "a6bf9a0b-05dd-4112-bedc-6b651acc9748",
@@ -4087,7 +4190,8 @@
     "selling_dealership": "Maple Motors",
     "lot": "C-0004",
     "current_bid": null,
-    "bid_count": 0
+    "bid_count": 0,
+    "ai_summary": "This 2017 Volkswagen Golf GTI SE shows significant cosmetic wear with a 2.3 grade at 87,189 km, including a damaged rear left mud flap and minor front bumper scratches. Mechanical inspection is recommended to assess underlying condition before proceeding."
   },
   {
     "id": "37a5454a-8029-44cd-8315-5d8d0d2e13e9",
@@ -4122,7 +4226,8 @@
     "selling_dealership": "Harbour City Auto",
     "lot": "C-0005",
     "current_bid": null,
-    "bid_count": 0
+    "bid_count": 0,
+    "ai_summary": "This 2024 BMW 540i xDrive presents as a very clean example with minimal cosmetic wear and fully functional electronics throughout. At under 31,000 kilometers with a 4.3 grade, the vehicle requires no mechanical reconditioning and is ready for retail resale."
   },
   {
     "id": "18c8ded5-29d2-497a-b4a0-f410b9fd4ec0",
@@ -4160,7 +4265,8 @@
     "selling_dealership": "Westcoast Auto Sales",
     "lot": "C-0006",
     "current_bid": 18500,
-    "bid_count": 4
+    "bid_count": 4,
+    "ai_summary": "This 2023 Kia Sportage LX with 47,187 km shows a 3.7-grade condition with average wear typical for its age, including cosmetic imperfections such as a cracked front grille and faded headlight lenses. The vehicle is mechanically sound with a clean title, requiring only cosmetic reconditioning work to restore appearance."
   },
   {
     "id": "a4fb42cd-6c70-4c1f-8f1a-5d85469aa2d7",
@@ -4201,7 +4307,8 @@
     "selling_dealership": "Harbourfront Motors",
     "lot": "C-0007",
     "current_bid": 77000,
-    "bid_count": 14
+    "bid_count": 14,
+    "ai_summary": "This 2022 Tesla Model S Long Range shows average condition with 63,473 km and typical cosmetic wear including paint chips on the hood, a damaged rear mud flap, and a windshield chip on the passenger side. The powertrain operates within normal parameters, though the vehicle would benefit from addressing its exterior cosmetic concerns before retail placement."
   },
   {
     "id": "57d81073-1244-415d-bd62-da82d033980b",
@@ -4243,7 +4350,8 @@
     "selling_dealership": "Capital City Auto",
     "lot": "C-0008",
     "current_bid": 45500,
-    "bid_count": 7
+    "bid_count": 7,
+    "ai_summary": "This 2021 Tesla Model S Long Range shows moderate wear at 65,323 km with a grade of 2.9, displaying cosmetic damage including a rear quarter panel dent, rear bumper scratch, and minor wheel well rust requiring attention. Core systems remain operational, though diagnosis is recommended for the active check engine light and worn brake rotors warrant replacement during reconditioning."
   },
   {
     "id": "ff3dcdc5-c992-4a7b-ad28-d6f15f842625",
@@ -4281,7 +4389,8 @@
     "selling_dealership": "Capital City Auto",
     "lot": "C-0009",
     "current_bid": null,
-    "bid_count": 0
+    "bid_count": 0,
+    "ai_summary": "This 2022 Hyundai Ioniq 5 Limited with 68,014 km presents as mechanically sound with average wear appropriate to its age and mileage. A scratch on the rear bumper and minor cosmetic imperfections represent the primary concerns requiring attention."
   },
   {
     "id": "bd1035eb-00ac-4797-9ca9-40a785457d0e",
@@ -4320,7 +4429,8 @@
     "selling_dealership": "Maple Motors",
     "lot": "C-0010",
     "current_bid": null,
-    "bid_count": 0
+    "bid_count": 0,
+    "ai_summary": "This nearly-new 2026 Nissan Rogue Platinum shows minimal wear with just 500 kilometers on the odometer and a clean title. A minor scratch on the driver-side fender and light cosmetic wear are the only notable issues, while all systems and features operate as intended."
   },
   {
     "id": "0941fb81-edcb-4cf4-bcae-6a2141847417",
@@ -4362,7 +4472,8 @@
     "selling_dealership": "Harbour City Auto",
     "lot": "C-0011",
     "current_bid": null,
-    "bid_count": 0
+    "bid_count": 0,
+    "ai_summary": "This 2016 Subaru Crosstrek shows heavy wear at 128,883 km with a 2.5 condition grade reflecting multiple reconditioning needs. Exterior concerns include faded headlight lenses, a cracked front grille, and damaged rear left mud flap, with diagnosis recommended for mechanical systems."
   },
   {
     "id": "ec259597-3a1a-426b-9032-b503f8ffec81",
@@ -4400,7 +4511,8 @@
     "selling_dealership": "AutoPark Toronto",
     "lot": "C-0012",
     "current_bid": 9000,
-    "bid_count": 13
+    "bid_count": 13,
+    "ai_summary": "This 2017 Kia Sportage SX Prestige shows significant wear at 166,673 km with a condition grade of 1.9, indicating substantial structural or mechanical compromise requiring major reconditioning work. The vehicle presents transmission concerns and interior damage; parts harvesting or complete rebuild is the appropriate assessment path for acquisition."
   },
   {
     "id": "da6394b2-87c3-4418-b29a-9d1a36bc0a0a",
@@ -4445,7 +4557,8 @@
     "selling_dealership": "Laurentian Auto Group",
     "lot": "C-0013",
     "current_bid": 9000,
-    "bid_count": 11
+    "bid_count": 11,
+    "ai_summary": "This 2020 BMW X5 xDrive40i with salvage title and grade 1.4 condition has sustained substantial structural and flood damage, including deployed airbags, frame repair history, and active electrical concerns requiring professional diagnosis. The vehicle is recommended for parts harvesting or complete rebuild, with multiple secondary damage items including paint degradation and missing trim components."
   },
   {
     "id": "f3e420ae-7673-4040-b4ef-2dbd76771e85",
@@ -4480,7 +4593,8 @@
     "selling_dealership": "Northern Ridge Motors",
     "lot": "C-0014",
     "current_bid": 25000,
-    "bid_count": 17
+    "bid_count": 17,
+    "ai_summary": "This 2020 Honda Pilot Touring shows reasonable condition at 89,516 km with typical wear expected for its age and mileage. The vehicle is mechanically sound and would benefit primarily from detailing to enhance presentation."
   },
   {
     "id": "3ee250bd-3664-47f6-b67d-8edcdead179e",
@@ -4518,7 +4632,8 @@
     "selling_dealership": "Metropolitain Auto",
     "lot": "C-0015",
     "current_bid": 41500,
-    "bid_count": 16
+    "bid_count": 16,
+    "ai_summary": "This nearly-new 2026 Mustang GT Premium shows exceptional condition with minimal mileage and a clean single-owner history maintained in garage storage. No mechanical concerns or damage are noted, making this a low-risk acquisition for retail or wholesale distribution."
   },
   {
     "id": "d0a7a1f6-5b75-4230-a2bd-551e73ef2960",
@@ -4556,7 +4671,8 @@
     "selling_dealership": "Golden Horseshoe Motors",
     "lot": "C-0016",
     "current_bid": null,
-    "bid_count": 0
+    "bid_count": 0,
+    "ai_summary": "This 2023 Nissan Altima S presents as a moderate-wear daily driver with 45,251 km showing typical use patterns and a 3.5 condition grade. The vehicle runs and drives without mechanical concerns, though cosmetic reconditioning is recommended for the tailgate dent and passenger-side mirror scrape."
   },
   {
     "id": "373a8434-183d-4373-8ccc-285e6d4f07ea",
@@ -4600,7 +4716,8 @@
     "selling_dealership": "Northland Chrysler",
     "lot": "C-0017",
     "current_bid": null,
-    "bid_count": 0
+    "bid_count": 0,
+    "ai_summary": "This 2021 Ford Mustang GT carries a 2.8 condition grade with moderate mileage at 58,013 km, reflecting heavy use and a rebuilt title status. Multiple cosmetic concerns including paint peeling on the roof rack, scuff marks on door sill plates, rock chips on the hood, and minor denting require attention, along with diagnosis recommended for mechanical systems."
   },
   {
     "id": "2caa31a5-7fac-456b-940e-27a6203363c5",
@@ -4640,7 +4757,8 @@
     "selling_dealership": "Metropolitain Auto",
     "lot": "C-0018",
     "current_bid": 12500,
-    "bid_count": 5
+    "bid_count": 5,
+    "ai_summary": "This 2016 Toyota Highlander with 144,833 km shows rough condition (grade 2.6) with cosmetic damage including a rear mud flap issue, driver-side door dent, and roof rack paint peeling. Core mechanical systems are operational, though the vehicle would benefit from cosmetic reconditioning work to address body and paint concerns."
   },
   {
     "id": "7b2c2fbe-ea78-4cb7-9088-0382b3ec6306",
@@ -4677,7 +4795,8 @@
     "selling_dealership": "King City Auto",
     "lot": "C-0019",
     "current_bid": null,
-    "bid_count": 0
+    "bid_count": 0,
+    "ai_summary": "This 2022 GMC Sierra 1500 AT4 is in average condition with moderate mileage and shows typical wear on frequently used interior surfaces. Engine and transmission are functioning normally with no reported structural or mechanical damage requiring immediate diagnosis."
   },
   {
     "id": "937cbe50-9dba-4597-90b6-b1ec429f3421",
@@ -4712,7 +4831,8 @@
     "selling_dealership": "Laurentian Auto Group",
     "lot": "C-0020",
     "current_bid": 29000,
-    "bid_count": 12
+    "bid_count": 12,
+    "ai_summary": "This virtually new 2026 Mazda CX-5 Select shows 500 km with a clean title and exceptional condition throughout, having been garage kept by a single owner with no reported mechanical concerns. The 4.3-grade rating reflects a near-retail vehicle ready for immediate resale with minimal reconditioning required."
   },
   {
     "id": "c6bdd0ba-b947-4095-b0c7-abd367d39f7f",
@@ -4751,7 +4871,8 @@
     "selling_dealership": "Foothills Auto Sales",
     "lot": "C-0021",
     "current_bid": null,
-    "bid_count": 0
+    "bid_count": 0,
+    "ai_summary": "This 2018 Kia Sportage with 125,082 km presents below-average condition with visible exterior wear including a liftgate scratch and door sill scuffing. The vehicle requires diagnosis and reconditioning work on the AC system, along with attention to noted maintenance concerns before retail deployment."
   },
   {
     "id": "4ca82b47-b4a5-485f-aa2f-dfdf9a534e27",
@@ -4791,7 +4912,8 @@
     "selling_dealership": "Metropolitain Auto",
     "lot": "C-0022",
     "current_bid": 7000,
-    "bid_count": 1
+    "bid_count": 1,
+    "ai_summary": "This 2019 Mazda3 Turbo with 165,992 kilometers carries a rebuilt title and a below-average condition grade reflecting significant cosmetic wear including a dented rear quarter panel and peeling paint on the roof rack. Mechanical inspection and diagnosis are recommended prior to purchase to assess any underlying reconditioning work needed."
   },
   {
     "id": "3c494f21-a296-4fc0-aad3-a6d4b5ddb1eb",
@@ -4832,7 +4954,8 @@
     "selling_dealership": "Laurentian Auto Group",
     "lot": "C-0023",
     "current_bid": null,
-    "bid_count": 0
+    "bid_count": 0,
+    "ai_summary": "This 2023 Mazda CX-5 Select carries a salvage title with a 1.4 condition grade and moderate mileage, featuring substantial damage including water intrusion in the cargo area and an active engine diagnostic code requiring diagnosis. The vehicle exhibits cosmetic wear with faded headlight lenses and minor bumper scratches, and is recommended for parts harvesting or significant rebuild work only."
   },
   {
     "id": "96fbfcaa-0b4a-465f-8f9f-60472268f252",
@@ -4870,7 +4993,8 @@
     "selling_dealership": "Maple Motors",
     "lot": "C-0024",
     "current_bid": 30000,
-    "bid_count": 10
+    "bid_count": 10,
+    "ai_summary": "This 2022 BMW 530i presents in reasonable condition with moderate mileage and typical wear patterns consistent with its age and use. No significant mechanical issues or structural damage were noted, though the vehicle would benefit from cosmetic detailing before retail presentation."
   },
   {
     "id": "a599f402-81d4-4ae0-aa23-88abfbda11a4",
@@ -4907,7 +5031,8 @@
     "selling_dealership": "Laurentian Auto Group",
     "lot": "C-0025",
     "current_bid": 38500,
-    "bid_count": 1
+    "bid_count": 1,
+    "ai_summary": "This 2021 BMW X3 M40i presents in reasonable condition with moderate mileage, showing expected wear throughout the interior and exterior that would benefit from professional detailing. No major mechanical concerns were identified, though routine reconditioning work should be anticipated as part of wholesale preparation."
   },
   {
     "id": "f904c6c5-2946-483c-871c-0537ee423808",
@@ -4948,7 +5073,8 @@
     "selling_dealership": "Westcoast Auto Sales",
     "lot": "C-0026",
     "current_bid": 19000,
-    "bid_count": 15
+    "bid_count": 15,
+    "ai_summary": "This 2018 Kia Telluride LX presents below-average condition with approximately 123,000 km on the odometer, featuring visible exterior damage including tailgate dent, roof hail damage, and cracked front grille. The vehicle carries a clean title but may require reconditioning work to address noted mechanical and cosmetic concerns."
   },
   {
     "id": "a3e6bf55-d5b3-47eb-9855-273501d3eee5",
@@ -4993,7 +5119,8 @@
     "selling_dealership": "Keystone Auto Group",
     "lot": "C-0027",
     "current_bid": 8500,
-    "bid_count": 12
+    "bid_count": 12,
+    "ai_summary": "This 2022 GMC Terrain AT4 with 51,941 km carries salvage title and a 1.5 grade, indicating major structural and mechanical compromise unsuitable for retail resale. Frame damage has been repaired on the right front, airbags have been replaced, flood damage has created ongoing electrical concerns, and cosmetic issues including rust and upholstery damage are present—reconditioning work and comprehensive diagnosis are required before roadworthiness can be established."
   },
   {
     "id": "6bb25006-b355-4442-b6ca-2e6683bd8b9b",
@@ -5030,7 +5157,8 @@
     "selling_dealership": "Atlantic Auto Exchange",
     "lot": "C-0028",
     "current_bid": null,
-    "bid_count": 0
+    "bid_count": 0,
+    "ai_summary": "This 2021 Pathfinder SL shows moderate wear consistent with daily driver use, with cosmetic issues including a liftgate scratch that would benefit from touch-up work. The vehicle runs and drives without issue at 61,912 km, though general reconditioning for appearance would be recommended before retail placement."
   },
   {
     "id": "e793b96e-5c88-479a-a723-b42861a3dcf2",
@@ -5067,7 +5195,8 @@
     "selling_dealership": "Pacific Gateway Motors",
     "lot": "C-0029",
     "current_bid": 23500,
-    "bid_count": 15
+    "bid_count": 15,
+    "ai_summary": "This 2026 GMC Terrain SLT is in excellent condition with minimal mileage, featuring a clean interior and exterior appearance with only minor cosmetic wear expected for its age. The vehicle carries a clean title and requires no significant reconditioning work."
   },
   {
     "id": "aad545b5-eab9-4414-990e-4b868c231b20",
@@ -5106,7 +5235,8 @@
     "selling_dealership": "AutoPark Toronto",
     "lot": "C-0030",
     "current_bid": 10000,
-    "bid_count": 14
+    "bid_count": 14,
+    "ai_summary": "This 2018 Kia Sportage SX Prestige shows average condition at 123,253 km with visible wear on interior high-touch surfaces and light hail damage across the roof. Engine and transmission operate within normal parameters, though cosmetic reconditioning work would improve presentation for resale."
   },
   {
     "id": "f694e8f2-c036-4d0d-aae5-0f0cf80daf38",
@@ -5145,7 +5275,8 @@
     "selling_dealership": "Champlain Motors",
     "lot": "C-0031",
     "current_bid": null,
-    "bid_count": 0
+    "bid_count": 0,
+    "ai_summary": "This 2024 Honda CR-V EX-L presents as mechanically sound with average cosmetic wear appropriate for its mileage, carrying a condition grade of 3.7. Minor curb rash on the front-right wheel and general cosmetic imperfections are the primary reconditioning considerations for this clean-title vehicle."
   },
   {
     "id": "75cd6795-baa7-46a8-8e7f-4b539878fac4",
@@ -5180,7 +5311,8 @@
     "selling_dealership": "Prairie Sun Motors",
     "lot": "C-0032",
     "current_bid": 25500,
-    "bid_count": 14
+    "bid_count": 14,
+    "ai_summary": "This 2022 Jeep Wrangler Sahara shows average condition with moderate wear on high-touch interior surfaces, typical for its mileage of 47,213 km. Engine and transmission operate normally with no reported damage, requiring only routine reconditioning work to bring it to retail standards."
   },
   {
     "id": "e861ba56-2b8d-44f7-b02b-20194f429e51",
@@ -5217,7 +5349,8 @@
     "selling_dealership": "Northern Ridge Motors",
     "lot": "C-0033",
     "current_bid": null,
-    "bid_count": 0
+    "bid_count": 0,
+    "ai_summary": "This 2025 Grand Cherokee Summit shows minimal wear for its low mileage with a 4.4 condition grade and presents as very clean throughout the interior and exterior. All systems and electronics are fully functional with only minor cosmetic wear noted and no structural damage."
   },
   {
     "id": "5f57472f-bbb4-400d-8eb5-34da661c19dc",
@@ -5259,7 +5392,8 @@
     "selling_dealership": "Golden Horseshoe Motors",
     "lot": "C-0034",
     "current_bid": null,
-    "bid_count": 0
+    "bid_count": 0,
+    "ai_summary": "This 2019 Ram 1500 TRX shows a 2.5 condition grade with 171,333 km on the odometer and exhibits multiple cosmetic concerns including upholstery damage, hood paint imperfections, and fender scratching. Core mechanical systems remain operational, though the vehicle requires reconditioning work to address its rough overall presentation and is best suited for buyers prepared to undertake repairs."
   },
   {
     "id": "7ced750c-a9e6-4003-a974-658e4c151c68",
@@ -5298,7 +5432,8 @@
     "selling_dealership": "St-Laurent Auto Exchange",
     "lot": "C-0035",
     "current_bid": 15500,
-    "bid_count": 7
+    "bid_count": 7,
+    "ai_summary": "This 2017 Ford F-150 XLT with 144,591 km presents a below-average condition profile with multiple cosmetic defects including scratches on the front bumper, a damaged rear left mud flap, and a cracked rear taillight housing. Mechanical inspection and diagnosis are recommended prior to purchase to assess any underlying concerns requiring reconditioning work."
   },
   {
     "id": "cefdecd3-0925-4654-9b02-7fb6612377bd",
@@ -5335,7 +5470,8 @@
     "selling_dealership": "Harbour City Auto",
     "lot": "C-0036",
     "current_bid": null,
-    "bid_count": 0
+    "bid_count": 0,
+    "ai_summary": "This low-mileage 2025 GMC Terrain AT4 presents in exceptional condition with single-owner garage storage and no reported mechanical concerns. At 17,691 kilometers, the vehicle displays minimal wear consistent with its grade of 4.1 and comes with a clean title."
   },
   {
     "id": "358a8fab-527f-4717-baa7-e382bbff6932",
@@ -5372,7 +5508,8 @@
     "selling_dealership": "Champlain Motors",
     "lot": "C-0037",
     "current_bid": 28500,
-    "bid_count": 7
+    "bid_count": 7,
+    "ai_summary": "This 2024 Honda Pilot Sport is in above-average condition with low mileage and fully functional mechanical systems, featuring recently replaced tires and recent service work. Minor cosmetic wear is limited to the driver seat leather bolster, while the clean title and well-maintained mechanical state indicate a low-risk acquisition for reconditioning and resale."
   },
   {
     "id": "22272c75-4fd5-4a13-8859-29432f6ec45d",
@@ -5412,7 +5549,8 @@
     "selling_dealership": "Capital City Auto",
     "lot": "C-0038",
     "current_bid": null,
-    "bid_count": 0
+    "bid_count": 0,
+    "ai_summary": "This 2017 Chevrolet Equinox LT shows a 2.3 grade with 81,661 km, featuring rough overall condition with cosmetic damage including a passenger-side mirror scrape and interior/exterior wear consistent with its grade. Core mechanical systems are operational, though worn brake rotors and other reconditioning work should be factored into buyer assessment."
   },
   {
     "id": "8246d7a9-efbc-4e87-9b80-121b9a1b28b6",
@@ -5449,7 +5587,8 @@
     "selling_dealership": "Highway 7 Auto Sales",
     "lot": "C-0039",
     "current_bid": null,
-    "bid_count": 0
+    "bid_count": 0,
+    "ai_summary": "This 2020 Nissan Rogue Platinum with 162,089 km carries a 3.1 condition grade reflecting typical wear consistent with its mileage and age, with some cosmetic imperfections visible throughout. The vehicle is mechanically sound with no reported damage, presenting a solid foundation for reconditioning and resale."
   },
   {
     "id": "01487b58-5187-4f6f-ad28-2f54696f5a44",
@@ -5484,7 +5623,8 @@
     "selling_dealership": "Laurentian Auto Group",
     "lot": "C-0040",
     "current_bid": 20000,
-    "bid_count": 1
+    "bid_count": 1,
+    "ai_summary": "This 2018 Ram 1500 Rebel with 138,441 km presents a Grade 3 condition with typical wear patterns consistent with its mileage and age, including minor cosmetic imperfections throughout. The vehicle is mechanically sound with no reported damage, making it suitable for standard reconditioning and resale."
   },
   {
     "id": "b741b684-7033-402e-ad6b-a797e337a6c4",
@@ -5524,7 +5664,8 @@
     "selling_dealership": "AutoPark Toronto",
     "lot": "C-0041",
     "current_bid": null,
-    "bid_count": 0
+    "bid_count": 0,
+    "ai_summary": "This 2023 BMW X3 xDrive30i presents average wear consistent with its mileage, showing minor cosmetic imperfections including a small dent on the driver-side door and curb rash on the front-right wheel. The vehicle is mechanically sound with no reported operational concerns, making it a straightforward reconditioning candidate focused on exterior detail work."
   },
   {
     "id": "c77b4548-320b-4924-a097-f68052fdc454",
@@ -5559,7 +5700,8 @@
     "selling_dealership": "Island Auto Exchange",
     "lot": "C-0042",
     "current_bid": null,
-    "bid_count": 0
+    "bid_count": 0,
+    "ai_summary": "This 2024 Kia Forte GT-Line presents average overall condition with approximately 27,600 kilometers on the odometer and visible wear consistent with normal use on frequently touched interior surfaces. Engine and transmission operate within normal parameters with no reported damage, making this unit suitable for retail reconditioning."
   },
   {
     "id": "260f39b0-b354-4acd-a60c-f75df40922d9",
@@ -5599,7 +5741,8 @@
     "selling_dealership": "King City Auto",
     "lot": "C-0043",
     "current_bid": 25000,
-    "bid_count": 6
+    "bid_count": 6,
+    "ai_summary": "This 2020 Tesla Model Y Performance shows reasonable condition for its mileage with typical cosmetic wear including scuff marks on door sill plates and minor scratches on the front bumper and passenger mirror. No major mechanical concerns were identified, though the vehicle would benefit from detailing and professional assessment of the minor exterior damage."
   },
   {
     "id": "c35f7485-7a2b-41d1-90ff-54994129e4ee",
@@ -5640,7 +5783,8 @@
     "selling_dealership": "King City Auto",
     "lot": "C-0044",
     "current_bid": null,
-    "bid_count": 0
+    "bid_count": 0,
+    "ai_summary": "This 2019 Ram 1500 Big Horn shows heavy wear with a 2.7 condition grade and 70,843 km of use, featuring paint peeling on the roof rack, a driver-side fender scratch, damaged rear left mud flap, and scuff marks on door sill plates. Several reconditioning repairs are recommended, and diagnosis is advised to assess any underlying mechanical concerns before retail placement."
   },
   {
     "id": "597e4ff0-bff1-4a70-b5c6-b774c74e9046",
@@ -5677,7 +5821,8 @@
     "selling_dealership": "Northland Chrysler",
     "lot": "C-0045",
     "current_bid": null,
-    "bid_count": 0
+    "bid_count": 0,
+    "ai_summary": "This 2025 Jeep Wrangler Sahara presents excellent condition with minimal wear throughout the interior and only minor cosmetic imperfections on the exterior, supported by a 4.1 grade and low mileage of 13,120 km. The clean title and well-maintained appearance suggest this vehicle requires minimal reconditioning work and is ready for retail placement."
   },
   {
     "id": "893f2048-6326-465f-bfc8-bcc847df5185",
@@ -5719,7 +5864,8 @@
     "selling_dealership": "Parkway Ford",
     "lot": "C-0046",
     "current_bid": null,
-    "bid_count": 0
+    "bid_count": 0,
+    "ai_summary": "This 2017 VW Golf GTI Autobahn with 139,457 km carries a 2.1 condition grade reflecting significant wear across multiple areas including body dents, cracked taillight housing, and minor rust development. A diagnostic inspection is recommended given the active check engine light related to emissions components and overall mechanical reconditioning work likely needed."
   },
   {
     "id": "f06f0040-92e3-4bd6-8ffa-f407d43be14f",
@@ -5760,7 +5906,8 @@
     "selling_dealership": "Northland Chrysler",
     "lot": "C-0047",
     "current_bid": null,
-    "bid_count": 0
+    "bid_count": 0,
+    "ai_summary": "This 2021 Ram 1500 Limited shows average wear consistent with its mileage and demonstrates solid mechanical condition overall. Minor cosmetic issues include a cracked rear taillight housing and light front bumper scratches that represent typical reconditioning work."
   },
   {
     "id": "1502690f-c538-4083-b174-d50de78a936f",
@@ -5799,7 +5946,8 @@
     "selling_dealership": "Northland Chrysler",
     "lot": "C-0048",
     "current_bid": null,
-    "bid_count": 0
+    "bid_count": 0,
+    "ai_summary": "This 2023 Kia Telluride SX shows reasonable condition at 66,499 km with cosmetic wear consistent with its mileage and age. A small tear in the rear seat upholstery and general detailing needs are the primary concerns, though no major mechanical issues have been identified."
   },
   {
     "id": "1989bd9d-50e2-4132-a723-e9a733464172",
@@ -5837,7 +5985,8 @@
     "selling_dealership": "Northern Ridge Motors",
     "lot": "C-0049",
     "current_bid": null,
-    "bid_count": 0
+    "bid_count": 0,
+    "ai_summary": "This 2021 Ford Explorer ST shows reasonable condition with 43,651 km and typical wear consistent with its age and mileage. Minor cosmetic issues including faded headlight lenses and a liftgate scratch are present, though no major mechanical concerns have been identified and the vehicle would benefit from detailing."
   },
   {
     "id": "02930ad7-295f-4bff-811b-411c07b2f4b2",
@@ -5879,7 +6028,8 @@
     "selling_dealership": "Westcoast Auto Sales",
     "lot": "C-0050",
     "current_bid": null,
-    "bid_count": 0
+    "bid_count": 0,
+    "ai_summary": "This 2016 Ram 1500 Tradesman presents below-average condition with 182,102 kilometers on the odometer, featuring visible cosmetic damage including a scratched rear bumper and missing wheel center cap alongside worn brake components. Mechanical reconditioning work is needed to address brake system wear and address the diagnostic code present, requiring professional evaluation before deployment."
   },
   {
     "id": "963400ae-d8f4-4305-a6c9-31a4a09ba1bf",
@@ -5916,7 +6066,8 @@
     "selling_dealership": "AutoPark Toronto",
     "lot": "D-0001",
     "current_bid": 23000,
-    "bid_count": 13
+    "bid_count": 13,
+    "ai_summary": "This low-mileage Bronco Badlands presents in very clean condition with minimal cosmetic wear and fully functional electronics throughout. At 4.3 grade with only 500 km on the odometer, the vehicle shows excellent overall condition suitable for immediate retail placement."
   },
   {
     "id": "b0ff0755-a03b-4a73-b529-647a156c0293",
@@ -5953,7 +6104,8 @@
     "selling_dealership": "Champlain Motors",
     "lot": "D-0002",
     "current_bid": 32000,
-    "bid_count": 7
+    "bid_count": 7,
+    "ai_summary": "This 2025 Tiguan S presents above-average condition with minimal mileage and recently completed service including new tires, with all mechanical systems functioning properly. A scratch on the driver-side fender represents the only notable cosmetic concern and requires minor body reconditioning."
   },
   {
     "id": "ef70da5b-b50c-4d38-afa5-c9483ce65fd9",
@@ -5989,7 +6141,8 @@
     "selling_dealership": "Atlantic Auto Exchange",
     "lot": "D-0003",
     "current_bid": null,
-    "bid_count": 0
+    "bid_count": 0,
+    "ai_summary": "This near-new 2026 Tacoma SR presents exceptional condition with minimal mileage and a clean title, showing light interior use and well-preserved paint throughout. No significant damage noted; the vehicle appears well-maintained with documented service history, requiring no major reconditioning work."
   },
   {
     "id": "54361815-636a-4ff4-a985-bef3fddddef8",
@@ -6028,7 +6181,8 @@
     "selling_dealership": "Parkway Ford",
     "lot": "D-0004",
     "current_bid": null,
-    "bid_count": 0
+    "bid_count": 0,
+    "ai_summary": "This near-new 2026 Kia Sportage X-Pro with minimal mileage presents in excellent condition, featuring a clean interior with negligible wear and a clean title. Exterior damage is limited to a minor scrape on the passenger-side mirror, with only typical light cosmetic imperfections befitting its age."
   },
   {
     "id": "3ea2ab4f-4da6-4320-bd9d-21b0855be01a",
@@ -6063,7 +6217,8 @@
     "selling_dealership": "Westcoast Auto Sales",
     "lot": "D-0005",
     "current_bid": null,
-    "bid_count": 0
+    "bid_count": 0,
+    "ai_summary": "This 2024 GMC Terrain Denali presents above-average condition with minimal mileage and recently replaced tires, supported by current service records and no reported damage. All mechanical systems are operating properly, making this a low-risk acquisition with straightforward reconditioning opportunities if needed."
   },
   {
     "id": "221c6186-84bf-4e9e-9c79-80b5ac7ffd0e",
@@ -6100,7 +6255,8 @@
     "selling_dealership": "Westcoast Auto Sales",
     "lot": "D-0006",
     "current_bid": 20000,
-    "bid_count": 11
+    "bid_count": 11,
+    "ai_summary": "This 2022 Ford Mustang EcoBoost presents in excellent condition with minimal interior wear and only minor exterior imperfections befitting its mileage of 57,826 km. The vehicle carries a clean title and Grade 4 rating, indicating strong overall quality with no reported damage requiring reconditioning work."
   },
   {
     "id": "8108f14a-c35b-4294-af6f-4f2f8a48187f",
@@ -6138,7 +6294,8 @@
     "selling_dealership": "Harbour City Auto",
     "lot": "D-0007",
     "current_bid": null,
-    "bid_count": 0
+    "bid_count": 0,
+    "ai_summary": "This 2020 Golf GTI Autobahn shows reasonable overall condition at 110k kilometers with typical wear patterns consistent with its mileage and grade. Minor cosmetic issues including curb rash on the front-right wheel and detailing needs are present, with no significant mechanical concerns flagged."
   },
   {
     "id": "879ceb97-67c2-443b-8194-fb67d9fa52f9",
@@ -6180,7 +6337,8 @@
     "selling_dealership": "Rive-Sud Motors",
     "lot": "D-0008",
     "current_bid": null,
-    "bid_count": 0
+    "bid_count": 0,
+    "ai_summary": "This nearly new 2026 BMW 530i with only 500 km carries a rebuilt title and below-average condition grade of 2.6, featuring light hail damage to the roof, a rear quarter panel dent, and a cracked front grille alongside minor bumper scratches and a missing wheel cap. Immediate reconditioning work is recommended to address the cosmetic damage and mechanical diagnosis of any underlying issues before retail sale."
   },
   {
     "id": "018b5f78-79a2-4b18-ae47-ae4e53f1b40a",
@@ -6221,7 +6379,8 @@
     "selling_dealership": "Northern Ridge Motors",
     "lot": "D-0009",
     "current_bid": null,
-    "bid_count": 0
+    "bid_count": 0,
+    "ai_summary": "This 2017 Toyota Camry LE carries significant cosmetic wear including windshield damage, hood paint chips, a driver-side door dent, and bumper scratches consistent with its 2.2 grade and highway mileage of 160,250 km. Mechanical diagnosis is recommended before proceeding, as the condition report indicates concerns beyond surface-level issues."
   },
   {
     "id": "bbf7eb0c-f86a-4c56-899e-200d98a51073",
@@ -6265,7 +6424,8 @@
     "selling_dealership": "Grand Touring Motors",
     "lot": "D-0010",
     "current_bid": null,
-    "bid_count": 0
+    "bid_count": 0,
+    "ai_summary": "This 2016 Mazda3 Turbo with 171,341 km carries a rebuilt title and a grade 2 condition reflecting significant wear, with multiple exterior dents and scratches across the quarter panel, liftgate, and driver-side fender alongside worn brake components. Interior damage includes a tear in the rear seat upholstery, and reconditioning work is recommended across mechanical and cosmetic areas before retail resale."
   },
   {
     "id": "e299ab33-ea99-4dbb-a513-0cc5d2dc99b2",
@@ -6305,7 +6465,8 @@
     "selling_dealership": "Metropolitain Auto",
     "lot": "D-0011",
     "current_bid": 43000,
-    "bid_count": 8
+    "bid_count": 8,
+    "ai_summary": "This 2023 Ram 1500 TRX with 53,609 km displays average wear consistent with its age and mileage, earning a 3.8 condition grade with cosmetic imperfections including worn driver seat leather and a tailgate dent. The vehicle is mechanically sound and requires only cosmetic reconditioning to enhance its retail appeal."
   },
   {
     "id": "502334c0-42b8-4103-8220-151dbe66edb6",
@@ -6346,7 +6507,8 @@
     "selling_dealership": "King City Auto",
     "lot": "D-0012",
     "current_bid": 10000,
-    "bid_count": 17
+    "bid_count": 17,
+    "ai_summary": "This 2016 Volkswagen Golf GTI S shows rough cosmetic wear with a dented rear quarter panel and torn rear seat upholstery, along with worn brake rotors requiring replacement at this mileage point. Core mechanical systems are operational, making it suitable for buyers prepared to handle reconditioning work on interior and exterior components."
   },
   {
     "id": "cf892585-b438-4f5f-8a08-f0880e87ee9e",
@@ -6382,7 +6544,8 @@
     "selling_dealership": "Rive-Sud Motors",
     "lot": "D-0013",
     "current_bid": 26000,
-    "bid_count": 17
+    "bid_count": 17,
+    "ai_summary": "This nearly-new 2026 Chevrolet Traverse LT shows minimal wear with only 500 kilometers and a clean title, featuring well-maintained paint and an interior consistent with light use. Grade 4 condition reflects a vehicle in very good shape with full service history available and no reported damage."
   },
   {
     "id": "9ed6baa0-2236-49b5-bc56-c4640af0ec8f",
@@ -6417,7 +6580,8 @@
     "selling_dealership": "Parkway Ford",
     "lot": "D-0014",
     "current_bid": null,
-    "bid_count": 0
+    "bid_count": 0,
+    "ai_summary": "This 2022 Hyundai Santa Fe Limited presents in exceptional condition with minimal mileage and a single-owner, garage-kept history that suggests careful maintenance. No reported mechanical concerns or structural damage are noted, making this a low-risk acquisition for reconditioning or direct retail placement."
   },
   {
     "id": "03118bbb-a754-4654-ae36-ecdb0c722457",
@@ -6455,7 +6619,8 @@
     "selling_dealership": "Chinook Auto Group",
     "lot": "D-0015",
     "current_bid": null,
-    "bid_count": 0
+    "bid_count": 0,
+    "ai_summary": "This 2020 Honda Accord LX presents mid-range condition at 120,446 km with typical wear and a cracked front grille requiring replacement. No significant mechanical issues were noted, though the vehicle would benefit from professional detailing and cosmetic reconditioning."
   },
   {
     "id": "f11ee887-c85a-4a9e-9104-4329ee532a58",
@@ -6497,7 +6662,8 @@
     "selling_dealership": "Rive-Sud Motors",
     "lot": "D-0016",
     "current_bid": 32500,
-    "bid_count": 4
+    "bid_count": 4,
+    "ai_summary": "This 2021 BMW 5 Series M550i shows reasonable condition at 81,301 km with minor cosmetic damage including a scratch on the liftgate, dent on the rear quarter panel, and scuff marks on door sill plates. No major mechanical concerns were identified, though the vehicle would benefit from detailing and routine reconditioning to present well for resale."
   },
   {
     "id": "db563df3-61eb-4e87-9244-ca3819a674d3",
@@ -6538,7 +6704,8 @@
     "selling_dealership": "AutoPark Toronto",
     "lot": "D-0017",
     "current_bid": null,
-    "bid_count": 0
+    "bid_count": 0,
+    "ai_summary": "This 2016 Ford Bronco Outer Banks shows extensive incident damage with a salvage title requiring professional frame inspection before any purchase commitment. The vehicle has recovered airbags, intermittent AC requiring diagnosis, minor upholstery wear, and cosmetic paint work, presenting significant reconditioning work ahead."
   },
   {
     "id": "7f236303-8db9-4dae-8d62-88889ea7771c",
@@ -6582,7 +6749,8 @@
     "selling_dealership": "AutoPark Toronto",
     "lot": "D-0018",
     "current_bid": null,
-    "bid_count": 0
+    "bid_count": 0,
+    "ai_summary": "This 2017 Mazda3 Turbo presents a salvage title with below-average condition at 255,595 km, featuring visible exterior damage including dents on the tailgate and rear quarter panel, a rear bumper scratch, and a windshield chip. Mechanical diagnosis is recommended for the active check engine light related to the catalytic converter, and reconditioning work will be needed to address the documented cosmetic and functional concerns."
   },
   {
     "id": "fafc5733-6237-4d2e-9c42-c02afa57ab62",
@@ -6618,7 +6786,8 @@
     "selling_dealership": "Prairie Sun Motors",
     "lot": "D-0019",
     "current_bid": 41000,
-    "bid_count": 4
+    "bid_count": 4,
+    "ai_summary": "This 2025 Ram 1500 Laramie with 26,556 km presents a 3.8 condition grade with typical cosmetic wear and minor surface imperfections suitable for its age. The vehicle is mechanically sound with no reported structural damage, making it a straightforward acquisition for reconditioning preparation."
   },
   {
     "id": "c57efc68-1e03-469a-93e7-f12fe51a1f10",
@@ -6657,7 +6826,8 @@
     "selling_dealership": "Fraser Valley Auto Group",
     "lot": "D-0020",
     "current_bid": 16500,
-    "bid_count": 5
+    "bid_count": 5,
+    "ai_summary": "This 2017 Ram 1500 TRX shows heavy wear at 176,161 km with a grade 2.3 condition rating, indicating significant reconditioning work will be needed. Wear items including brake rotors require attention, and cosmetic damage such as driver-side fender scratching is noted alongside other repairs recommended by inspection."
   },
   {
     "id": "e6f3733c-28f0-4829-9e04-7c508c489e8a",
@@ -6692,7 +6862,8 @@
     "selling_dealership": "Capital City Auto",
     "lot": "D-0021",
     "current_bid": 15000,
-    "bid_count": 14
+    "bid_count": 14,
+    "ai_summary": "This 2023 Hyundai Tucson N Line with 61,068 km presents a 3.7 grade reflecting average wear consistent with its age and mileage, featuring minor cosmetic imperfections throughout. The vehicle is mechanically sound with no reported damage, making it a straightforward wholesale candidate requiring only routine reconditioning."
   },
   {
     "id": "e7110b4a-b07b-4c43-aa1a-ffc435b379e6",
@@ -6735,7 +6906,8 @@
     "selling_dealership": "Rive-Sud Motors",
     "lot": "D-0022",
     "current_bid": 10000,
-    "bid_count": 13
+    "bid_count": 13,
+    "ai_summary": "This 2020 Subaru Crosstrek Sport shows below-average condition with 137,517 km on the odometer and displays multiple cosmetic and functional issues including door scuffs, a cracked grille, rear quarter panel dent, and windshield chip. Brake rotor wear indicates reconditioning work will be needed, and diagnosis is recommended to assess any additional mechanical concerns before retail placement."
   },
   {
     "id": "d8966200-67d2-432b-9df4-f87b98ed30a9",
@@ -6770,7 +6942,8 @@
     "selling_dealership": "Golden Horseshoe Motors",
     "lot": "D-0023",
     "current_bid": 16500,
-    "bid_count": 5
+    "bid_count": 5,
+    "ai_summary": "This 2025 Toyota Tacoma TRD Sport carries a rebuilt title and shows moderate wear typical of previous daily-driver use, with cosmetic reconditioning recommended. The vehicle runs and drives without mechanical concerns at under 24,000 kilometers, making it suitable for dealers comfortable with title history."
   },
   {
     "id": "e028beee-9c4e-44e1-936f-0f8a775e1836",
@@ -6808,7 +6981,8 @@
     "selling_dealership": "Chinook Auto Group",
     "lot": "D-0024",
     "current_bid": 30500,
-    "bid_count": 1
+    "bid_count": 1,
+    "ai_summary": "This low-mileage Mazda3 Turbo presents as a nearly new vehicle with a 4.5 condition grade, very clean interior and exterior, and all electronics functioning properly. The only notable issue is a minor parking scratch on the rear bumper, which represents minor cosmetic wear typical of used inventory."
   },
   {
     "id": "02d43bb2-96e6-4362-95dc-aea2ae0c3f65",
@@ -6847,7 +7021,8 @@
     "selling_dealership": "Prairie Motors",
     "lot": "D-0025",
     "current_bid": null,
-    "bid_count": 0
+    "bid_count": 0,
+    "ai_summary": "This 2020 Jeep Grand Cherokee Limited shows heavy wear at 172,972 km with a 2.4 condition grade, featuring light hail damage on the roof and a dent on the tailgate. Core mechanical systems are operational, though reconditioning work will be required to address the overall rough condition."
   },
   {
     "id": "ba32a172-12d9-4dff-ab94-956fe6323470",
@@ -6889,7 +7064,8 @@
     "selling_dealership": "St-Laurent Auto Exchange",
     "lot": "D-0026",
     "current_bid": 10000,
-    "bid_count": 5
+    "bid_count": 5,
+    "ai_summary": "This 2019 Nissan Altima Platinum with 174,522 km shows below-average condition with visible cosmetic wear including seat deterioration, bumper scratching, wheel damage, and surface rust requiring attention. Interior and exterior reconditioning work will be necessary to bring this vehicle to retail-ready condition."
   },
   {
     "id": "d5e524dc-350a-4499-975f-3b1300de4282",
@@ -6932,7 +7108,8 @@
     "selling_dealership": "Lakeshore Auto Group",
     "lot": "D-0027",
     "current_bid": 17500,
-    "bid_count": 3
+    "bid_count": 3,
+    "ai_summary": "This 2017 BMW 540i xDrive shows below-average condition at nearly 175,000 km with a check engine light indicating catalytic converter diagnostics needed, along with a cracked rear taillight housing requiring replacement. The vehicle displays minor cosmetic damage including windshield chip, bumper scratches, and mirror scuffing that warrant attention during reconditioning."
   },
   {
     "id": "335c856f-de1e-4cbb-8972-817d1dda5495",
@@ -6968,7 +7145,8 @@
     "selling_dealership": "Rive-Sud Motors",
     "lot": "D-0028",
     "current_bid": null,
-    "bid_count": 0
+    "bid_count": 0,
+    "ai_summary": "This 2022 GMC Terrain shows moderate wear consistent with previous daily-driver use at under 51,000 kilometers, with cosmetic touch-ups recommended throughout the vehicle. The unit runs and drives without reported mechanical concerns, presenting a relatively straightforward reconditioning opportunity for a buyer with a clean title."
   },
   {
     "id": "5c80170f-63e4-44fd-9130-4e3ecb265d42",
@@ -7008,7 +7186,8 @@
     "selling_dealership": "Grand Touring Motors",
     "lot": "D-0029",
     "current_bid": null,
-    "bid_count": 0
+    "bid_count": 0,
+    "ai_summary": "This 2025 Nissan Altima shows moderate wear consistent with previous daily use and carries a 3.9 grade with low mileage of approximately 21,881 km. Cosmetic reconditioning is recommended, including headlight lens restoration, tailgate dent repair, and rear bumper scratch correction, though the vehicle runs and drives without mechanical concern."
   },
   {
     "id": "493a149d-9407-4e29-a971-3bb724e83c7d",
@@ -7045,7 +7224,8 @@
     "selling_dealership": "Durham Auto Exchange",
     "lot": "D-0030",
     "current_bid": 31500,
-    "bid_count": 16
+    "bid_count": 16,
+    "ai_summary": "This 2022 Ram 1500 Laramie presents a grade 4 vehicle with light mileage and no reported damage, featuring a clean interior with minimal wear throughout. The exterior shows only minor cosmetic imperfections typical of normal use, indicating well-maintained condition suitable for resale."
   },
   {
     "id": "75688aa0-6a68-4486-889d-038890db4234",
@@ -7081,7 +7261,8 @@
     "selling_dealership": "Fraser Valley Auto Group",
     "lot": "D-0031",
     "current_bid": 27000,
-    "bid_count": 18
+    "bid_count": 18,
+    "ai_summary": "This 2020 GMC Sierra 1500 SLT with 83,725 km shows fair overall condition with light interior wear and minor exterior blemishes that are consistent with its age and mileage. The vehicle drives well with no major mechanical concerns noted, making it suitable for resale with standard reconditioning."
   },
   {
     "id": "db7cd541-b78d-4fb3-9e54-37379edb143f",
@@ -7117,7 +7298,8 @@
     "selling_dealership": "Laurentian Auto Group",
     "lot": "D-0032",
     "current_bid": 28500,
-    "bid_count": 7
+    "bid_count": 7,
+    "ai_summary": "This 2023 Tesla Model 3 Long Range presents a well-maintained example with only 32,776 km on the odometer and a 4.3 grade reflecting very good paint and minimal interior wear. Clean title and documented service history support the vehicle's presentation as a low-mileage unit with no reported damage."
   },
   {
     "id": "3c5f3a14-32a9-4cf2-8b65-77e250b5d3e0",
@@ -7159,7 +7341,8 @@
     "selling_dealership": "King City Auto",
     "lot": "D-0033",
     "current_bid": 14000,
-    "bid_count": 14
+    "bid_count": 14,
+    "ai_summary": "This 2017 BMW 330i xDrive with 210,199 km presents a grade 2.3 condition vehicle showing significant cosmetic wear including door sill scuffs, upholstery damage, and minor exterior scratches across multiple panels. Mechanical diagnosis is recommended due to intermittent AC performance and overall reconditioning needs typical of this condition grade."
   },
   {
     "id": "72c7c573-8cac-4756-bd03-b5957bab9cb9",
@@ -7197,7 +7380,8 @@
     "selling_dealership": "Lakeshore Auto Group",
     "lot": "D-0034",
     "current_bid": 18500,
-    "bid_count": 1
+    "bid_count": 1,
+    "ai_summary": "This 2025 Honda CR-V EX-L presents in exceptional condition with minimal mileage and a clean title, showing typical wear consistent with careful single-owner, garage-kept use. No mechanical concerns or damage are noted, positioning this vehicle as a low-risk acquisition requiring minimal reconditioning."
   },
   {
     "id": "154dcbc1-c3f8-4b71-a0e9-e80776c1f944",
@@ -7235,7 +7419,8 @@
     "selling_dealership": "Keystone Auto Group",
     "lot": "D-0035",
     "current_bid": null,
-    "bid_count": 0
+    "bid_count": 0,
+    "ai_summary": "This 2019 Honda Accord LX shows heavy use at 179,661 km with a 2.1 condition grade, reflecting multiple areas requiring reconditioning work. AC system diagnosis is recommended along with windshield repair, and the overall condition aligns with the pricing structure reflecting needed attention."
   },
   {
     "id": "ea2f19bf-131e-4d96-956c-2a10a909b132",
@@ -7275,7 +7460,8 @@
     "selling_dealership": "Rive-Sud Motors",
     "lot": "D-0036",
     "current_bid": null,
-    "bid_count": 0
+    "bid_count": 0,
+    "ai_summary": "This 2023 Chevrolet Traverse Premier with 89,286 km carries a rebuilt title and a 2.5 condition grade, indicating significant cosmetic wear and multiple issues requiring attention. Minor rust is present on the wheel wells and a scrape marks the passenger-side mirror, with mechanical inspection recommended before purchase."
   },
   {
     "id": "25090c56-ea41-4067-904d-d0da6854f69e",
@@ -7311,7 +7497,8 @@
     "selling_dealership": "St-Laurent Auto Exchange",
     "lot": "D-0037",
     "current_bid": 29500,
-    "bid_count": 16
+    "bid_count": 16,
+    "ai_summary": "This low-mileage 2025 Tiguan SE R-Line presents in excellent condition with a 4.6 grade, featuring a clean interior and exterior that reflects minimal use. With under 25,000 kilometers and no reported damage, the vehicle requires minimal reconditioning and represents a straightforward acquisition."
   },
   {
     "id": "e72d46ae-512c-41a4-b52d-7c866c149d4b",
@@ -7347,7 +7534,8 @@
     "selling_dealership": "Mountain View Motors",
     "lot": "D-0038",
     "current_bid": null,
-    "bid_count": 0
+    "bid_count": 0,
+    "ai_summary": "This 2021 Ford Bronco Badlands carries a rebuilt title and shows fair condition with 112,811 km, featuring minor interior wear and light exterior blemishes that reflect typical use. The vehicle operates well mechanically, though the rebuilt status warrants thorough title documentation review and potential inspection before resale."
   },
   {
     "id": "031584ce-f351-4404-9dc3-765e9b68595d",
@@ -7389,7 +7577,8 @@
     "selling_dealership": "Capital City Auto",
     "lot": "D-0039",
     "current_bid": null,
-    "bid_count": 0
+    "bid_count": 0,
+    "ai_summary": "This 2024 Nissan Pathfinder shows significant wear despite low mileage, with a 2.9 grade reflecting heavy use and multiple reconditioning needs including exterior cosmetic damage and AC system diagnosis. The rebuilt title status combined with faded optics, hail marks, and bumper scratches indicates this vehicle will require attention to both mechanical systems and exterior restoration before retail positioning."
   },
   {
     "id": "ab69ea7d-1baf-49d1-b9b2-ef6c38b78540",
@@ -7432,7 +7621,8 @@
     "selling_dealership": "Maple Motors",
     "lot": "D-0040",
     "current_bid": null,
-    "bid_count": 0
+    "bid_count": 0,
+    "ai_summary": "This nearly-new 2026 Kia Telluride carries a salvage title with a 1.3 condition grade, indicating major structural and mechanical compromise unsuitable for road use without substantial reconditioning work. The vehicle presents frame damage on the right front, transmission slipping issues, emissions system faults, and multiple interior and exterior wear points that require experienced diagnosis and rebuild capability."
   },
   {
     "id": "04ee439e-0ada-4c1f-a9c2-4e70ad5d4dd4",
@@ -7475,7 +7665,8 @@
     "selling_dealership": "Rive-Sud Motors",
     "lot": "D-0041",
     "current_bid": null,
-    "bid_count": 0
+    "bid_count": 0,
+    "ai_summary": "This 2018 Volkswagen Golf GTI SE with 94,415 km displays a 2.7 condition grade with multiple cosmetic defects including door sill scuffs, a cracked front grille, liftgate scratches, and minor rust on the wheel wells. Mechanical diagnosis is recommended prior to purchase to assess any underlying concerns."
   },
   {
     "id": "ddf89062-1b82-4428-8c18-f7406b0300be",
@@ -7512,7 +7703,8 @@
     "selling_dealership": "Maple Motors",
     "lot": "D-0042",
     "current_bid": 32500,
-    "bid_count": 9
+    "bid_count": 9,
+    "ai_summary": "This 2023 GMC Terrain SLT presents a 4.3 condition grade with only 57,441 km on the odometer, featuring a clean interior with minimal wear and minor exterior imperfections typical of its age. No damage is noted, making this a well-maintained example requiring minimal reconditioning work."
   },
   {
     "id": "e84c939c-b1f7-477f-9dab-d009a038e98d",
@@ -7550,7 +7742,8 @@
     "selling_dealership": "Keystone Auto Group",
     "lot": "D-0043",
     "current_bid": null,
-    "bid_count": 0
+    "bid_count": 0,
+    "ai_summary": "This 2019 Tiguan SEL R-Line presents a 2.5-grade vehicle with high mileage at 219,476 km, showing visible cosmetic damage including a rear quarter panel dent and torn rear seat upholstery. Core mechanical systems are operational, though the rough overall condition indicates this unit is suitable for buyers prepared to undertake reconditioning work."
   },
   {
     "id": "919111e1-6b6a-4b83-9128-7cd3827b91d8",
@@ -7588,7 +7781,8 @@
     "selling_dealership": "Metropolitain Auto",
     "lot": "D-0044",
     "current_bid": 9500,
-    "bid_count": 16
+    "bid_count": 16,
+    "ai_summary": "This 2020 Kia Telluride EX carries a salvage title with significant structural and mechanical compromise, requiring full reconditioning work before road use. Major cosmetic damage, intermittent AC system issues, and substantial rebuilding needs make this suitable only for experienced rebuilders with proper facilities."
   },
   {
     "id": "966f407a-9bb0-48f7-9791-962d14f0c9f4",
@@ -7623,7 +7817,8 @@
     "selling_dealership": "Island Auto Exchange",
     "lot": "D-0045",
     "current_bid": 36000,
-    "bid_count": 4
+    "bid_count": 4,
+    "ai_summary": "This 2025 Ram 1500 Limited presents as a well-maintained truck with minimal cosmetic wear and fully operational electronics across all features. At under 24,000 kilometers with a 4.6 condition grade, the vehicle requires no identified reconditioning work and is suitable for direct retail or minimal preparation."
   },
   {
     "id": "aa1dc6da-d76c-4be0-9ba3-56fbfcf51044",
@@ -7663,7 +7858,8 @@
     "selling_dealership": "Northern Ridge Motors",
     "lot": "D-0046",
     "current_bid": 7500,
-    "bid_count": 14
+    "bid_count": 14,
+    "ai_summary": "This 2017 Chevrolet Traverse High Country shows significant cosmetic wear including a cracked taillight, liftgate scratches, and paint peeling on the roof rack, with a 2.2 condition grade reflecting overall deterioration. At 179,651 km, a thorough mechanical inspection is recommended before purchase to assess any underlying operational concerns."
   },
   {
     "id": "ba888a6f-04b5-413c-8d87-0f29ba30a2eb",
@@ -7700,7 +7896,8 @@
     "selling_dealership": "Northland Chrysler",
     "lot": "D-0047",
     "current_bid": null,
-    "bid_count": 0
+    "bid_count": 0,
+    "ai_summary": "This 2020 Ford Mustang EcoBoost Premium shows fair condition at 127,503 km with light hail damage visible on the roof and minor exterior blemishes throughout. The interior exhibits expected wear for the mileage, and the vehicle operates as intended with no reported mechanical concerns."
   },
   {
     "id": "62eb822a-a238-4a88-b718-942b8fca86aa",
@@ -7735,7 +7932,8 @@
     "selling_dealership": "Maple Motors",
     "lot": "D-0048",
     "current_bid": 35500,
-    "bid_count": 10
+    "bid_count": 10,
+    "ai_summary": "This 2024 Ram 1500 Laramie shows reasonable overall condition with typical wear for its mileage and would benefit from detailing to maximize appeal. No major mechanical concerns have been identified, making it a straightforward reconditioning candidate."
   },
   {
     "id": "435df02e-2afa-4f26-9caa-45956583f6c7",
@@ -7777,7 +7975,8 @@
     "selling_dealership": "Northland Chrysler",
     "lot": "D-0049",
     "current_bid": 14500,
-    "bid_count": 3
+    "bid_count": 3,
+    "ai_summary": "This 2017 Ram 1500 Rebel has 207,102 km on the odometer and carries a condition grade of 1.8, reflecting substantial structural and mechanical concerns including prior airbag deployment and an active check engine light related to the catalytic converter system. The vehicle exhibits paint degradation on trim surfaces, minor cosmetic damage, and corrosion on undercarriage components, and is recommended for parts harvesting or significant rebuild work only."
   },
   {
     "id": "e4be9cf8-7794-46a7-82c2-b3510f11bff3",
@@ -7815,6 +8014,7 @@
     "selling_dealership": "AutoPark Toronto",
     "lot": "D-0050",
     "current_bid": null,
-    "bid_count": 0
+    "bid_count": 0,
+    "ai_summary": "This 2023 GMC Sierra 1500 Pro presents as a well-maintained example with low mileage, full service history, and very good paint condition throughout. The interior reflects light use consistent with the odometer reading, with a condition grade of 4 indicating minimal wear and no reported damage."
   }
 ]

@@ -1,0 +1,403 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Inventory — The Block</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] },
+      },
+    },
+  };
+</script>
+<style>
+  body { font-feature-settings: 'cv11', 'ss01'; }
+  .tabular { font-variant-numeric: tabular-nums; }
+  .placeholder-img {
+    background:
+      radial-gradient(120% 80% at 20% 0%, rgba(255,255,255,0.08), transparent 60%),
+      linear-gradient(135deg, #1e293b 0%, #0f172a 60%, #020617 100%);
+  }
+  .placeholder-img-2 {
+    background:
+      radial-gradient(120% 80% at 80% 10%, rgba(255,255,255,0.08), transparent 60%),
+      linear-gradient(135deg, #1f2937 0%, #111827 60%, #030712 100%);
+  }
+  .placeholder-img-3 {
+    background:
+      radial-gradient(120% 80% at 30% 100%, rgba(255,255,255,0.08), transparent 60%),
+      linear-gradient(135deg, #334155 0%, #1e293b 60%, #0f172a 100%);
+  }
+  .live-dot::before {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    border-radius: 9999px;
+    background: rgb(16 185 129 / 0.4);
+    animation: livepulse 1.6s ease-out infinite;
+  }
+  @keyframes livepulse {
+    0% { transform: scale(0.6); opacity: 0.9; }
+    100% { transform: scale(1.8); opacity: 0; }
+  }
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+</style>
+</head>
+<body class="min-h-screen bg-slate-50 text-slate-900 antialiased">
+
+  <!-- Header -->
+  <header class="sticky top-0 z-40 border-b border-slate-200 bg-white/85 backdrop-blur">
+    <div class="mx-auto flex h-14 max-w-7xl items-center justify-between px-6">
+      <div class="flex items-center gap-2.5">
+        <div class="grid h-7 w-7 place-items-center rounded bg-slate-900 text-[11px] font-bold text-white">B</div>
+        <span class="text-sm font-bold uppercase tracking-[0.18em] text-slate-900">The Block</span>
+      </div>
+      <div class="flex items-center gap-1">
+        <button class="rounded-md px-3 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-100">Inventory</button>
+        <button class="rounded-md px-3 py-1.5 text-sm font-medium text-slate-500 hover:bg-slate-100">My bids</button>
+        <button class="ml-2 grid h-9 w-9 place-items-center rounded-md text-slate-600 hover:bg-slate-100" aria-label="Menu">
+          <i data-lucide="menu" class="h-5 w-5"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="mx-auto max-w-7xl px-6 py-8">
+
+    <!-- Search + filters -->
+    <section class="mb-6">
+      <div class="relative">
+        <i data-lucide="search" class="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400"></i>
+        <input
+          type="text"
+          placeholder="Search make, model, VIN, lot #"
+          class="h-12 w-full rounded-lg border border-slate-200 bg-white pl-11 pr-4 text-sm text-slate-900 placeholder:text-slate-400 focus:border-slate-900 focus:outline-none focus:ring-2 focus:ring-slate-900/10"
+        />
+      </div>
+
+      <div class="mt-3 flex flex-wrap items-center gap-2">
+        <button class="inline-flex items-center gap-1.5 rounded-md border border-slate-200 bg-white px-3 py-1.5 text-sm font-medium text-slate-700 hover:border-slate-300">
+          Make
+          <i data-lucide="chevron-down" class="h-3.5 w-3.5 text-slate-400"></i>
+        </button>
+        <button class="inline-flex items-center gap-1.5 rounded-md border border-slate-200 bg-white px-3 py-1.5 text-sm font-medium text-slate-700 hover:border-slate-300">
+          Body
+          <i data-lucide="chevron-down" class="h-3.5 w-3.5 text-slate-400"></i>
+        </button>
+        <button class="inline-flex items-center gap-1.5 rounded-md border border-slate-200 bg-white px-3 py-1.5 text-sm font-medium text-slate-700 hover:border-slate-300">
+          Price
+          <i data-lucide="chevron-down" class="h-3.5 w-3.5 text-slate-400"></i>
+        </button>
+        <div class="ml-auto inline-flex items-center gap-2 text-sm">
+          <span class="text-slate-500">Sort</span>
+          <button class="inline-flex items-center gap-1.5 rounded-md border border-slate-200 bg-white px-3 py-1.5 font-medium text-slate-700 hover:border-slate-300">
+            Ending soon
+            <i data-lucide="chevron-down" class="h-3.5 w-3.5 text-slate-400"></i>
+          </button>
+        </div>
+      </div>
+
+      <div class="mt-4 flex items-center justify-between border-b border-slate-200 pb-3 text-sm">
+        <p class="text-slate-600">
+          Showing <span class="font-semibold text-slate-900 tabular">47</span> of
+          <span class="font-semibold text-slate-900 tabular">200</span> vehicles
+        </p>
+        <button class="text-slate-500 underline-offset-4 hover:text-slate-900 hover:underline">Clear filters</button>
+      </div>
+    </section>
+
+    <!-- Ending soon strip -->
+    <section class="mb-8">
+      <div class="mb-3 flex items-center gap-2">
+        <i data-lucide="alarm-clock" class="h-4 w-4 text-amber-600"></i>
+        <h2 class="text-xs font-semibold uppercase tracking-[0.16em] text-slate-700">Ending soon</h2>
+        <span class="text-xs text-slate-400">· next hour</span>
+      </div>
+      <div class="no-scrollbar flex gap-3 overflow-x-auto pb-1">
+        <!-- Mini cards: time = MM:SS for sub-hour countdowns -->
+        <a href="vehicle-detail.html" class="group min-w-[140px] flex-shrink-0 overflow-hidden rounded-lg border border-slate-200 bg-white transition hover:border-slate-300 hover:shadow-sm">
+          <div class="placeholder-img relative flex aspect-[4/3] items-end p-2 text-white">
+            <span class="text-[10px] font-medium text-slate-300">2018 Civic EX</span>
+          </div>
+          <div class="flex items-center justify-between px-3 py-2">
+            <span class="text-[11px] text-slate-500">Ends</span>
+            <span class="tabular text-sm font-semibold text-amber-700">12:43</span>
+          </div>
+        </a>
+        <a href="vehicle-detail.html" class="group min-w-[140px] flex-shrink-0 overflow-hidden rounded-lg border border-slate-200 bg-white transition hover:border-slate-300 hover:shadow-sm">
+          <div class="placeholder-img-2 relative flex aspect-[4/3] items-end p-2 text-white">
+            <span class="text-[10px] font-medium text-slate-300">2019 Sentra SV</span>
+          </div>
+          <div class="flex items-center justify-between px-3 py-2">
+            <span class="text-[11px] text-slate-500">Ends</span>
+            <span class="tabular text-sm font-semibold text-amber-700">18:02</span>
+          </div>
+        </a>
+        <a href="vehicle-detail.html" class="group min-w-[140px] flex-shrink-0 overflow-hidden rounded-lg border border-slate-200 bg-white transition hover:border-slate-300 hover:shadow-sm">
+          <div class="placeholder-img-3 relative flex aspect-[4/3] items-end p-2 text-white">
+            <span class="text-[10px] font-medium text-slate-300">2017 Escape SE</span>
+          </div>
+          <div class="flex items-center justify-between px-3 py-2">
+            <span class="text-[11px] text-slate-500">Ends</span>
+            <span class="tabular text-sm font-semibold text-amber-700">22:11</span>
+          </div>
+        </a>
+        <a href="vehicle-detail.html" class="group min-w-[140px] flex-shrink-0 overflow-hidden rounded-lg border border-slate-200 bg-white transition hover:border-slate-300 hover:shadow-sm">
+          <div class="placeholder-img relative flex aspect-[4/3] items-end p-2 text-white">
+            <span class="text-[10px] font-medium text-slate-300">2020 Corolla LE</span>
+          </div>
+          <div class="flex items-center justify-between px-3 py-2">
+            <span class="text-[11px] text-slate-500">Ends</span>
+            <span class="tabular text-sm font-semibold text-slate-700">31:50</span>
+          </div>
+        </a>
+        <a href="vehicle-detail.html" class="group min-w-[140px] flex-shrink-0 overflow-hidden rounded-lg border border-slate-200 bg-white transition hover:border-slate-300 hover:shadow-sm">
+          <div class="placeholder-img-2 relative flex aspect-[4/3] items-end p-2 text-white">
+            <span class="text-[10px] font-medium text-slate-300">2016 CR-V LX</span>
+          </div>
+          <div class="flex items-center justify-between px-3 py-2">
+            <span class="text-[11px] text-slate-500">Ends</span>
+            <span class="tabular text-sm font-semibold text-slate-700">44:09</span>
+          </div>
+        </a>
+        <a href="vehicle-detail.html" class="group min-w-[140px] flex-shrink-0 overflow-hidden rounded-lg border border-slate-200 bg-white transition hover:border-slate-300 hover:shadow-sm">
+          <div class="placeholder-img-3 relative flex aspect-[4/3] items-end p-2 text-white">
+            <span class="text-[10px] font-medium text-slate-300">2018 Altima S</span>
+          </div>
+          <div class="flex items-center justify-between px-3 py-2">
+            <span class="text-[11px] text-slate-500">Ends</span>
+            <span class="tabular text-sm font-semibold text-slate-700">52:18</span>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- Inventory grid -->
+    <section class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+
+      <!-- Card 1: grade 4.2, empty bid, ends in hours -->
+      <a href="vehicle-detail.html" class="group overflow-hidden rounded-xl border border-slate-200 bg-white transition hover:-translate-y-0.5 hover:border-slate-300 hover:shadow-md">
+        <div class="placeholder-img relative aspect-[4/3]">
+          <div class="absolute right-3 top-3 flex h-11 w-11 items-center justify-center rounded-full bg-white/95 text-sm font-bold text-slate-900 ring-1 ring-slate-200 backdrop-blur tabular">
+            4.2
+          </div>
+          <span class="absolute bottom-3 left-3 text-[10px] font-medium text-slate-400">2019 Honda Civic LX</span>
+        </div>
+        <div class="p-4">
+          <h3 class="text-[15px] font-semibold leading-tight">2019 Honda Civic LX</h3>
+          <p class="mt-0.5 text-[13px] text-slate-500 tabular">84,210 km · ON</p>
+          <div class="mt-3 border-t border-slate-100 pt-3">
+            <p class="text-[12px] text-slate-500">Starts at</p>
+            <p class="mt-0.5 text-[18px] font-bold tabular text-slate-900">$14,500</p>
+          </div>
+          <div class="mt-3 inline-flex items-center gap-1.5 rounded-md bg-slate-100 px-2 py-1 text-[12px] font-medium text-slate-700">
+            <i data-lucide="clock" class="h-3.5 w-3.5"></i>
+            <span class="tabular">Ends 2h 14m</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Card 2: SALVAGE, current bid, reserve not met, LIVE -->
+      <a href="vehicle-detail.html" class="group overflow-hidden rounded-xl border border-slate-200 bg-white transition hover:-translate-y-0.5 hover:border-slate-300 hover:shadow-md">
+        <div class="placeholder-img-2 relative aspect-[4/3]">
+          <div class="absolute right-3 top-3 rounded-md bg-red-600 px-2 py-1 text-[10px] font-bold uppercase tracking-wider text-white shadow-sm">
+            Salvage
+          </div>
+          <span class="absolute bottom-3 left-3 text-[10px] font-medium text-slate-400">2017 Ford F-150 XLT</span>
+        </div>
+        <div class="p-4">
+          <h3 class="text-[15px] font-semibold leading-tight">2017 Ford F-150 XLT</h3>
+          <p class="mt-0.5 text-[13px] text-slate-500 tabular">142,500 km · AB</p>
+          <div class="mt-3 border-t border-slate-100 pt-3">
+            <p class="text-[12px] text-slate-500">Current bid</p>
+            <p class="mt-0.5 text-[18px] font-bold tabular text-slate-900">$19,200</p>
+            <p class="mt-1 text-[12px] font-medium text-amber-700">Reserve not met</p>
+          </div>
+          <div class="mt-3 inline-flex items-center gap-1.5 rounded-md bg-emerald-50 px-2 py-1 text-[12px] font-bold uppercase tracking-wider text-emerald-700">
+            <span class="live-dot relative inline-block h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
+            <span>Live</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Card 3: grade 3.8, empty bid, ends in days -->
+      <a href="vehicle-detail.html" class="group overflow-hidden rounded-xl border border-slate-200 bg-white transition hover:-translate-y-0.5 hover:border-slate-300 hover:shadow-md">
+        <div class="placeholder-img-3 relative aspect-[4/3]">
+          <div class="absolute right-3 top-3 flex h-11 w-11 items-center justify-center rounded-full bg-white/95 text-sm font-bold text-slate-900 ring-1 ring-slate-200 backdrop-blur tabular">
+            3.8
+          </div>
+          <span class="absolute bottom-3 left-3 text-[10px] font-medium text-slate-400">2020 Toyota RAV4 XLE</span>
+        </div>
+        <div class="p-4">
+          <h3 class="text-[15px] font-semibold leading-tight">2020 Toyota RAV4 XLE</h3>
+          <p class="mt-0.5 text-[13px] text-slate-500 tabular">61,300 km · BC</p>
+          <div class="mt-3 border-t border-slate-100 pt-3">
+            <p class="text-[12px] text-slate-500">Starts at</p>
+            <p class="mt-0.5 text-[18px] font-bold tabular text-slate-900">$24,000</p>
+          </div>
+          <div class="mt-3 inline-flex items-center gap-1.5 rounded-md bg-slate-100 px-2 py-1 text-[12px] font-medium text-slate-700">
+            <i data-lucide="clock" class="h-3.5 w-3.5"></i>
+            <span class="tabular">Ends 1d 6h</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Card 4: grade 4.5, current bid, reserve met -->
+      <a href="vehicle-detail.html" class="group overflow-hidden rounded-xl border border-slate-200 bg-white transition hover:-translate-y-0.5 hover:border-slate-300 hover:shadow-md">
+        <div class="placeholder-img relative aspect-[4/3]">
+          <div class="absolute right-3 top-3 flex h-11 w-11 items-center justify-center rounded-full bg-white/95 text-sm font-bold text-slate-900 ring-1 ring-slate-200 backdrop-blur tabular">
+            4.5
+          </div>
+          <span class="absolute bottom-3 left-3 text-[10px] font-medium text-slate-400">2018 Toyota Tacoma TRD Sport</span>
+        </div>
+        <div class="p-4">
+          <h3 class="text-[15px] font-semibold leading-tight">2018 Toyota Tacoma TRD Sport</h3>
+          <p class="mt-0.5 text-[13px] text-slate-500 tabular">96,400 km · ON</p>
+          <div class="mt-3 border-t border-slate-100 pt-3">
+            <p class="text-[12px] text-slate-500">Current bid</p>
+            <p class="mt-0.5 text-[18px] font-bold tabular text-slate-900">$32,100</p>
+            <p class="mt-1 text-[12px] font-medium text-emerald-700">Reserve met</p>
+          </div>
+          <div class="mt-3 inline-flex items-center gap-1.5 rounded-md bg-slate-100 px-2 py-1 text-[12px] font-medium text-slate-700">
+            <i data-lucide="clock" class="h-3.5 w-3.5"></i>
+            <span class="tabular">Ends 4h 22m</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Card 5: REBUILT title -->
+      <a href="vehicle-detail.html" class="group overflow-hidden rounded-xl border border-slate-200 bg-white transition hover:-translate-y-0.5 hover:border-slate-300 hover:shadow-md">
+        <div class="placeholder-img-2 relative aspect-[4/3]">
+          <div class="absolute right-3 top-3 rounded-md bg-amber-500 px-2 py-1 text-[10px] font-bold uppercase tracking-wider text-white shadow-sm">
+            Rebuilt
+          </div>
+          <span class="absolute bottom-3 left-3 text-[10px] font-medium text-slate-400">2016 Toyota Camry SE</span>
+        </div>
+        <div class="p-4">
+          <h3 class="text-[15px] font-semibold leading-tight">2016 Toyota Camry SE</h3>
+          <p class="mt-0.5 text-[13px] text-slate-500 tabular">178,900 km · QC</p>
+          <div class="mt-3 border-t border-slate-100 pt-3">
+            <p class="text-[12px] text-slate-500">Starts at</p>
+            <p class="mt-0.5 text-[18px] font-bold tabular text-slate-900">$9,800</p>
+          </div>
+          <div class="mt-3 inline-flex items-center gap-1.5 rounded-md bg-slate-100 px-2 py-1 text-[12px] font-medium text-slate-700">
+            <i data-lucide="clock" class="h-3.5 w-3.5"></i>
+            <span class="tabular">Ends 3d 12h</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Card 6: ending in 18m (amber chip) -->
+      <a href="vehicle-detail.html" class="group overflow-hidden rounded-xl border border-slate-200 bg-white transition hover:-translate-y-0.5 hover:border-slate-300 hover:shadow-md">
+        <div class="placeholder-img-3 relative aspect-[4/3]">
+          <div class="absolute right-3 top-3 flex h-11 w-11 items-center justify-center rounded-full bg-white/95 text-sm font-bold text-slate-900 ring-1 ring-slate-200 backdrop-blur tabular">
+            4.1
+          </div>
+          <span class="absolute bottom-3 left-3 text-[10px] font-medium text-slate-400">2021 Mazda CX-5 GS</span>
+        </div>
+        <div class="p-4">
+          <h3 class="text-[15px] font-semibold leading-tight">2021 Mazda CX-5 GS</h3>
+          <p class="mt-0.5 text-[13px] text-slate-500 tabular">42,150 km · BC</p>
+          <div class="mt-3 border-t border-slate-100 pt-3">
+            <p class="text-[12px] text-slate-500">Current bid</p>
+            <p class="mt-0.5 text-[18px] font-bold tabular text-slate-900">$27,500</p>
+          </div>
+          <div class="mt-3 inline-flex items-center gap-1.5 rounded-md bg-amber-50 px-2 py-1 text-[12px] font-semibold text-amber-800 ring-1 ring-inset ring-amber-200">
+            <i data-lucide="clock" class="h-3.5 w-3.5"></i>
+            <span class="tabular">Ends 18m</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Card 7: grade 3.5, empty bid -->
+      <a href="vehicle-detail.html" class="group overflow-hidden rounded-xl border border-slate-200 bg-white transition hover:-translate-y-0.5 hover:border-slate-300 hover:shadow-md">
+        <div class="placeholder-img relative aspect-[4/3]">
+          <div class="absolute right-3 top-3 flex h-11 w-11 items-center justify-center rounded-full bg-white/95 text-sm font-bold text-slate-900 ring-1 ring-slate-200 backdrop-blur tabular">
+            3.5
+          </div>
+          <span class="absolute bottom-3 left-3 text-[10px] font-medium text-slate-400">2019 Toyota Sienna LE</span>
+        </div>
+        <div class="p-4">
+          <h3 class="text-[15px] font-semibold leading-tight">2019 Toyota Sienna LE</h3>
+          <p class="mt-0.5 text-[13px] text-slate-500 tabular">112,800 km · ON</p>
+          <div class="mt-3 border-t border-slate-100 pt-3">
+            <p class="text-[12px] text-slate-500">Starts at</p>
+            <p class="mt-0.5 text-[18px] font-bold tabular text-slate-900">$19,300</p>
+          </div>
+          <div class="mt-3 inline-flex items-center gap-1.5 rounded-md bg-slate-100 px-2 py-1 text-[12px] font-medium text-slate-700">
+            <i data-lucide="clock" class="h-3.5 w-3.5"></i>
+            <span class="tabular">Ends 12h 4m</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Card 8: current bid, reserve not met -->
+      <a href="vehicle-detail.html" class="group overflow-hidden rounded-xl border border-slate-200 bg-white transition hover:-translate-y-0.5 hover:border-slate-300 hover:shadow-md">
+        <div class="placeholder-img-2 relative aspect-[4/3]">
+          <div class="absolute right-3 top-3 flex h-11 w-11 items-center justify-center rounded-full bg-white/95 text-sm font-bold text-slate-900 ring-1 ring-slate-200 backdrop-blur tabular">
+            4.0
+          </div>
+          <span class="absolute bottom-3 left-3 text-[10px] font-medium text-slate-400">2017 Jeep Wrangler Sport</span>
+        </div>
+        <div class="p-4">
+          <h3 class="text-[15px] font-semibold leading-tight">2017 Jeep Wrangler Sport</h3>
+          <p class="mt-0.5 text-[13px] text-slate-500 tabular">88,600 km · AB</p>
+          <div class="mt-3 border-t border-slate-100 pt-3">
+            <p class="text-[12px] text-slate-500">Current bid</p>
+            <p class="mt-0.5 text-[18px] font-bold tabular text-slate-900">$22,800</p>
+            <p class="mt-1 text-[12px] font-medium text-amber-700">Reserve not met</p>
+          </div>
+          <div class="mt-3 inline-flex items-center gap-1.5 rounded-md bg-slate-100 px-2 py-1 text-[12px] font-medium text-slate-700">
+            <i data-lucide="clock" class="h-3.5 w-3.5"></i>
+            <span class="tabular">Ends 6h 51m</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Card 9: grade 3.9, empty bid, ends in 2 days -->
+      <a href="vehicle-detail.html" class="group overflow-hidden rounded-xl border border-slate-200 bg-white transition hover:-translate-y-0.5 hover:border-slate-300 hover:shadow-md">
+        <div class="placeholder-img-3 relative aspect-[4/3]">
+          <div class="absolute right-3 top-3 flex h-11 w-11 items-center justify-center rounded-full bg-white/95 text-sm font-bold text-slate-900 ring-1 ring-slate-200 backdrop-blur tabular">
+            3.9
+          </div>
+          <span class="absolute bottom-3 left-3 text-[10px] font-medium text-slate-400">2020 Ram 1500 Big Horn</span>
+        </div>
+        <div class="p-4">
+          <h3 class="text-[15px] font-semibold leading-tight">2020 Ram 1500 Big Horn</h3>
+          <p class="mt-0.5 text-[13px] text-slate-500 tabular">71,200 km · SK</p>
+          <div class="mt-3 border-t border-slate-100 pt-3">
+            <p class="text-[12px] text-slate-500">Starts at</p>
+            <p class="mt-0.5 text-[18px] font-bold tabular text-slate-900">$28,600</p>
+          </div>
+          <div class="mt-3 inline-flex items-center gap-1.5 rounded-md bg-slate-100 px-2 py-1 text-[12px] font-medium text-slate-700">
+            <i data-lucide="clock" class="h-3.5 w-3.5"></i>
+            <span class="tabular">Ends 2d 4h</span>
+          </div>
+        </div>
+      </a>
+    </section>
+
+    <div class="mt-10 flex justify-center">
+      <button class="rounded-md border border-slate-200 bg-white px-5 py-2.5 text-sm font-medium text-slate-700 hover:border-slate-300">Load more</button>
+    </div>
+  </main>
+
+  <footer class="mt-16 border-t border-slate-200 bg-white">
+    <div class="mx-auto flex max-w-7xl items-center justify-between px-6 py-6 text-xs text-slate-500">
+      <span>The Block · buyer-side vehicle auction prototype</span>
+      <a href="index.html" class="hover:text-slate-900">← Mockup index</a>
+    </div>
+  </footer>
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>lucide.createIcons();</script>
+</body>
+</html>

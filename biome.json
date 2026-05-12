@@ -1,0 +1,64 @@
+{
+  "$schema": "https://biomejs.dev/schemas/1.9.4/schema.json",
+  "files": {
+    "ignore": [
+      "node_modules",
+      "dist",
+      "build",
+      "coverage",
+      "data/**",
+      "scripts/**",
+      "_bmad/**",
+      "_bmad-output/**",
+      ".claude/**",
+      "mockups/**",
+      "prep/**",
+      "stories/**",
+      "test-results/**",
+      "playwright-report/**"
+    ]
+  },
+  "linter": {
+    "enabled": true,
+    "rules": {
+      "recommended": true,
+      "suspicious": {
+        "noConsole": {
+          "level": "error",
+          "options": { "allow": ["warn", "error"] }
+        }
+      },
+      "style": {
+        "useImportType": "error"
+      },
+      "a11y": {
+        "useSemanticElements": "error"
+      }
+    }
+  },
+  "overrides": [
+    {
+      "include": ["src/components/BidConfirmationModal.tsx"],
+      "linter": {
+        "rules": {
+          "a11y": {
+            "useSemanticElements": "off"
+          }
+        }
+      }
+    }
+  ],
+  "formatter": {
+    "enabled": true,
+    "indentStyle": "space",
+    "indentWidth": 2,
+    "lineWidth": 100
+  },
+  "javascript": {
+    "formatter": {
+      "quoteStyle": "single",
+      "semicolons": "always",
+      "trailingCommas": "all"
+    }
+  }
+}

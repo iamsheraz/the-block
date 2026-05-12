@@ -1,0 +1,298 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Bid confirmation — The Block</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] },
+      },
+    },
+  };
+</script>
+<style>
+  body { font-feature-settings: 'cv11', 'ss01'; }
+  .tabular { font-variant-numeric: tabular-nums; }
+  .placeholder-img {
+    background:
+      radial-gradient(120% 80% at 25% 10%, rgba(255,255,255,0.10), transparent 60%),
+      linear-gradient(135deg, #1e293b 0%, #0f172a 60%, #020617 100%);
+  }
+  .stage-frame {
+    background-image:
+      radial-gradient(rgba(15,23,42,0.05) 1px, transparent 1px);
+    background-size: 16px 16px;
+  }
+</style>
+</head>
+<body class="min-h-screen bg-slate-50 text-slate-900 antialiased">
+
+  <!-- Header -->
+  <header class="sticky top-0 z-40 border-b border-slate-200 bg-white/85 backdrop-blur">
+    <div class="mx-auto flex h-14 max-w-7xl items-center justify-between px-6">
+      <div class="flex items-center gap-2.5">
+        <div class="grid h-7 w-7 place-items-center rounded bg-slate-900 text-[11px] font-bold text-white">B</div>
+        <span class="text-sm font-bold uppercase tracking-[0.18em] text-slate-900">The Block</span>
+      </div>
+      <div class="flex items-center gap-1">
+        <a href="inventory.html" class="rounded-md px-3 py-1.5 text-sm font-medium text-slate-500 hover:bg-slate-100">Inventory</a>
+        <a href="vehicle-detail.html" class="rounded-md px-3 py-1.5 text-sm font-medium text-slate-500 hover:bg-slate-100">Vehicle</a>
+        <button class="ml-2 grid h-9 w-9 place-items-center rounded-md text-slate-600 hover:bg-slate-100" aria-label="Menu">
+          <i data-lucide="menu" class="h-5 w-5"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="mx-auto max-w-5xl px-6 py-10">
+
+    <div class="mb-10">
+      <p class="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">Screen 3</p>
+      <h1 class="mt-1 text-2xl font-bold tracking-tight">Bid confirmation</h1>
+      <p class="mt-2 max-w-2xl text-sm leading-relaxed text-slate-600">
+        The pre-mortem modal — last chance to surface the things a buyer would regret missing.
+        Three states: confirm, success, outbid recovery.
+      </p>
+    </div>
+
+    <!-- ─────────── 1. CONFIRM (MODAL) ─────────── -->
+    <section class="mb-12">
+      <div class="mb-4 flex items-baseline gap-3">
+        <span class="rounded bg-slate-900 px-2 py-0.5 text-[11px] font-bold tabular text-white">01</span>
+        <h2 class="text-base font-semibold">Confirm — pre-mortem modal</h2>
+        <span class="text-xs text-slate-500">Triggered by the <span class="font-medium text-slate-700">Place bid</span> button on the vehicle detail page.</span>
+      </div>
+
+      <div class="stage-frame relative overflow-hidden rounded-2xl border border-slate-200 bg-slate-100">
+        <!-- Dim scrim simulation -->
+        <div class="absolute inset-0 bg-slate-900/55"></div>
+
+        <!-- Modal -->
+        <div class="relative mx-auto my-12 max-w-md px-4">
+          <div class="rounded-2xl bg-white shadow-2xl ring-1 ring-slate-900/5">
+
+            <!-- Modal header -->
+            <div class="flex items-center justify-between border-b border-slate-100 px-6 py-4">
+              <h3 class="text-sm font-bold uppercase tracking-[0.16em] text-slate-900">Confirm your bid</h3>
+              <button class="grid h-8 w-8 place-items-center rounded-md text-slate-500 hover:bg-slate-100" aria-label="Close">
+                <i data-lucide="x" class="h-4 w-4"></i>
+              </button>
+            </div>
+
+            <div class="px-6 py-5">
+              <!-- Vehicle context -->
+              <p class="text-sm font-semibold text-slate-900">2019 Honda Civic LX</p>
+              <p class="text-xs text-slate-500 tabular">Lot #A4821 · 84,210 km · Clean title</p>
+
+              <div class="my-5 h-px bg-slate-100"></div>
+
+              <!-- Bid breakdown -->
+              <dl class="space-y-3 text-sm">
+                <div class="flex items-baseline justify-between gap-4">
+                  <dt class="text-slate-500">Your bid</dt>
+                  <dd class="text-xl font-bold tabular text-slate-900">$15,200</dd>
+                </div>
+                <div class="flex items-baseline justify-between gap-4">
+                  <dt class="text-slate-500">vs. starts at <span class="tabular text-slate-700">$14,500</span></dt>
+                  <dd class="inline-flex items-center gap-1 text-sm font-semibold tabular text-emerald-700">
+                    <i data-lucide="arrow-up" class="h-3.5 w-3.5"></i>
+                    +$700
+                  </dd>
+                </div>
+                <div class="flex items-baseline justify-between gap-4">
+                  <dt class="text-slate-500">Reserve <span class="tabular text-slate-700">$16,000</span></dt>
+                  <dd class="text-sm font-medium text-amber-700">Below reserve</dd>
+                </div>
+                <div class="flex items-baseline justify-between gap-4">
+                  <dt class="text-slate-500">Time remaining</dt>
+                  <dd class="inline-flex items-center gap-1 text-sm font-medium tabular text-slate-700">
+                    <i data-lucide="clock" class="h-3.5 w-3.5"></i>
+                    2h 12m
+                  </dd>
+                </div>
+              </dl>
+
+              <!-- Worst note callout -->
+              <div class="mt-5 rounded-lg border border-amber-200 bg-amber-50 p-3.5">
+                <div class="flex items-start gap-2.5">
+                  <i data-lucide="triangle-alert" class="mt-0.5 h-4 w-4 flex-shrink-0 text-amber-700"></i>
+                  <div class="text-sm">
+                    <p class="text-[11px] font-semibold uppercase tracking-[0.12em] text-amber-900">Worst note on this vehicle</p>
+                    <p class="mt-1 font-medium text-slate-900">"Transmission slips in 3rd gear"</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Commitment line -->
+              <p class="mt-5 border-t border-slate-100 pt-4 text-xs text-slate-600">
+                By placing this bid you commit to purchase if you win.
+                Auction bids are binding — they cannot be retracted.
+              </p>
+            </div>
+
+            <!-- Actions -->
+            <div class="flex items-center justify-end gap-2 rounded-b-2xl border-t border-slate-100 bg-slate-50 px-6 py-4">
+              <button class="inline-flex h-10 items-center justify-center rounded-md border border-slate-300 bg-white px-4 text-sm font-semibold text-slate-700 hover:bg-slate-100">
+                Cancel
+              </button>
+              <button class="inline-flex h-10 items-center justify-center gap-2 rounded-md bg-slate-900 px-5 text-sm font-semibold text-white shadow-sm hover:bg-slate-800">
+                <i data-lucide="gavel" class="h-4 w-4"></i>
+                Confirm bid
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─────────── 2. SUCCESS ─────────── -->
+    <section class="mb-12">
+      <div class="mb-4 flex items-baseline gap-3">
+        <span class="rounded bg-emerald-600 px-2 py-0.5 text-[11px] font-bold tabular text-white">02</span>
+        <h2 class="text-base font-semibold">Success</h2>
+        <span class="text-xs text-slate-500">Position relative to reserve is the load-bearing signal.</span>
+      </div>
+
+      <div class="grid grid-cols-1 gap-5 lg:grid-cols-2">
+        <!-- Inline success panel -->
+        <div class="overflow-hidden rounded-xl border border-emerald-200 bg-white shadow-sm">
+          <div class="flex items-start gap-3 border-b border-emerald-100 bg-emerald-50 px-5 py-4">
+            <span class="grid h-8 w-8 flex-shrink-0 place-items-center rounded-full bg-emerald-600 text-white">
+              <i data-lucide="check" class="h-4 w-4"></i>
+            </span>
+            <div>
+              <p class="text-sm font-bold text-emerald-900">Bid placed: <span class="tabular">$15,200</span></p>
+              <p class="mt-0.5 text-[13px] text-emerald-800">You're the high bidder.</p>
+            </div>
+          </div>
+          <div class="px-5 py-4">
+            <dl class="space-y-2 text-sm">
+              <div class="flex justify-between">
+                <dt class="text-slate-500">Position</dt>
+                <dd class="font-medium text-slate-900">High bidder</dd>
+              </div>
+              <div class="flex justify-between">
+                <dt class="text-slate-500">Reserve status</dt>
+                <dd class="font-medium tabular text-amber-700">Below reserve by $800</dd>
+              </div>
+              <div class="flex justify-between">
+                <dt class="text-slate-500">Time remaining</dt>
+                <dd class="font-medium tabular text-slate-900">2h 11m</dd>
+              </div>
+            </dl>
+            <div class="mt-4 flex gap-2">
+              <button class="inline-flex h-9 flex-1 items-center justify-center gap-1.5 rounded-md bg-slate-900 px-3 text-sm font-semibold text-white hover:bg-slate-800">
+                View bid
+              </button>
+              <a href="inventory.html" class="inline-flex h-9 flex-1 items-center justify-center rounded-md border border-slate-300 bg-white px-3 text-sm font-semibold text-slate-700 hover:bg-slate-100">
+                Back to list
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Notes about the design -->
+        <div class="rounded-xl border border-dashed border-slate-300 bg-white p-5 text-sm leading-relaxed text-slate-600">
+          <p class="text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-500">Why this shape</p>
+          <p class="mt-2.5">
+            The success panel reconfirms <em>position</em> relative to reserve — not just "you won the click." A
+            buyer who is the high bidder but below reserve has placed a <em>marker</em>, not a winning bid;
+            making that explicit prevents the trap of celebrating too early.
+          </p>
+          <p class="mt-3">
+            Both actions are equal-weight buttons because returning to the list and inspecting the bid are both
+            normal next moves at this point in the flow.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─────────── 3. ERROR (OUTBID) ─────────── -->
+    <section class="mb-4">
+      <div class="mb-4 flex items-baseline gap-3">
+        <span class="rounded bg-red-600 px-2 py-0.5 text-[11px] font-bold tabular text-white">03</span>
+        <h2 class="text-base font-semibold">Outbid — recovery path</h2>
+        <span class="text-xs text-slate-500">The dominant failure mode: someone else bid in-flight.</span>
+      </div>
+
+      <div class="grid grid-cols-1 gap-5 lg:grid-cols-2">
+        <!-- Error panel -->
+        <div class="overflow-hidden rounded-xl border border-red-200 bg-white shadow-sm">
+          <div class="flex items-start gap-3 border-b border-red-100 bg-red-50 px-5 py-4">
+            <span class="grid h-8 w-8 flex-shrink-0 place-items-center rounded-full bg-red-600 text-white">
+              <i data-lucide="x" class="h-4 w-4"></i>
+            </span>
+            <div>
+              <p class="text-sm font-bold text-red-900">Bid not placed</p>
+              <p class="mt-0.5 text-[13px] text-red-800">Someone bid <span class="tabular font-semibold">$15,250</span> first.</p>
+            </div>
+          </div>
+          <div class="px-5 py-4">
+            <p class="text-sm text-slate-700">
+              Try <span class="font-semibold tabular text-slate-900">$15,300</span> or higher to take the lead.
+              The minimum increment is <span class="tabular">$100</span>.
+            </p>
+            <div class="mt-4 flex gap-2">
+              <button class="inline-flex h-9 flex-1 items-center justify-center gap-1.5 rounded-md bg-slate-900 px-3 text-sm font-semibold text-white hover:bg-slate-800">
+                Adjust bid
+              </button>
+              <button class="inline-flex h-9 flex-1 items-center justify-center rounded-md border border-slate-300 bg-white px-3 text-sm font-semibold text-slate-700 hover:bg-slate-100">
+                Cancel
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Other error variants (compact) -->
+        <div class="space-y-3">
+          <!-- Variant: bid too low -->
+          <div class="flex items-start gap-3 rounded-lg border border-slate-200 bg-white px-4 py-3">
+            <i data-lucide="circle-alert" class="mt-0.5 h-4 w-4 flex-shrink-0 text-amber-600"></i>
+            <div class="text-sm">
+              <p class="font-medium text-slate-900">Bid too low</p>
+              <p class="text-[13px] text-slate-600">Minimum bid is <span class="tabular font-medium">$14,500</span> for this lot.</p>
+            </div>
+          </div>
+          <!-- Variant: auction ended -->
+          <div class="flex items-start gap-3 rounded-lg border border-slate-200 bg-white px-4 py-3">
+            <i data-lucide="circle-alert" class="mt-0.5 h-4 w-4 flex-shrink-0 text-slate-500"></i>
+            <div class="text-sm">
+              <p class="font-medium text-slate-900">Auction ended</p>
+              <p class="text-[13px] text-slate-600">This lot closed 4 minutes ago. <a href="inventory.html" class="font-semibold text-slate-900 underline-offset-4 hover:underline">Browse similar</a>.</p>
+            </div>
+          </div>
+          <!-- Variant: bid too high -->
+          <div class="flex items-start gap-3 rounded-lg border border-slate-200 bg-white px-4 py-3">
+            <i data-lucide="circle-alert" class="mt-0.5 h-4 w-4 flex-shrink-0 text-amber-600"></i>
+            <div class="text-sm">
+              <p class="font-medium text-slate-900">Bid exceeds maximum</p>
+              <p class="text-[13px] text-slate-600">Bids cap at <span class="tabular font-medium">$10,000,000</span>.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="mt-16 border-t border-slate-200 bg-white">
+    <div class="mx-auto flex max-w-7xl items-center justify-between px-6 py-6 text-xs text-slate-500">
+      <span>The Block · buyer-side vehicle auction prototype</span>
+      <div class="flex gap-4">
+        <a href="vehicle-detail.html" class="hover:text-slate-900">← Vehicle detail</a>
+        <a href="index.html" class="hover:text-slate-900">Mockup index</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>lucide.createIcons();</script>
+</body>
+</html>

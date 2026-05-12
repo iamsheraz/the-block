@@ -1,0 +1,10 @@
+services:
+  dev:
+    build: .
+    ports:
+      - "5173:5173"
+    volumes:
+      # Bind-mount the repo so edits on the host trigger Vite HMR inside the container.
+      - ./:/app
+      # Anonymous volume keeps the image's node_modules from being shadowed by the host mount.
+      - /app/node_modules
