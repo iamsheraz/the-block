@@ -37,6 +37,8 @@ export type Bid = {
   placedAt: string;
 };
 
+export type AuctionStatus = 'upcoming' | 'live' | 'ended';
+
 export type BidError =
   | { type: 'amount_too_low'; min: number }
   | { type: 'amount_too_high'; max: number }
